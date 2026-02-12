@@ -3,103 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Creative Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Satyam | Creative Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #38bdf8;
-            --secondary: #818cf8;
-            --bg: #030712;
-            --card: rgba(30, 41, 59, 0.5);
-            --border: rgba(255, 255, 255, 0.1);
+        body {
+            background-color: #050816;
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background: var(--bg); color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
-
-        /* Glowing Background Effect */
-        body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px; height: 300px;
+            background: #4facfe;
+            filter: blur(120px);
+            opacity: 0.2;
             z-index: -1;
-        }
-
-        /* Glass Navbar */
-        nav {
-            position: fixed; top: 0; width: 100%; padding: 20px 8%;
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border); z-index: 1000;
-        }
-        .logo { font-size: 1.5rem; font-weight: 800; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 30px; font-weight: 600; transition: 0.3s; font-size: 0.9rem; }
-        .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
-
-        .container { max-width: 1100px; margin: auto; padding: 0 25px; }
-
-        /* Hero Section */
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .hero-badge { background: rgba(56, 189, 248, 0.1); color: var(--primary); padding: 8px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 700; border: 1px solid rgba(56, 189, 248, 0.2); margin-bottom: 20px; }
-        .hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
-        .hero h1 span { color: var(--primary); }
-        .hero p { color: #94a3b8; font-size: 1.2rem; max-width: 600px; margin-bottom: 35px; }
-
-        /* Buttons */
-        .btn-group { display: flex; gap: 15px; }
-        .btn { padding: 14px 32px; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; font-size: 1rem; cursor: pointer; border: none; }
-        .btn-primary { background: var(--primary); color: #030712; box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(56, 189, 248, 0.4); }
-        .btn-outline { background: transparent; color: white; border: 1px solid var(--border); }
-        .btn-outline:hover { background: var(--border); }
-
-        /* Sections Styling */
-        section { padding: 120px 0; }
-        .section-tag { color: var(--primary); font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .section-title { font-size: 2.5rem; margin-bottom: 50px; }
-
-        /* Projects Card */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
-        .project-card { background: var(--card); border-radius: 24px; border: 1px solid var(--border); overflow: hidden; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .project-card:hover { transform: scale(1.02); border-color: var(--primary); box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
-        .project-img { width: 100%; height: 220px; object-fit: cover; }
-        .project-content { padding: 30px; }
-        .project-tags { display: flex; gap: 8px; margin-bottom: 15px; }
-        .tag { font-size: 0.7rem; background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 5px; color: #94a3b8; }
-
-        /* Skills Glass */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
-        .skill-item { background: var(--card); padding: 20px; border-radius: 16px; border: 1px solid var(--border); text-align: center; transition: 0.3s; }
-        .skill-item:hover { background: rgba(56, 189, 248, 0.1); border-color: var(--primary); transform: translateY(-5px); }
-        .skill-item i { font-size: 24px; display: block; margin-bottom: 10px; }
-
-        /* Contact Form Modern */
-        .contact-container { background: var(--card); border-radius: 32px; border: 1px solid var(--border); padding: 50px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; }
-        .contact-info h3 { font-size: 2rem; margin-bottom: 20px; }
-        input, textarea { width: 100%; padding: 18px; background: #030712; border: 1px solid var(--border); border-radius: 16px; color: white; margin-bottom: 20px; outline: none; transition: 0.3s; }
-        input:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(56, 189, 248, 0.2); }
-
-        footer { text-align: center; padding: 60px 0; color: #64748b; border-top: 1px solid var(--border); margin-top: 100px; }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .contact-container { grid-template-columns: 1fr; padding: 30px; }
-            nav { padding: 20px 5%; }
-            .nav-links { display: none; } /* Mobile menu can be added later */
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">SATYAM.DEV</div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#projects">Work</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
+    <div class="hero-glow"></div>
+
+    <nav class="flex justify-between items-center p-6 max-w-6xl mx-auto">
+        <div class="text-2xl font-bold gradient-text">SATYAM.DEV</div>
+        <div class="hidden md:flex gap-8 text-sm font-medium">
+            <a href="#projects" class="hover:text-cyan-400">Projects</a>
+            <a href="#skills" class="hover:text-cyan-400">Skills</a>
+            <a href="#contact" class="hover:text-cyan-400">Contact</a>
         </div>
     </nav>
 
-    <div class="container">
-        <section id="home" class="hero">
-            <div class="hero-badge">Available for Projects
+    <section class="mt-20 text-center px-4">
+        <span class="px-4 py-1 rounded-full border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-widest bg-cyan-500/10">
+            Available for Freelance
+        </span>
+        <h1 class="text-5xl md:text-7xl font-bold mt-6 leading-tight">
+            Building the <span class="gradient-text">Future</span> <br> of Web.
+        </h1>
+        <p class="text-gray-400 mt-6 max-w-xl mx-auto text-lg">
+            I'm a full-stack developer based in Ayodhya, crafting high-end digital experiences for modern brands.
+        </p>
+        <div class="mt-10 flex flex-col md:flex-row justify-center gap-4">
+            <a href="#projects" class="bg-cyan-500 hover:bg-cyan-400 text-black px-8 py-4 rounded-xl font-bold transition-all transform hover:scale-105">View Projects</a>
+            <a href="#contact" class="glass px-8 py-4 rounded-xl font-bold hover:bg-white/5 transition-all">Let's Connect</a>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-12 flex items-center gap-4">
+            <span class="w-12 h-[2px] bg-cyan-500"></span> Featured Work
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="glass overflow-hidden group">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold">Ayodhya Heritage Stay</h3>
+                    <p class="text-gray-400 mt-3 mb-6">Premium hotel booking engine with real-time room selection and secure WhatsApp checkout.</p>
+                    <a href="react-hotel.html" class="text-cyan-400 font-bold hover:underline flex items-center gap-2">
+                        Live Demo <span>→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass overflow-hidden group">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold">Admin Dashboard</h3>
+                    <p class="text-gray-400 mt-3 mb-6">Custom CRM built for hotel management to track revenue, guests, and daily operations.</p>
+                    <span class="text-gray-500 font-bold">Coming Soon...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto glass p-10 md:p-16 text-center">
+            <h2 class="text-4xl font-bold mb-4">Ready to start a project?</h2>
+            <p class="text-gray-400 mb-10">I'm currently taking on new projects and would love to hear about yours.</p>
+            
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <input type="text" id="user_name" placeholder="Your Name" class="bg-white/5 border border-white/10 px-6 py-4 rounded-xl focus:outline-none focus:border-cyan-500 w-full md:w-64">
+                <button onclick="sendMsg()" class="bg-white text-black px-10 py-4 rounded-xl font-bold hover:bg-cyan-400 transition-all">Send WhatsApp</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-gray-600 text-sm border-t border-white/5">
+        © 2026 Satyam. All rights reserved.
+    </footer>
+
+    <script>
+        function sendMsg() {
+            const name = document.getElementById('user_name').value;
+            if(!name) return alert("Bhai naam toh likho!");
+            window.open(`https://wa.me/919999999999?text=Hi Satyam, I'm ${name} from your portfolio.`);
+        }
+    </script>
+</body>
+</html>
