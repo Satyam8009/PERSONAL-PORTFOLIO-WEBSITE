@@ -34,4 +34,67 @@
             // Weather API Call
             React.useEffect(() => {
                 if (view === 'dashboard') {
-                    fetch('
+                    fetch('https://api.openweathermap.org/data/2.5/weather?q=Delhi&units=metric&appid=895284fb2d2c1ff9a3364f9b8069502b')
+                    .then(res => res.json())
+                    .then(data => {
+                        setWeather({ temp: Math.round(data.main.temp), city: data.name });
+                    }).catch(() => setWeather({ temp: '22', city: 'Delhi' }));
+                }
+            }, [view]);
+
+            const addTask = () => { if(input) { setTasks([...tasks, input]); setInput(''); } };
+
+            if (view === 'dashboard') {
+                return (
+                    <div className="container">
+                        <div className="glass-card">
+                            <h2 style={{color: 'var(--accent)', margin:0}}>Dev Dashboard</h2>
+                            <p style={{fontSize: '12px', opacity: 0.7}}>Welcome, Satyam Admin</p>
+                            
+                            {/* Weather Widget */}
+                            <div className="weather-box">
+                                <div style={{fontSize:'12px'}}>Live Weather</div>
+                                <div style={{fontSize:'24px', fontWeight:'bold'}}>{weather.temp}°C</div>
+                                <div style={{fontSize:'14px'}}>{weather.city}, IN</div>
+                            </div>
+
+                            <h4>My Tasks</h4>
+                            <div style={{display:'flex', gap:'5px', marginBottom:'15px'}}>
+                                <input className="input" style={{margin:0}} value={input} onChange={(e)=>setInput(e.target.value)} placeholder="New task..." />
+                                <button onClick={addTask} style={{padding:'0 15px', background: 'var(--success)', border:'none', borderRadius:'8px', cursor:'pointer'}}>+</button>
+                            </div>
+                            
+                            {tasks.map((t, i) => (
+                                <div key={i} className="todo-item"><span>{t}</span></div>
+                            ))}
+
+                            <button className="btn btn-red" onClick={() => setView('auth')}>LOGOUT</button>
+                        </div>
+                    </div>
+                );
+            }
+
+            return (
+                <div className="container">
+                    <div className="glass-card">
+                        <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
+                        <form onSubmit={(e) => { e.preventDefault(); setView('dashboard'); }}>
+                            {!isLogin && <input className="input" placeholder="Full Name" required />}
+                            <input className="input" type="email" placeholder="Email" required />
+                            <input className="input" type="password" placeholder="Password" required />
+                            <button className="btn btn-blue" type="submit">{isLogin ? 'LOGIN' : 'SIGN UP'}</button>
+                        </form>
+                        <p style={{fontSize: '13px', marginTop: '15px', cursor: 'pointer', color: 'var(--accent)'}} 
+                           onClick={() => setIsLogin(!isLogin)}>
+                            {isLogin ? "New user? Create Account" : "Already have an account? Login"}
+                        </p>
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
