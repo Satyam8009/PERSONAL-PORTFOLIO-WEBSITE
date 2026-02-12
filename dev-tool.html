@@ -16,6 +16,7 @@
         .btn { width: 100%; padding: 12px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
         .btn-blue { background: var(--accent); color: #0f172a; }
         .btn-red { background: #ef4444; color: white; margin-top: 10px; }
+        .weather-box { background: linear-gradient(135deg, #075985, #0ea5e9); padding: 15px; border-radius: 12px; margin: 15px 0; text-align: left; }
         .todo-item { background: #0f172a; padding: 10px; margin: 5px 0; border-radius: 5px; display: flex; justify-content: space-between; border-left: 4px solid var(--accent); }
     </style>
 </head>
@@ -24,59 +25,13 @@
 
     <script type="text/babel">
         function App() {
-            const [view, setView] = React.useState('auth'); // auth, dashboard
+            const [view, setView] = React.useState('auth');
             const [isLogin, setIsLogin] = React.useState(true);
-            const [tasks, setTasks] = React.useState(['Learn React Hooks', 'Deploy MERN Project']);
+            const [tasks, setTasks] = React.useState(['MERN Stack Project', 'Portfolio Review']);
             const [input, setInput] = React.useState('');
+            const [weather, setWeather] = React.useState({ temp: '--', city: 'Loading...' });
 
-            const handleAuth = (e) => { e.preventDefault(); setView('dashboard'); };
-            const addTask = () => { if(input) { setTasks([...tasks, input]); setInput(''); } };
-
-            if (view === 'dashboard') {
-                return (
-                    <div className="container">
-                        <div className="glass-card">
-                            <h2 style={{color: 'var(--accent)'}}>Dev Dashboard</h2>
-                            <p style={{fontSize: '12px'}}>Welcome back, Satyam!</p>
-                            <hr style={{borderColor: '#334155'}} />
-                            
-                            <h4>My Tasks</h4>
-                            <div style={{marginBottom: '15px'}}>
-                                <input className="input" style={{width: '70%', margin: 0}} value={input} onChange={(e)=>setInput(e.target.value)} placeholder="New task..." />
-                                <button onClick={addTask} style={{width: '28%', padding: '12px', background: 'var(--success)', border: 'none', borderRadius: '8px', marginLeft: '2%'}}>+</button>
-                            </div>
-                            
-                            {tasks.map((t, i) => (
-                                <div key={i} className="todo-item"><span>{t}</span></div>
-                            ))}
-
-                            <button className="btn btn-red" onClick={() => setView('auth')}>LOGOUT</button>
-                        </div>
-                    </div>
-                );
-            }
-
-            return (
-                <div className="container">
-                    <div className="glass-card">
-                        <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
-                        <form onSubmit={handleAuth}>
-                            {!isLogin && <input className="input" placeholder="Full Name" required />}
-                            <input className="input" type="email" placeholder="Email" required />
-                            <input className="input" type="password" placeholder="Password" required />
-                            <button className="btn btn-blue" type="submit">{isLogin ? 'LOGIN' : 'SIGN UP'}</button>
-                        </form>
-                        <p style={{fontSize: '13px', marginTop: '15px', cursor: 'pointer', color: 'var(--accent)'}} 
-                           onClick={() => setIsLogin(!isLogin)}>
-                            {isLogin ? "New user? Create Account" : "Already have an account? Login"}
-                        </p>
-                    </div>
-                </div>
-            );
-        }
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
-</body>
-</html>
+            // Weather API Call
+            React.useEffect(() => {
+                if (view === 'dashboard') {
+                    fetch('
