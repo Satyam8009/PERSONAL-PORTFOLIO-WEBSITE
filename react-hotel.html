@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayodhya Heritage | Luxury Stay & Booking</title>
+    <title>Ayodhya Heritage | Premium All-in-One</title>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -11,12 +11,12 @@
         :root { --bg: #0f172a; --card: #1e293b; --accent: #38bdf8; --success: #22c55e; }
         body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; }
         .wrapper { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; }
-        .hotel-card { background: var(--card); padding: 30px; border-radius: 20px; width: 100%; max-width: 400px; border: 1px solid #334155; box-shadow: 0 20px 40px rgba(0,0,0,0.4); text-align: center; }
+        .hotel-card { background: var(--card); padding: 30px; border-radius: 20px; width: 100%; max-width: 420px; border: 1px solid #334155; box-shadow: 0 20px 40px rgba(0,0,0,0.5); position: relative; }
         .input-style { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #475569; background: #0f172a; color: white; margin: 8px 0 15px; font-size: 16px; box-sizing: border-box; }
         .main-btn { width: 100%; padding: 15px; background: var(--accent); color: #0f172a; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.3s; margin-top: 10px; }
-        .whatsapp-btn { background: #25D366; color: white; margin-bottom: 10px; }
-        .pay-box { background: #0f172a; padding: 15px; border-radius: 12px; display: flex; align-items: center; cursor: pointer; margin-bottom: 12px; border: 1px solid #334155; text-align: left; }
-        .pay-box:hover { border-color: var(--accent); }
+        .whatsapp-btn { background: #25D366; color: white; }
+        .admin-badge { position: absolute; top: 10px; right: 10px; font-size: 10px; background: #475569; padding: 4px 8px; border-radius: 5px; cursor: pointer; }
+        .pay-box { background: #0f172a; padding: 15px; border-radius: 12px; display: flex; align-items: center; cursor: pointer; margin-bottom: 12px; border: 1px solid #334155; }
         .spinner { border: 4px solid #f3f3f3; border-top: 4px solid var(--accent); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
@@ -25,104 +25,144 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState } = React;
+        const { useState, useEffect } = React;
 
-        function FullApp() {
-            const [isLoggedIn, setIsLoggedIn] = useState(false);
-            const [view, setView] = useState('booking'); // booking, loader, pay, done
-            const [room, setRoom] = useState(1500);
-            const [days, setDays] = useState(1);
-            const [credentials, setCredentials] = useState({ email: '', password: '' });
+        function AyodhyaApp() {
+            const [user, setUser] = useState(null); // null means not logged in
+            const [view, setView] = useState('login'); // login, booking, loading, payment, success, admin
+            const [bookingData, setBookingData] = useState({ room: 1500, nights: 1 });
+            const [allBookings, setAllBookings] = useState([]); // Local "Database"
 
+            // Handle Login
             const handleLogin = (e) => {
                 e.preventDefault();
-                // Simple Login Logic
-                if(credentials.email && credentials.password) {
-                    setIsLoggedIn(true);
+                const email = e.target.email.value;
+                if(email === "admin@hotel.com") {
+                    setView('admin');
                 } else {
-                    alert("Please enter details");
+                    setUser(email.split('@')[0]);
+                    setView('booking');
                 }
             };
 
-            const sendWA = () => {
-                const msg = `*New Booking Confirmed!*%0AHotel: Ayodhya Heritage%0AAmount: ₹${(room * days).toLocaleString()}%0AStatus: Paid ✅`;
-                window.open(`https://wa.me/919999999999?text=${msg}`, '_blank');
+            // Handle Payment & Save Data
+            const processPayment = () => {
+                setView('loading');
+                setTimeout(() => {
+                    const newBooking = {
+                        id: 'AH-' + Math.floor(Math.random() * 9000 + 1000),
+                        user: user,
+                        amount: bookingData.room * bookingData.nights,
+                        date: new Date().toLocaleDateString()
+                    };
+                    setAllBookings([...allBookings, newBooking]);
+                    setView('success');
+                }, 2000);
             };
 
-            // 1. Login Screen
-            if (!isLoggedIn) {
-                return (
-                    <div className="wrapper">
-                        <div className="hotel-card">
-                            <h2 style={{color: '#38bdf8'}}>🔐 Client Login</h2>
-                            <form onSubmit={handleLogin} style={{textAlign: 'left'}}>
-                                <label>Email Address</label>
-                                <input className="input-style" type="email" required placeholder="name@example.com"
-                                    onChange={(e) => setCredentials({...credentials, email: e.target.value})} />
-                                <label>Password</label>
-                                <input className="input-style" type="password" required placeholder="••••••••"
-                                    onChange={(e) => setCredentials({...credentials, password: e.target.value})} />
-                                <button className="main-btn" type="submit">LOGIN TO BOOK</button>
-                            </form>
-                        </div>
+            const sendWhatsApp = () => {
+                const text = `*Booking Confirmed!*%0AUser: ${user}%0AAmount: ₹${(bookingData.room * bookingData.nights).toLocaleString()}%0AStatus: Paid ✅`;
+                window.open(`https://wa.me/919999999999?text=${text}`, '_blank');
+            };
+
+            // 1. LOGIN VIEW
+            if (view === 'login') return (
+                <div className="wrapper">
+                    <div className="hotel-card">
+                        <h2 style={{color: var(--accent)}}>🔐 Guest Login</h2>
+                        <form onSubmit={handleLogin}>
+                            <label>Email</label>
+                            <input name="email" className="input-style" type="email" placeholder="Enter email" required />
+                            <label>Password</label>
+                            <input className="input-style" type="password" placeholder="••••••" required />
+                            <button className="main-btn" type="submit">LOGIN</button>
+                            <p style={{fontSize: '12px', color: '#94a3b8', marginTop: '10px'}}>Hint: Use admin@hotel.com for Admin Panel</p>
+                        </form>
                     </div>
-                );
-            }
+                </div>
+            );
 
-            // 2. Loading State
-            if (view === 'loader') {
-                return (
-                    <div className="wrapper"><div className="hotel-card"><div className="spinner"></div><p>Processing...</p></div></div>
-                );
-            }
+            // 2. LOADING VIEW
+            if (view === 'loading') return (
+                <div className="wrapper"><div className="hotel-card"><div className="spinner"></div><p>Syncing with Servers...</p></div></div>
+            );
 
-            // 3. Success Screen
-            if (view === 'done') {
-                return (
-                    <div className="wrapper">
-                        <div className="hotel-card">
-                            <div style={{fontSize: '60px', color: '#22c55e'}}>✓</div>
-                            <h2>Booking Confirmed!</h2>
-                            <p style={{color: '#94a3b8'}}>Your room at Ayodhya Heritage is ready.</p>
-                            <button className="main-btn whatsapp-btn" onClick={sendWA}>GET RECEIPT ON WHATSAPP</button>
-                            <button className="main-btn" onClick={() => window.location.reload()}>DONE</button>
-                        </div>
+            // 3. ADMIN VIEW
+            if (view === 'admin') return (
+                <div className="wrapper">
+                    <div className="hotel-card" style={{maxWidth: '600px'}}>
+                        <h2 style={{color: '#facc15'}}>👨‍💻 Admin Dashboard</h2>
+                        <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '14px'}}>
+                            <thead>
+                                <tr style={{borderBottom: '1px solid #475569'}}>
+                                    <th style={{padding: '10px', textAlign: 'left'}}>ID</th>
+                                    <th style={{padding: '10px', textAlign: 'left'}}>User</th>
+                                    <th style={{padding: '10px', textAlign: 'left'}}>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {allBookings.length === 0 ? <tr><td colSpan="3" style={{padding: '20px'}}>No bookings yet</td></tr> : 
+                                 allBookings.map(b => (
+                                    <tr key={b.id}>
+                                        <td style={{padding: '10px'}}>{b.id}</td>
+                                        <td style={{padding: '10px'}}>{b.user}</td>
+                                        <td style={{padding: '10px'}}>₹{b.amount}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                        <button className="main-btn" onClick={() => setView('login')}>Logout</button>
                     </div>
-                );
-            }
+                </div>
+            );
 
-            // 4. Booking & Payment Screen
+            // 4. SUCCESS VIEW
+            if (view === 'success') return (
+                <div className="wrapper">
+                    <div className="hotel-card">
+                        <div style={{fontSize: '60px', color: var(--success)}}>✓</div>
+                        <h2>Booking Successful!</h2>
+                        <p>Hi {user}, your stay is confirmed.</p>
+                        <button className="main-btn whatsapp-btn" onClick={sendWhatsApp}>WHATSAPP RECEIPT</button>
+                        <button className="main-btn" onClick={() => setView('booking')}>BOOK ANOTHER</button>
+                    </div>
+                </div>
+            );
+
+            // 5. BOOKING & PAYMENT VIEW
             return (
                 <div className="wrapper">
                     <div className="hotel-card">
-                        <h2 style={{color: '#38bdf8'}}>🏨 Ayodhya Heritage</h2>
+                        <div className="admin-badge" onClick={() => setView('login')}>Logout</div>
+                        <h2 style={{color: var(--accent)}}>🏨 Ayodhya Heritage</h2>
                         {view === 'booking' ? (
                             <div style={{textAlign: 'left'}}>
+                                <p>Welcome, <b>{user}</b></p>
                                 <label>Select Room</label>
-                                <select className="input-style" value={room} onChange={(e) => setRoom(Number(e.target.value))}>
+                                <select className="input-style" onChange={(e) => setBookingData({...bookingData, room: Number(e.target.value)})}>
                                     <option value="1500">Standard (₹1,500)</option>
                                     <option value="3500">Deluxe (₹3,500)</option>
                                     <option value="7000">Royal (₹7,000)</option>
                                 </select>
-                                <label>Total Nights</label>
-                                <input className="input-style" type="number" min="1" value={days} onChange={(e) => setDays(Number(e.target.value))} />
-                                <div style={{background: '#0f172a', padding: '15px', borderRadius: '10px', margin: '15px 0', borderLeft: '4px solid #38bdf8'}}>
-                                    <div style={{fontSize: '24px', fontWeight: 'bold', color: '#38bdf8'}}>₹{(room * days).toLocaleString()}</div>
+                                <label>Nights</label>
+                                <input className="input-style" type="number" min="1" value={bookingData.nights} onChange={(e) => setBookingData({...bookingData, nights: Number(e.target.value)})} />
+                                <div style={{background: '#0f172a', padding: '15px', borderRadius: '10px', borderLeft: '4px solid var(--accent)'}}>
+                                    <div style={{fontSize: '24px', fontWeight: 'bold'}}>₹{(bookingData.room * bookingData.nights).toLocaleString()}</div>
                                 </div>
-                                <button className="main-btn" onClick={() => { setView('loader'); setTimeout(()=>setView('pay'), 1000); }}>PROCEED TO PAY</button>
+                                <button className="main-btn" onClick={() => setView('payment')}>PROCEED TO PAY</button>
                             </div>
                         ) : (
                             <div>
-                                <p style={{fontWeight: 'bold'}}>Pay Securely via:</p>
-                                <div className="pay-box" onClick={() => { setView('loader'); setTimeout(()=>setView('done'), 1500); }}>
+                                <p style={{fontWeight: 'bold'}}>Total: ₹{(bookingData.room * bookingData.nights).toLocaleString()}</p>
+                                <div className="pay-box" onClick={processPayment}>
                                     <span style={{fontSize: '20px'}}>📱</span>
-                                    <span style={{marginLeft: '15px'}}>UPI (GPay, PhonePe)</span>
+                                    <span style={{marginLeft: '15px'}}>UPI (PhonePe / GPay)</span>
                                 </div>
-                                <div className="pay-box" onClick={() => { setView('loader'); setTimeout(()=>setView('done'), 1500); }}>
+                                <div className="pay-box" onClick={processPayment}>
                                     <span style={{fontSize: '20px'}}>💳</span>
                                     <span style={{marginLeft: '15px'}}>Card / Net Banking</span>
                                 </div>
-                                <button style={{background: 'none', border: 'none', color: '#f87171', marginTop: '15px', cursor: 'pointer'}} onClick={() => setView('booking')}>Cancel</button>
+                                <button style={{background: 'none', border: 'none', color: '#f87171', marginTop: '10px', cursor: 'pointer'}} onClick={() => setView('booking')}>Cancel</button>
                             </div>
                         )}
                     </div>
@@ -131,7 +171,7 @@
         }
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<FullApp />);
+        root.render(<AyodhyaApp />);
     </script>
 </body>
 </html>
