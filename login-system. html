@@ -1,82 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Secure Auth | Satyam</title>
+    <title>Secure Auth | Login & Sign Up</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-        body { margin: 0; background: #0f172a; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        body { margin: 0; background: #0f172a; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
         .box { background: #1e293b; padding: 40px; border-radius: 20px; text-align: center; width: 320px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
         .in { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; outline: none; }
-        .in:focus { border-color: #38bdf8; }
-        .btn-primary { width: 100%; padding: 12px; background: #38bdf8; color: #0f172a; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 10px; }
-        .btn-logout { width: 100%; padding: 10px; background: #ef4444; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 20px; }
-        .toggle-link { color: #38bdf8; cursor: pointer; font-size: 13px; margin-top: 15px; display: block; text-decoration: underline; }
-        .success-msg { color: #22c55e; font-weight: bold; margin-bottom: 15px; }
+        .btn-blue { width: 100%; padding: 12px; background: #38bdf8; color: #0f172a; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        .btn-red { width: 100%; padding: 10px; background: #ef4444; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        .link { color: #38bdf8; cursor: pointer; font-size: 13px; margin-top: 15px; display: block; }
     </style>
 </head>
 <body>
     <div id="root"></div>
     <script type="text/babel">
         function AuthSystem() {
-            const [view, setView] = React.useState('login'); // 'login', 'signup', 'dashboard'
-            const [loading, setLoading] = React.useState(false);
+            // 'login' | 'signup' | 'dashboard'
+            const [page, setPage] = React.useState('login'); 
 
-            const handleProcess = (e, nextView) => {
-                e.preventDefault();
-                setLoading(true);
-                setTimeout(() => {
-                    setView(nextView);
-                    setLoading(false);
-                }, 1000);
-            };
-
-            // 1. DASHBOARD VIEW
-            if (view === 'dashboard') {
+            // Dashboard Screen
+            if (page === 'dashboard') {
                 return (
                     <div className="box">
-                        <div style={{fontSize: '50px'}}>🎊</div>
-                        <h2 className="success-msg">Access Granted!</h2>
-                        <p style={{fontSize: '14px', color: '#94a3b8'}}>Welcome to your secure MERN dashboard, Satyam.</p>
-                        <button className="btn-logout" onClick={() => setView('login')}>LOGOUT</button>
+                        <h2 style={{color: '#22c55e'}}>Welcome, Satyam!</h2>
+                        <p>You are now logged into the dashboard.</p>
+                        <button className="btn-red" onClick={() => setPage('login')}>LOGOUT</button>
                     </div>
                 );
             }
 
-            // 2. SIGN UP VIEW
-            if (view === 'signup') {
+            // Sign Up Screen
+            if (page === 'signup') {
                 return (
                     <div className="box">
-                        <h2 style={{color: '#38bdf8'}}>Create Account</h2>
-                        <p style={{fontSize: '13px', color: '#94a3b8'}}>Join the secure platform</p>
-                        <form onSubmit={(e) => handleProcess(e, 'dashboard')}>
+                        <h2 style={{color: '#38bdf8'}}>Sign Up</h2>
+                        <form onSubmit={(e) => { e.preventDefault(); setPage('dashboard'); }}>
                             <input className="in" type="text" placeholder="Full Name" required />
-                            <input className="in" type="email" placeholder="Email Address" required />
+                            <input className="in" type="email" placeholder="Email" required />
                             <input className="in" type="password" placeholder="Create Password" required />
-                            <button className="btn-primary" type="submit">
-                                {loading ? "Creating Account..." : "SIGN UP"}
-                            </button>
+                            <button className="btn-blue" type="submit">REGISTER</button>
                         </form>
-                        <span className="toggle-link" onClick={() => setView('login')}>Already have an account? Login</span>
+                        <span className="link" onClick={() => setPage('login')}>Already have an account? Login</span>
                     </div>
                 );
             }
 
-            // 3. LOGIN VIEW
+            // Login Screen
             return (
                 <div className="box">
-                    <h2 style={{color: '#38bdf8'}}>Welcome Back</h2>
-                    <p style={{fontSize: '13px', color: '#94a3b8'}}>Login to your account</p>
-                    <form onSubmit={(e) => handleProcess(e, 'dashboard')}>
+                    <h2 style={{color: '#38bdf8'}}>Login</h2>
+                    <form onSubmit={(e) => { e.preventDefault(); setPage('dashboard'); }}>
                         <input className="in" type="email" placeholder="Email" required />
                         <input className="in" type="password" placeholder="Password" required />
-                        <button className="btn-primary" type="submit">
-                            {loading ? "Verifying..." : "LOGIN"}
-                        </button>
+                        <button className="btn-blue" type="submit">LOGIN</button>
                     </form>
-                    <span className="toggle-link" onClick={() => setView('signup')}>New here? Create an account</span>
-                    <p style={{fontSize: '11px', color: '#475569', marginTop: '20px', cursor: 'pointer'}} onClick={() => window.location.href='index.html'}>← Back to Portfolio</p>
+                    <span className="link" onClick={() => setPage('signup')}>New here? Create Account</span>
+                    <p style={{fontSize: '11px', marginTop: '20px', cursor: 'pointer', color: '#64748b'}} onClick={() => window.location.href='index.html'}>← Back to Home</p>
                 </div>
             );
         }
