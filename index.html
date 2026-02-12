@@ -3,121 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Creative Developer</title>
+    <title>Satyam | Full-Stack Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #050816;
-            color: white;
-            font-family: 'Space Grotesk', sans-serif;
-            overflow-x: hidden;
+            background-color: #030712;
+            color: #f1f5f9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
         }
         .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
         }
-        .gradient-text {
-            background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .gradient-border {
+            border: 1px solid;
+            border-image: linear-gradient(to right, #38bdf8, #818cf8) 1;
         }
-        .hero-glow {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px; height: 300px;
-            background: #4facfe;
-            filter: blur(120px);
-            opacity: 0.2;
-            z-index: -1;
+        .nav-blur {
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .skill-badge {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 8px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            color: #38bdf8;
+            transition: 0.3s;
+        }
+        .skill-badge:hover {
+            background: #38bdf8;
+            color: #030712;
+            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
 
-    <div class="hero-glow"></div>
-
-    <nav class="flex justify-between items-center p-6 max-w-6xl mx-auto">
-        <div class="text-2xl font-bold gradient-text">SATYAM.DEV</div>
-        <div class="hidden md:flex gap-8 text-sm font-medium">
-            <a href="#projects" class="hover:text-cyan-400">Projects</a>
-            <a href="#skills" class="hover:text-cyan-400">Skills</a>
-            <a href="#contact" class="hover:text-cyan-400">Contact</a>
+    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-white/5">
+        <div class="max-w-6xl mx-auto flex justify-between items-center p-5">
+            <div class="text-xl font-extrabold tracking-tighter text-cyan-400">SATYAM.DEV</div>
+            <div class="hidden md:flex gap-8 text-sm font-semibold text-gray-400">
+                <a href="#about" class="hover:text-white transition">About</a>
+                <a href="#skills" class="hover:text-white transition">Skills</a>
+                <a href="#projects" class="hover:text-white transition">Projects</a>
+                <a href="#contact" class="hover:text-white transition">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <section class="mt-20 text-center px-4">
-        <span class="px-4 py-1 rounded-full border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-widest bg-cyan-500/10">
-            Available for Freelance
-        </span>
-        <h1 class="text-5xl md:text-7xl font-bold mt-6 leading-tight">
-            Building the <span class="gradient-text">Future</span> <br> of Web.
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
+        <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-cyan-500 to-indigo-500 mb-8 p-1">
+            <div class="w-full h-full rounded-full bg-gray-900 flex items-center justify-center text-3xl">👨‍💻</div>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+            Design. Code. <br> <span class="text-cyan-400">Deploy.</span>
         </h1>
-        <p class="text-gray-400 mt-6 max-w-xl mx-auto text-lg">
-            I'm a full-stack developer based in Ayodhya, crafting high-end digital experiences for modern brands.
+        <p class="text-gray-400 max-w-2xl text-lg mb-10">
+            Hi, I'm Satyam. A creative developer from Ayodhya, turning complex ideas into elegant digital solutions. Specialized in building modern web applications.
         </p>
-        <div class="mt-10 flex flex-col md:flex-row justify-center gap-4">
-            <a href="#projects" class="bg-cyan-500 hover:bg-cyan-400 text-black px-8 py-4 rounded-xl font-bold transition-all transform hover:scale-105">View Projects</a>
-            <a href="#contact" class="glass px-8 py-4 rounded-xl font-bold hover:bg-white/5 transition-all">Let's Connect</a>
+        <div class="flex gap-4">
+            <a href="#projects" class="bg-cyan-500 text-black px-8 py-3 rounded-full font-bold hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] transition">My Work</a>
+            <a href="#contact" class="border border-white/10 px-8 py-3 rounded-full font-bold hover:bg-white/5 transition">Get in Touch</a>
         </div>
     </section>
 
-    <section id="projects" class="py-24 max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-12 flex items-center gap-4">
-            <span class="w-12 h-[2px] bg-cyan-500"></span> Featured Work
-        </h2>
+    <div class="max-w-6xl mx-auto px-6">
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="glass overflow-hidden group">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="p-8">
-                    <h3 class="text-2xl font-bold">Ayodhya Heritage Stay</h3>
-                    <p class="text-gray-400 mt-3 mb-6">Premium hotel booking engine with real-time room selection and secure WhatsApp checkout.</p>
-                    <a href="react-hotel.html" class="text-cyan-400 font-bold hover:underline flex items-center gap-2">
-                        Live Demo <span>→</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="glass overflow-hidden group">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="p-8">
-                    <h3 class="text-2xl font-bold">Admin Dashboard</h3>
-                    <p class="text-gray-400 mt-3 mb-6">Custom CRM built for hotel management to track revenue, guests, and daily operations.</p>
-                    <span class="text-gray-500 font-bold">Coming Soon...</span>
+        <section id="about" class="py-20">
+            <h2 class="text-3xl font-bold mb-8">About Me</h2>
+            <div class="glass p-8 md:p-12 leading-relaxed text-gray-300">
+                <p class="mb-6">
+                    I am a self-taught developer with a passion for building clean and functional user interfaces. I believe that a good website is a mix of logic and art. 
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+                    <div class="p-4 border-l-2 border-cyan-500 bg-white/5">
+                        <h4 class="font-bold text-white mb-1">Location</h4>
+                        <p>Ayodhya, Uttar Pradesh, India</p>
+                    </div>
+                    <div class="p-4 border-l-2 border-indigo-500 bg-white/5">
+                        <h4 class="font-bold text-white mb-1">Education</h4>
+                        <p>Bachelor in Computer Science (Ongoing)</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact" class="py-24 px-6">
-        <div class="max-w-4xl mx-auto glass p-10 md:p-16 text-center">
-            <h2 class="text-4xl font-bold mb-4">Ready to start a project?</h2>
-            <p class="text-gray-400 mb-10">I'm currently taking on new projects and would love to hear about yours.</p>
-            
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <input type="text" id="user_name" placeholder="Your Name" class="bg-white/5 border border-white/10 px-6 py-4 rounded-xl focus:outline-none focus:border-cyan-500 w-full md:w-64">
-                <button onclick="sendMsg()" class="bg-white text-black px-10 py-4 rounded-xl font-bold hover:bg-cyan-400 transition-all">Send WhatsApp</button>
+        <section id="skills" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center">Tech Stack</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="skill-badge">HTML5</div>
+                <div class="skill-badge">CSS3 & Tailwind</div>
+                <div class="skill-badge">JavaScript (ES6+)</div>
+                <div class="skill-badge">React.js</div>
+                <div class="skill-badge">GitHub</div>
+                <div class="skill-badge">UI/UX Design</div>
+                <div class="skill-badge">Vercel Deployment</div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="py-10 text-center text-gray-600 text-sm border-t border-white/5">
-        © 2026 Satyam. All rights reserved.
+        <section id="projects" class="py-20">
+            <h2 class="text-3xl font-bold mb-12">Featured Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass group overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3">Ayodhya Heritage Booking</h3>
+                        <p class="text-gray-400 mb-6">A high-end booking engine with room management, pricing logic, and WhatsApp API integration.</p>
+                        <a href="react-hotel.html" class="text-cyan-400 font-bold hover:underline">Launch Project →</a>
+                    </div>
+                </div>
+                <div class="glass group overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" class="w-full h-56 object-cover opacity-50">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-500">More Projects</h3>
+                        <p class="text-gray-400 mb-6">Check back soon! Currently working on a dashboard for local businesses in Ayodhya.</p>
+                        <span class="px-4 py-2 bg-white/5 rounded-lg text-xs">WORK IN PROGRESS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20">
+            <div class="glass p-10 md:p-16 text-center">
+                <h2 class="text-4xl font-bold mb-6">Let's Connect</h2>
+                <p class="text-gray-400 mb-10 max-w-lg mx-auto">Have a project in mind or just want to chat? My inbox is always open.</p>
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <input type="text" id="wa-name" placeholder="Your Name" class="bg-gray-900 border border-white/10 px-6 py-4 rounded-xl focus:outline-none focus:border-cyan-500">
+                    <button onclick="send()" class="bg-white text-black px-12 py-4 rounded-xl font-bold hover:bg-cyan-400 transition">Message Me</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="py-12 text-center text-gray-600 border-t border-white/5 mt-20">
+        <p>© 2026 Satyam. Handcrafted with Passion.</p>
     </footer>
 
     <script>
-        function sendMsg() {
-            const name = document.getElementById('user_name').value;
-            if(!name) return alert("Bhai naam toh likho!");
-            window.open(`https://wa.me/919999999999?text=Hi Satyam, I'm ${name} from your portfolio.`);
+        function send() {
+            const name = document.getElementById('wa-name').value;
+            if(!name) return alert("Bhai, name toh dalo!");
+            window.open(`https://wa.me/919999999999?text=Hi Satyam, I am ${name}. Let's discuss a project.`);
         }
     </script>
 </body>
