@@ -221,4 +221,50 @@
     background-color: #128C7E;
 }
 </style>
+<div id="chat-bot" style="position: fixed; bottom: 90px; right: 25px; z-index: 2000; font-family: 'Segoe UI', sans-serif;">
+    <button onclick="toggleChat()" style="background: #38bdf8; color: #0f172a; border: none; padding: 12px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4); display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 20px;">💬</span> Chat with Me
+    </button>
+
+    <div id="chat-window" style="display: none; position: absolute; bottom: 60px; right: 0; width: 280px; background: #1e293b; border-radius: 15px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); overflow: hidden;">
+        <div style="background: #38bdf8; color: #0f172a; padding: 12px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
+            <span>Satyam's Assistant</span>
+            <span onclick="toggleChat()" style="cursor: pointer; font-size: 20px;">&times;</span>
+        </div>
+        <div id="chat-content" style="padding: 15px; height: 200px; overflow-y: auto; color: #cbd5e1; font-size: 13px; line-height: 1.4;">
+            <p style="background: #334155; padding: 8px; border-radius: 8px; margin-bottom: 10px;">Hi! I'm Satyam's AI. Want to see his projects or skills?</p>
+        </div>
+        <div style="padding: 10px; border-top: 1px solid #334155; display: flex; gap: 5px; background: #1e293b;">
+            <input id="chat-input" type="text" placeholder="Type hi, skills, or projects..." style="flex: 1; padding: 8px; border-radius: 5px; border: 1px solid #334155; background: #0f172a; color: white; font-size: 12px;">
+            <button onclick="sendMessage()" style="background: #38bdf8; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-weight: bold;">Send</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleChat() {
+        const win = document.getElementById('chat-window');
+        win.style.display = win.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function sendMessage() {
+        const input = document.getElementById('chat-input');
+        const content = document.getElementById('chat-content');
+        const val = input.value.trim().toLowerCase();
+        if(!val) return;
+
+        content.innerHTML += `<div style="text-align: right; margin-bottom: 10px;"><span style="color: #38bdf8; font-size: 11px;">You</span><p style="margin: 2px 0; color: white;">${input.value}</p></div>`;
+        
+        let reply = "That's interesting! Satyam is a great developer. Ask about his 'skills' or 'projects'.";
+        if(val.includes("skill")) reply = "Satyam is expert in MERN Stack: React, Node.js, Express, and MongoDB.";
+        if(val.includes("project")) reply = "Check out his 'Secure Auth Portal' and 'Dev Dashboard' live on this page!";
+        if(val.includes("hi") || val.includes("hello")) reply = "Hello! Looking to hire a developer? Satyam is ready to work!";
+
+        setTimeout(() => {
+            content.innerHTML += `<div style="margin-bottom: 10px;"><span style="color: #38bdf8; font-size: 11px;">AI</span><p style="margin: 2px 0; background: #334155; padding: 8px; border-radius: 8px;">${reply}</p></div>`;
+            content.scrollTop = content.scrollHeight;
+        }, 600);
+        input.value = "";
+    }
+</script>
 </html>
