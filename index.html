@@ -3,137 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Engineer & Vedic Scientist</title>
+    <title>Satyam | Engineer, Coder & Universal Sage</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         body { background-color: #010409; color: #e6edf3; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        .glass { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; border-radius: 20px; transition: 0.4s ease; }
-        .glass:hover { border-color: #0a66c2; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(10, 102, 194, 0.1); }
-        .sage-gradient { background: linear-gradient(145deg, #1e1b4b 0%, #010409 100%); border: 1px solid #3730a3; position: relative; overflow: hidden; }
-        .wisdom-badge { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 4px 12px; border-radius: 100px; font-size: 10px; font-weight: 700; color: #fbbf24; }
-        #modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center; }
-        .cert-card img { width: 100%; height: 220px; object-fit: cover; cursor: pointer; border-bottom: 1px solid #30363d; }
+        .glass { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; border-radius: 20px; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass:hover { border-color: #0a66c2; transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .skill-badge { background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 6px 16px; border-radius: 12px; font-size: 13px; font-weight: 700; transition: 0.3s; }
+        .skill-badge:hover { background: #0a66c2; color: white; transform: scale(1.1); }
+        .sage-section { background: radial-gradient(circle at top right, #1e1b4b, #010409); border: 1px solid #3730a3; border-radius: 40px; }
+        #modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(15px); }
+        .hero-gradient { background: linear-gradient(to right, #ffffff 30%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-link { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: #8b949e; transition: 0.3s; }
+        .nav-link:hover { color: #58a6ff; }
     </style>
 </head>
 <body>
 
     <div id="modal" onclick="this.style.display='none'">
-        <img id="modalImg" src="" class="max-w-[90%] max-h-[85vh] rounded-lg shadow-2xl border border-blue-500">
-        <p class="absolute bottom-5 text-gray-500 text-xs uppercase tracking-widest">Click anywhere to close</p>
+        <img id="modalImg" src="" class="max-w-[90%] max-h-[85vh] rounded-2xl border-2 border-blue-500 shadow-[0_0_50px_rgba(59,130,246,0.5)]">
+        <p class="absolute bottom-10 text-gray-500 tracking-[0.5em] text-xs">CLICK TO CLOSE</p>
     </div>
 
-    <nav class="fixed top-0 w-full z-50 px-8 py-4 flex justify-between items-center bg-[#010409]/80 backdrop-blur-xl border-b border-[#30363d]">
-        <div class="text-xl font-extrabold tracking-tighter">SATYAM<span class="text-blue-500">.AI</span></div>
-        <div class="flex gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-            <a href="#vault" class="hover:text-white">Credentials</a>
-            <a href="#sage" class="hover:text-white">The Sage</a>
-            <a href="#projects" class="hover:text-white">Projects</a>
+    <nav class="fixed top-0 w-full z-50 px-10 py-6 flex justify-between items-center bg-[#010409]/80 backdrop-blur-xl border-b border-[#30363d]">
+        <div class="text-2xl font-black italic tracking-tighter hero-gradient">SATYAM.DEV</div>
+        <div class="hidden md:flex gap-10">
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#vault" class="nav-link">Credentials</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#sage" class="nav-link text-blue-400">The Sage Engine</a>
         </div>
     </nav>
 
-    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 bg-[radial-gradient(circle_at_center,_#111827_0%,_#010409_100%)]">
-        <div class="mb-8 px-4 py-1 border border-blue-500/20 rounded-full bg-blue-500/5 text-blue-400 text-[10px] font-bold uppercase tracking-widest">
-            B.Tech Computer Science • Certified by Dr. Angela Yu
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+        <div class="mb-8 px-6 py-2 border border-blue-500/30 rounded-full bg-blue-500/5 text-blue-400 text-[10px] font-bold uppercase tracking-[0.4em] animate-pulse">
+            B.Tech Computer Science • Certified MERN Developer
         </div>
-        <h1 class="text-6xl md:text-8xl font-extrabold mb-8 tracking-tighter text-white">Logic Meet <br><span class="text-blue-500">Spirituality.</span></h1>
-        <p class="text-gray-400 max-w-2xl mb-12 text-lg font-light leading-relaxed italic">
-            "An Engineer by profession, a Seeker by heart. Decoding the universe through Code, Science, and Ancient Scriptures."
+        <h1 class="text-7xl md:text-[10rem] font-extrabold mb-8 tracking-tighter leading-[0.85] hero-gradient">
+            CODE & <br> KARMA.
+        </h1>
+        <p class="text-gray-400 max-w-3xl mb-12 text-xl md:text-2xl font-light italic leading-relaxed">
+            "Software engineering logic meets the infinite depth of Shastras. <br class="hidden md:block"> Building systems that are fast, secure, and wise."
         </p>
-        <div class="flex gap-4">
-            <a href="#vault" class="bg-blue-600 px-10 py-4 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-900/40">Verified Proof</a>
-            <a href="#sage" class="glass px-10 py-4 rounded-xl font-bold">Ask the Sage</a>
+        <div class="flex flex-wrap justify-center gap-6">
+            <a href="#vault" class="bg-blue-600 px-12 py-5 rounded-2xl font-bold text-white shadow-2xl shadow-blue-900/40 hover:scale-105 active:scale-95 transition">Verify Proofs</a>
+            <a href="#sage" class="glass px-12 py-5 rounded-2xl font-bold border-[#30363d] hover:bg-white/5 transition">Seek Wisdom AI</a>
         </div>
     </section>
 
-    <section id="vault" class="max-w-7xl mx-auto px-6 py-24">
-        <h2 class="text-3xl font-bold mb-12 flex items-center gap-4 text-white">📜 Professional Evidence <div class="h-[1px] flex-grow bg-[#30363d]"></div></h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="glass cert-card overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1523050335392-9bf5675f42e8?w=800" onclick="openM(this.src)" alt="BTech Degree">
-                <div class="p-8">
-                    <span class="wisdom-badge">Academic</span>
-                    <h3 class="text-xl font-bold mt-4 mb-2">B.Tech Graduation</h3>
-                    <p class="text-gray-500 text-xs mb-6">Four years of intense Engineering study in Computer Science. Verified completion.</p>
-                </div>
-            </div>
-            <div class="glass cert-card overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800" onclick="openM(this.src)" alt="Angela Yu Cert">
-                <div class="p-8">
-                    <span class="wisdom-badge" style="color:#a855f7;">Udemy Mastery</span>
-                    <h3 class="text-xl font-bold mt-4 mb-2">Dr. Angela Yu</h3>
-                    <p class="text-gray-500 text-xs mb-6">Full Stack Web Development - mastering React, Node, and Backend logic.</p>
-                </div>
-            </div>
-            <div class="glass cert-card overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800" onclick="openM(this.src)" alt="GFG Cert">
-                <div class="p-8">
-                    <span class="wisdom-badge" style="color:#22c55e;">GFG Expert</span>
-                    <h3 class="text-xl font-bold mt-4 mb-2">GeeksforGeeks</h3>
-                    <p class="text-gray-500 text-xs mb-6">DSA & Problem Solving expertise with verified algorithmic challenges solved.</p>
-                </div>
-            </div>
+    <section id="skills" class="max-w-7xl mx-auto px-6 py-32">
+        <div class="flex items-center gap-6 mb-20">
+            <h2 class="text-4xl font-black uppercase tracking-tighter">Technical Arsenal</h2>
+            <div class="h-[1px] flex-grow bg-[#30363d]"></div>
         </div>
-    </section>
-
-    <section id="sage" class="py-24 max-w-6xl mx-auto px-6">
-        <div class="sage-gradient p-12 rounded-[40px] shadow-2xl">
-            <div class="relative z-10">
-                <h2 class="text-4xl font-bold mb-6 text-white italic tracking-tighter">The Universal Sage Engine</h2>
-                <p class="text-gray-400 mb-10 text-lg">Duniya ka koi bhi sawal pucho—Vedas aur Modern Science se uska nichod milega.</p>
-                
-                <div class="flex flex-col md:flex-row gap-4 mb-10">
-                    <input type="text" id="userInput" placeholder="Purpose of Life? / What is Karma? / Why Science?" 
-                        class="flex-grow bg-[#0d1117] border border-blue-900/50 px-6 py-4 rounded-xl outline-none text-white focus:border-blue-500 transition-all">
-                    <button onclick="processWisdom()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-10 py-4 rounded-xl font-bold transition shadow-lg shadow-indigo-900/20">Ask Satyam AI</button>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="glass p-10">
+                <h4 class="text-blue-500 text-xs font-black uppercase tracking-widest mb-8">Frontend Core</h4>
+                <div class="flex flex-wrap gap-4">
+                    <span class="skill-badge">React.js</span> <span class="skill-badge">Next.js</span>
+                    <span class="skill-badge">Tailwind CSS</span> <span class="skill-badge">JavaScript</span>
+                    <span class="skill-badge">Redux</span> <span class="skill-badge">Three.js</span>
                 </div>
-
-                <div id="wisdomBox" class="hidden grid grid-cols-1 md:grid-cols-2 gap-8 animate-in fade-in duration-1000">
-                    <div class="p-8 bg-blue-950/20 rounded-3xl border border-blue-500/10">
-                        <h4 class="text-amber-500 text-[10px] font-bold uppercase mb-4 tracking-widest">🕉️ Shastra & Upanishads</h4>
-                        <p id="vedicResult" class="text-sm leading-relaxed text-gray-300 italic"></p>
-                    </div>
-                    <div class="p-8 bg-zinc-950/20 rounded-3xl border border-white/5">
-                        <h4 class="text-blue-400 text-[10px] font-bold uppercase mb-4 tracking-widest">🔬 Scientific Research</h4>
-                        <p id="scienceResult" class="text-sm leading-relaxed text-gray-300"></p>
-                    </div>
+            </div>
+            <div class="glass p-10 border-t-4 border-t-purple-600">
+                <h4 class="text-purple-500 text-xs font-black uppercase tracking-widest mb-8">Backend Architecture</h4>
+                <div class="flex flex-wrap gap-4">
+                    <span class="skill-badge" style="color:#a855f7;">Node.js</span> <span class="skill-badge" style="color:#a855f7;">Express.js</span>
+                    <span class="skill-badge" style="color:#a855f7;">MongoDB</span> <span class="skill-badge" style="color:#a855f7;">PostgreSQL</span>
+                    <span class="skill-badge" style="color:#a855f7;">Firebase</span> <span class="skill-badge" style="color:#a855f7;">REST API</span>
+                </div>
+            </div>
+            <div class="glass p-10 border-t-4 border-t-green-600">
+                <h4 class="text-green-500 text-xs font-black uppercase tracking-widest mb-8">Algorithms & Tools</h4>
+                <div class="flex flex-wrap gap-4">
+                    <span class="skill-badge" style="color:#22c55e;">Python</span> <span class="skill-badge" style="color:#22c55e;">C++ (DSA)</span>
+                    <span class="skill-badge" style="color:#22c55e;">Git/GitHub</span> <span class="skill-badge" style="color:#22c55e;">AWS Cloud</span>
+                    <span class="skill-badge" style="color:#22c55e;">Docker</span> <span class="skill-badge" style="color:#22c55e;">Postman</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-20 border-t border-[#30363d] text-center">
-        <p class="text-[10px] text-gray-600 font-bold uppercase tracking-[0.5em]">Satyam | B.Tech Graduate | Universal Wisdom Engine © 2026</p>
-    </footer>
+    <section id="vault" class="max-w-7xl mx-auto px-6 py-32 bg-[#0d1117]/50 rounded-[60px]">
+        <h2 class="text-5xl font-black text-center mb-20 italic">Global Credentials</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="glass overflow-hidden group">
+                <img src="https://images.unsplash.com/photo-1523050335392-9bf5675f42e8?w=800" onclick="openM(this.src)" class="w-full h-64 object-cover cursor-zoom-in group-hover:scale-110 transition duration-700">
+                <div class="p-10">
+                    <h3 class="font-bold text-2xl mb-4 text-blue-400">B.Tech Graduation</h3>
+                    <p class="text-gray-500 text-sm font-light italic leading-relaxed">Verified Computer Science Engineer. Foundation of all logic and systems.</p>
+                </div>
+            </div>
+            <div class="glass overflow-hidden group">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800" onclick="openM(this.src)" class="w-full h-64 object-cover cursor-zoom-in group-hover:scale-110 transition duration-700">
+                <div class="p-10">
+                    <h3 class="font-bold text-2xl mb-4 text-purple-400">Angela Yu Mastery</h3>
+                    <p class="text-gray-500 text-sm font-light italic leading-relaxed">Complete Full-Stack Engineering (MERN). 60+ hours of industrial training.</p>
+                </div>
+            </div>
+            <div class="glass overflow-hidden group">
+                <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800" onclick="openM(this.src)" class="w-full h-64 object-cover cursor-zoom-in group-hover:scale-110 transition duration-700">
+                <div class="p-10">
+                    <h3 class="font-bold text-2xl mb-4 text-green-400">GeeksforGeeks Expert</h3>
+                    <p class="text-gray-500 text-sm font-light italic leading-relaxed">DSA & Problem Solving expertise. Algorithmic excellence badge holder.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        function openM(s) { document.getElementById('modal').style.display='flex'; document.getElementById('modalImg').src=s; }
+    <section id="projects" class="max-w-7xl mx-auto px-6 py-32">
+        <h2 class="text-4xl font-black mb-16 italic tracking-tighter uppercase">Featured Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="glass p-12 bg-[#0d1117] relative overflow-hidden group">
+                <div class="absolute -right-10 -top-10 text-9xl text-white/5 font-black group-hover:rotate-12 transition">01</div>
+                <h3 class="text-4xl font-black mb-6 hero-gradient">Ayodhya Heritage Stay</h3>
+                <p class="text-gray-400 mb-10 text-lg font-light italic leading-relaxed">Full-stack booking ecosystem for luxury stays. Secure, fast, and user-centric.</p>
+                <a href="#" class="text-blue-500 font-black border-b-2 border-blue-500/30 pb-2 hover:border-blue-500 transition text-sm">LAUNCH APPLICATION ↗</a>
+            </div>
+            <div class="glass p-12 bg-[#0d1117] relative overflow-hidden group">
+                <div class="absolute -right-10 -top-10 text-9xl text-white/5 font-black group-hover:rotate-12 transition">02</div>
+                <h3 class="text-4xl font-black mb-6 text-green-500 italic">SpendWise AI</h3>
+                <p class="text-gray-400 mb-10 text-lg font-light italic leading-relaxed">Advanced data visualization for personal finance using Chart.js and Node backend.</p>
+                <a href="#" class="text-green-500 font-black border-b-2 border-green-500/30 pb-2 hover:border-green-500 transition text-sm">VIEW ANALYTICS ↗</a>
+            </div>
+        </div>
+    </section>
 
-        function processWisdom() {
-            const input = document.getElementById('userInput').value.toLowerCase();
-            const box = document.getElementById('wisdomBox');
-            const vRes = document.getElementById('vedicResult');
-            const sRes = document.getElementById('scienceResult');
-
-            if(!input) return;
-
-            box.classList.remove('hidden');
-            vRes.innerText = "Sastron ka nichod nikaala ja raha hai...";
-            sRes.innerText = "Analyzing Scientific facts...";
-
-            setTimeout(() => {
-                if(input.includes('purpose') || input.includes('life')) {
-                    vRes.innerText = "Upanishad kehte hain 'Atmanam Viddhi'—apne aap ko jano. Purushartha (Dharma, Artha, Kama, Moksha) hi jeevan ka asli maksad hai.";
-                    sRes.innerText = "Psychology (Maslow's Hierarchy) ke anusar, 'Self-Actualization' hi human life ka peak hai. Evolutionarily, hamara maksad survival aur collective growth hai.";
-                } else if(input.includes('karma')) {
-                    vRes.innerText = "Bhagavad Gita (2.47) kehti hai: Karma hi tumhare adhikar mein hai, phal nahi. Jaisa beej boge, waisa hi ped ugega—ye Shaswat Satya hai.";
-                    sRes.innerText = "Newton's 3rd Law: Har action ka equal aur opposite reaction hota hai. Neuroscience kehta hai ki hamari habits hamare future 'Neural Pathways' banati hain.";
-                } else {
-                    vRes.innerText = "Sastron ke anusar, gyan hi wo prakash hai jo agyan ka andhera mita deta hai. Aapka sawal ek naye gyan ki khoj hai.";
-                    sRes.innerText = "Information theory ke mutabiq, har sawal ek entropy reduction hai. Science hamesha 'Evidence' ki talaash karti hai, jo aapke sawal mein chupa hai.";
-                }
-            }, 1000);
-        }
-    </script>
-</body>
-</html>
+    <section id="sage" class="max-w-6xl mx-auto px-6 py-32">
+        <div class="sage-section p-16 md:p-24 text-center shadow-3xl">
+            <h2 class="text-6xl font-black mb-8 italic tracking-tighter">Universal Wisdom Engine</h2>
+            <p class="text-gray-400 mb-12 max-w-2xl mx-auto text-xl font-light italic">"Search any truth. Answers synthesized from Vedas, Upanishads, Modern Physics, and Psychology."</p>
+            
+            <div class="flex flex-col md:flex-row gap-6 mb-16 max-w-4xl mx-auto">
+                <input type="text" id="sageInp" placeholder="Purpose of Life? / What is Law of Karma?" class="
