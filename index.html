@@ -3,126 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SATYAM.DEV | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Satyam | Full-Stack Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050a18;
-            --card: #111a2e;
-            --accent: #3bace2;
-            --text-secondary: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
+            --bg: #020617;
+            --card: #0f172a;
+            --accent: #38bdf8;
+            --secondary: #818cf8;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.06);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: white; font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background: var(--bg); color: white; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
 
         /* Navbar */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 25px 20px; max-width: 1000px; margin: auto; }
-        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: bold; color: var(--accent); letter-spacing: -1px; }
-        .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 600; margin-left: 20px; opacity: 0.8; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 25px 8%; position: sticky; top: 0; background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid var(--border); }
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: bold; color: var(--accent); }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 600; margin-left: 25px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
 
-        .container { max-width: 1000px; margin: auto; padding: 0 20px 100px; }
+        .container { max-width: 1000px; margin: auto; padding: 0 20px; }
 
         /* Hero Section */
-        .hero { padding: 80px 0 40px; text-align: center; }
-        .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 42px; line-height: 1.2; margin-bottom: 20px; }
-        .hero p { color: var(--text-secondary); font-size: 16px; max-width: 300px; margin: auto; }
+        .hero { padding: 100px 0 60px; text-align: center; }
+        .badge { background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); color: var(--accent); padding: 8px 20px; border-radius: 100px; font-size: 12px; font-weight: bold; display: inline-block; margin-bottom: 25px; }
+        .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(40px, 8vw, 70px); line-height: 1.1; margin-bottom: 25px; font-weight: 700; }
+        .hero h1 span { background: linear-gradient(90deg, var(--accent), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: var(--text-muted); font-size: 18px; max-width: 600px; margin: auto; line-height: 1.6; }
 
-        /* General Section Styling */
-        .section-title { font-size: 24px; margin: 60px 0 30px; display: flex; align-items: center; gap: 12px; }
-        .section-title::before { content: ""; width: 4px; height: 24px; background: var(--accent); border-radius: 2px; }
+        /* Section Global Styling */
+        section { padding: 80px 0; }
+        .section-header { display: flex; align-items: center; gap: 15px; margin-bottom: 40px; }
+        .section-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: 28px; }
+        .line { height: 2px; flex-grow: 1; background: var(--border); }
 
-        /* Cards Style (Like your screenshots) */
-        .card { background: var(--card); border-radius: 28px; border: 1px solid var(--border); overflow: hidden; padding: 24px; margin-bottom: 25px; transition: 0.3s; }
-        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        
-        /* Project Specific Card */
-        .project-img { width: 100%; border-radius: 20px; height: 200px; object-fit: cover; margin-bottom: 20px; }
-        .project-title { font-size: 20px; font-weight: bold; margin-bottom: 12px; }
-        .project-desc { color: var(--text-secondary); font-size: 14px; margin-bottom: 20px; }
+        /* Experience & Education Cards */
+        .grid-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .glass-card { background: var(--card); border: 1px solid var(--border); padding: 30px; border-radius: 24px; transition: 0.3s; }
+        .glass-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .card-tag { color: var(--accent); font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .card-title { font-size: 20px; margin-bottom: 10px; font-weight: 600; }
+        .card-desc { color: var(--text-muted); font-size: 14px; }
 
-        /* Info Card (About & Skills) */
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; }
-        .info-box { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 15px; border-radius: 18px; font-size: 14px; }
-        .info-box span { display: block; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+        /* Skills Grid */
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+        .skill-pill { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 10px 20px; border-radius: 12px; font-size: 14px; font-weight: 600; transition: 0.3s; }
+        .skill-pill:hover { border-color: var(--accent); color: var(--accent); }
 
-        /* Button Style (Like your screenshots) */
-        .btn { background: var(--accent); color: #000; padding: 14px 28px; border-radius: 14px; text-decoration: none; font-weight: 700; display: inline-block; font-size: 15px; transition: 0.3s; border: none; width: 100%; text-align: center; cursor: pointer; }
-        .btn:active { transform: scale(0.98); }
+        /* Project Card (Highlight) */
+        .project-card { background: linear-gradient(145deg, #0f172a, #020617); border: 1px solid var(--border); border-radius: 30px; overflow: hidden; }
+        .project-img { width: 100%; height: 250px; object-fit: cover; border-bottom: 1px solid var(--border); }
+        .project-body { padding: 30px; }
 
-        /* Contact Form */
-        label { display: block; margin-bottom: 8px; font-size: 14px; color: var(--text-secondary); margin-left: 5px; }
-        input, textarea { width: 100%; padding: 16px; background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 16px; color: white; font-family: inherit; margin-bottom: 20px; }
+        /* Contact Section */
+        .contact-box { background: #0f172a; border-radius: 30px; padding: 40px; border: 1px solid var(--border); }
+        input, textarea { width: 100%; padding: 16px; background: #020617; border: 1px solid var(--border); border-radius: 16px; color: white; margin-bottom: 20px; font-family: inherit; }
         input:focus { outline: none; border-color: var(--accent); }
+        .btn { width: 100%; padding: 18px; background: var(--accent); color: #020617; border: none; border-radius: 16px; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        .btn:hover { box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2); transform: translateY(-2px); }
 
-        /* Badge */
-        .badge { background: rgba(59, 172, 226, 0.1); border: 1px solid rgba(59, 172, 226, 0.2); color: var(--accent); padding: 8px 16px; border-radius: 100px; font-size: 12px; font-weight: bold; display: inline-block; margin-bottom: 15px; }
-
-        footer { text-align: center; color: var(--text-secondary); font-size: 12px; margin-top: 50px; }
+        footer { text-align: center; padding: 60px 0; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">SATYAM.DEV</div>
+        <div class="logo">SATYAM.</div>
         <div class="nav-links">
-            <a href="#projects">Projects</a>
+            <a href="#about">About</a>
+            <a href="#projects">Work</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <div class="container">
         <section class="hero">
-            <div class="badge">Available for Projects</div>
-            <h1>Hi, I'm a Web <br> Developer</h1>
-            <p>Creating modern web experiences with passion.</p>
+            <div class="badge">Available for Hire</div>
+            <h1>Full-Stack <span>Developer</span> & Designer</h1>
+            <p>I build high-performance web applications with a focus on clean design and seamless user experiences.</p>
         </section>
 
-        <h2 class="section-title">About Me</h2>
-        <div class="card">
-            <p style="margin-bottom: 20px; color: var(--text-secondary);">
-                I am a specialized developer from Ayodhya, focused on building sleek UI and high-performance applications.
-            </p>
-            <div class="info-grid">
-                <div class="info-box"><span>Education</span>B.Tech CS</div>
-                <div class="info-box"><span>Location</span>Ayodhya, UP</div>
+        <div class="section-header" id="about">
+            <h2>About & Education</h2>
+            <div class="line"></div>
+        </div>
+        <div class="grid-info">
+            <div class="glass-card">
+                <span class="card-tag">Profile</span>
+                <h3 class="card-title">Who am I?</h3>
+                <p class="card-desc">I am a passionate developer from Ayodhya, UP. I specialize in turning complex ideas into functional and beautiful web solutions.</p>
+            </div>
+            <div class="glass-card">
+                <span class="card-tag">Academic</span>
+                <h3 class="card-title">Education</h3>
+                <p class="card-desc">Pursuing B.Tech in Computer Science & Engineering. Always learning new technologies and scaling my skills.</p>
             </div>
         </div>
 
-        <h2 class="section-title">Tech Stack</h2>
-        <div class="info-grid">
-            <div class="info-box" style="text-align: center;">HTML / CSS</div>
-            <div class="info-box" style="text-align: center;">JavaScript</div>
-            <div class="info-box" style="text-align: center;">React.js</div>
-            <div class="info-box" style="text-align: center;">Tailwind</div>
-            <div class="info-box" style="text-align: center;">Git / Hub</div>
-            <div class="info-box" style="text-align: center;">Deployment</div>
+        <div class="section-header">
+            <h2>My Tech Stack</h2>
+            <div class="line"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-pill">HTML5</div>
+            <div class="skill-pill">CSS3</div>
+            <div class="skill-pill">Tailwind CSS</div>
+            <div class="skill-pill">JavaScript (ES6+)</div>
+            <div class="skill-pill">React.js</div>
+            <div class="skill-pill">Vercel Deployment</div>
+            <div class="skill-pill">GitHub</div>
         </div>
 
-        <h2 class="section-title" id="projects">Featured Projects</h2>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800" class="project-img" alt="Hotel">
-            <h3 class="project-title">Ayodhya Heritage Booking</h3>
-            <p class="project-desc">A smart hotel booking system with payment simulation and WhatsApp API integration.</p>
-            <a href="react-hotel.html" class="btn">View Live Demo</a>
+        <div class="section-header" id="projects">
+            <h2>Featured Work</h2>
+            <div class="line"></div>
+        </div>
+        <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1000" class="project-img" alt="Hotel Project">
+            <div class="project-body">
+                <span class="card-tag">Major Project</span>
+                <h3 class="card-title">Ayodhya Heritage Booking System</h3>
+                <p class="card-desc" style="margin-bottom: 20px;">
+                    A comprehensive hotel management and booking application. Features include a dynamic room selection UI, real-time price calculation, secure login simulation, and WhatsApp receipt generation.
+                </p>
+                <a href="react-hotel.html" class="btn" style="text-decoration: none; display: block; text-align: center;">LAUNCH LIVE DEMO</a>
+            </div>
         </div>
 
-        <h2 class="section-title">Contact Me</h2>
-        <div class="card">
-            <label>Name</label>
-            <input type="text" id="wa-name" placeholder="Satyam">
-            <label>Message</label>
-            <textarea id="wa-msg" rows="4" placeholder="Hi, let's talk about..."></textarea>
-            <button class="btn" onclick="sendWhatsApp()">Send Message</button>
+        <div class="section-header" id="contact">
+            <h2>Get In Touch</h2>
+            <div class="line"></div>
+        </div>
+        <div class="contact-box">
+            <label style="display: block; margin-bottom: 8px; font-size: 14px; color: var(--text-muted);">Name</label>
+            <input type="text" id="name" placeholder="Satyam Developer">
+            <label style="display: block; margin-bottom: 8px; font-size: 14px; color: var(--text-muted);">Message</label>
+            <textarea id="msg" rows="4" placeholder="Tell me about your project..."></textarea>
+            <button class="btn" onclick="sendWA()">SEND WHATSAPP MESSAGE</button>
         </div>
 
         <footer>
-            © 2026 Satyam. Handcrafted with ❤️
+            <p>© 2026 Satyam. Made in Ayodhya, India. 🚩</p>
         </footer>
     </div>
 
     <script>
-        function sendWhatsApp() {
-            const name = document.getElementById('wa-name').value;
-            const msg = document.getElementById('wa-msg').value;
-            if(!name
+        function sendWA() {
+            const n = document.getElementById('name').value;
+            const m = document.getElementById('msg').value;
+            if(!n || !m) return alert("Bhai, Details fill karo!");
+            const text = `Hi Satyam, I saw your portfolio. My name is ${n}. ${m}`;
+            window.open(`https://wa.me/919999999999?text=${encodeURIComponent(text)}`);
+        }
+    </script>
+</body>
+</html>
