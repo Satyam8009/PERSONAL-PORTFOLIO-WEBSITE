@@ -3,69 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio | Web Developer</title>
+    <title>Satyam | Creative Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #020617; --card: #1e293b; --accent: #38bdf8; }
-        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; }
-        nav { padding: 20px; display: flex; justify-content: space-between; background: rgba(30, 41, 59, 0.8); position: sticky; top: 0; z-index: 100; }
-        .container { max-width: 1000px; margin: auto; padding: 40px 20px; }
-        .hero { text-align: center; padding: 60px 0; }
-        .hero h1 { font-size: 3rem; color: var(--accent); }
-        
-        /* Projects Section */
-        .section-title { border-left: 5px solid var(--accent); padding-left: 15px; margin: 40px 0; }
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .project-card { background: var(--card); border-radius: 20px; overflow: hidden; border: 1px solid #334155; transition: 0.3s; }
-        .project-card:hover { transform: translateY(-10px); border-color: var(--accent); }
-        .project-info { padding: 20px; }
-        
-        /* Contact Form */
-        .contact-form { background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid #334155; }
-        input, textarea { width: 100%; padding: 12px; margin: 10px 0; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px; }
-        .btn { background: var(--accent); color: #020617; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; }
+        :root {
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --bg: #030712;
+            --card: rgba(30, 41, 59, 0.5);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background: var(--bg); color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+
+        /* Glowing Background Effect */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Glass Navbar */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 20px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border); z-index: 1000;
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 30px; font-weight: 600; transition: 0.3s; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
+
+        .container { max-width: 1100px; margin: auto; padding: 0 25px; }
+
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero-badge { background: rgba(56, 189, 248, 0.1); color: var(--primary); padding: 8px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 700; border: 1px solid rgba(56, 189, 248, 0.2); margin-bottom: 20px; }
+        .hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
+        .hero h1 span { color: var(--primary); }
+        .hero p { color: #94a3b8; font-size: 1.2rem; max-width: 600px; margin-bottom: 35px; }
+
+        /* Buttons */
+        .btn-group { display: flex; gap: 15px; }
+        .btn { padding: 14px 32px; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; font-size: 1rem; cursor: pointer; border: none; }
+        .btn-primary { background: var(--primary); color: #030712; box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(56, 189, 248, 0.4); }
+        .btn-outline { background: transparent; color: white; border: 1px solid var(--border); }
+        .btn-outline:hover { background: var(--border); }
+
+        /* Sections Styling */
+        section { padding: 120px 0; }
+        .section-tag { color: var(--primary); font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .section-title { font-size: 2.5rem; margin-bottom: 50px; }
+
+        /* Projects Card */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
+        .project-card { background: var(--card); border-radius: 24px; border: 1px solid var(--border); overflow: hidden; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .project-card:hover { transform: scale(1.02); border-color: var(--primary); box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .project-img { width: 100%; height: 220px; object-fit: cover; }
+        .project-content { padding: 30px; }
+        .project-tags { display: flex; gap: 8px; margin-bottom: 15px; }
+        .tag { font-size: 0.7rem; background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 5px; color: #94a3b8; }
+
+        /* Skills Glass */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+        .skill-item { background: var(--card); padding: 20px; border-radius: 16px; border: 1px solid var(--border); text-align: center; transition: 0.3s; }
+        .skill-item:hover { background: rgba(56, 189, 248, 0.1); border-color: var(--primary); transform: translateY(-5px); }
+        .skill-item i { font-size: 24px; display: block; margin-bottom: 10px; }
+
+        /* Contact Form Modern */
+        .contact-container { background: var(--card); border-radius: 32px; border: 1px solid var(--border); padding: 50px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; }
+        .contact-info h3 { font-size: 2rem; margin-bottom: 20px; }
+        input, textarea { width: 100%; padding: 18px; background: #030712; border: 1px solid var(--border); border-radius: 16px; color: white; margin-bottom: 20px; outline: none; transition: 0.3s; }
+        input:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(56, 189, 248, 0.2); }
+
+        footer { text-align: center; padding: 60px 0; color: #64748b; border-top: 1px solid var(--border); margin-top: 100px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .contact-container { grid-template-columns: 1fr; padding: 30px; }
+            nav { padding: 20px 5%; }
+            .nav-links { display: none; } /* Mobile menu can be added later */
+        }
     </style>
 </head>
 <body>
+
     <nav>
-        <div style="font-weight: bold; font-size: 20px;">Portfolio.</div>
-        <div><a href="#projects" style="color: white; text-decoration: none;">Projects</a></div>
+        <div class="logo">SATYAM.DEV</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#projects">Work</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
     </nav>
 
     <div class="container">
-        <div class="hero">
-            <h1>Hi, I'm a Web Developer</h1>
-            <p>Creating modern web experiences with passion.</p>
-        </div>
-
-        <h2 class="section-title" id="projects">Featured Projects</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=500" style="width: 100%;" alt="Hotel">
-                <div class="project-info">
-                    <h3>Ayodhya Heritage Booking</h3>
-                    <p>A smart hotel booking system with payment simulation and WhatsApp API.</p>
-                    <a href="react-hotel.html" class="btn">View Live Demo</a>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title">Contact Me</h2>
-        <div class="contact-form">
-            <label>Name</label>
-            <input type="text" id="contact-name" placeholder="Your Name">
-            <label>Message</label>
-            <textarea id="contact-msg" rows="4" placeholder="How can I help you?"></textarea>
-            <button class="btn" onclick="sendContact()">Send Message</button>
-        </div>
-    </div>
-
-    <script>
-        function sendContact() {
-            const name = document.getElementById('contact-name').value;
-            const msg = document.getElementById('contact-msg').value;
-            if(!name || !msg) return alert("Fill details!");
-            window.open(`https://wa.me/919999999999?text=Hi, I'm ${name}. ${msg}`);
-        }
-    </script>
-</body>
-</html>
+        <section id="home" class="hero">
+            <div class="hero-badge">Available for Projects
