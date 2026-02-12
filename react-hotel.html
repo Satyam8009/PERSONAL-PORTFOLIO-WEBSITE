@@ -3,25 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayodhya Heritage | Secure Booking</title>
+    <title>Ayodhya Heritage | Luxury Stay & Booking</title>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --accent: #38bdf8; --success: #22c55e; }
-        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
-        .wrapper { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
-        .hotel-card { background: var(--card); padding: 35px; border-radius: 24px; width: 100%; max-width: 380px; border: 1px solid #334155; box-shadow: 0 25px 50px rgba(0,0,0,0.5); text-align: center; animation: slideUp 0.5s ease-out; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .input-style { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #475569; background: #0f172a; color: white; margin: 10px 0 20px; font-size: 16px; outline: none; }
-        .main-btn { width: 100%; padding: 16px; background: var(--accent); color: #0f172a; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.2s; }
-        .main-btn:hover { filter: brightness(1.1); }
-        .pay-box { background: #0f172a; padding: 15px; border-radius: 14px; display: flex; align-items: center; cursor: pointer; margin-bottom: 15px; border: 1px solid #334155; transition: 0.3s; }
-        .pay-box:hover { border-color: var(--accent); background: #1e293b; transform: translateX(5px); }
-        .spinner { border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid var(--accent); border-radius: 50%; width: 45px; height: 45px; animation: spin 1s linear infinite; margin: 20px auto; }
+        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; }
+        .wrapper { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; }
+        .hotel-card { background: var(--card); padding: 30px; border-radius: 20px; width: 100%; max-width: 400px; border: 1px solid #334155; box-shadow: 0 20px 40px rgba(0,0,0,0.4); text-align: center; }
+        .input-style { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #475569; background: #0f172a; color: white; margin: 8px 0 15px; font-size: 16px; box-sizing: border-box; }
+        .main-btn { width: 100%; padding: 15px; background: var(--accent); color: #0f172a; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.3s; margin-top: 10px; }
+        .whatsapp-btn { background: #25D366; color: white; margin-bottom: 10px; }
+        .pay-box { background: #0f172a; padding: 15px; border-radius: 12px; display: flex; align-items: center; cursor: pointer; margin-bottom: 12px; border: 1px solid #334155; text-align: left; }
+        .pay-box:hover { border-color: var(--accent); }
+        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid var(--accent); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .check-icon { font-size: 70px; color: var(--success); animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        @keyframes scaleIn { from { transform: scale(0); } to { transform: scale(1); } }
     </style>
 </head>
 <body>
@@ -30,77 +27,102 @@
     <script type="text/babel">
         const { useState } = React;
 
-        function HotelBookingApp() {
-            const [view, setView] = useState('form'); 
+        function FullApp() {
+            const [isLoggedIn, setIsLoggedIn] = useState(false);
+            const [view, setView] = useState('booking'); // booking, loader, pay, done
             const [room, setRoom] = useState(1500);
             const [days, setDays] = useState(1);
+            const [credentials, setCredentials] = useState({ email: '', password: '' });
 
-            const startPay = () => { setView('loader'); setTimeout(() => setView('pay'), 1200); };
-            const confirmPay = () => { setView('loader'); setTimeout(() => setView('done'), 2000); };
+            const handleLogin = (e) => {
+                e.preventDefault();
+                // Simple Login Logic
+                if(credentials.email && credentials.password) {
+                    setIsLoggedIn(true);
+                } else {
+                    alert("Please enter details");
+                }
+            };
 
-            if (view === 'loader') {
+            const sendWA = () => {
+                const msg = `*New Booking Confirmed!*%0AHotel: Ayodhya Heritage%0AAmount: ₹${(room * days).toLocaleString()}%0AStatus: Paid ✅`;
+                window.open(`https://wa.me/919999999999?text=${msg}`, '_blank');
+            };
+
+            // 1. Login Screen
+            if (!isLoggedIn) {
                 return (
                     <div className="wrapper">
                         <div className="hotel-card">
-                            <div className="spinner"></div>
-                            <p style={{color: '#94a3b8', letterSpacing: '1px'}}>SECURE GATEWAY...</p>
+                            <h2 style={{color: '#38bdf8'}}>🔐 Client Login</h2>
+                            <form onSubmit={handleLogin} style={{textAlign: 'left'}}>
+                                <label>Email Address</label>
+                                <input className="input-style" type="email" required placeholder="name@example.com"
+                                    onChange={(e) => setCredentials({...credentials, email: e.target.value})} />
+                                <label>Password</label>
+                                <input className="input-style" type="password" required placeholder="••••••••"
+                                    onChange={(e) => setCredentials({...credentials, password: e.target.value})} />
+                                <button className="main-btn" type="submit">LOGIN TO BOOK</button>
+                            </form>
                         </div>
                     </div>
                 );
             }
 
+            // 2. Loading State
+            if (view === 'loader') {
+                return (
+                    <div className="wrapper"><div className="hotel-card"><div className="spinner"></div><p>Processing...</p></div></div>
+                );
+            }
+
+            // 3. Success Screen
             if (view === 'done') {
                 return (
                     <div className="wrapper">
                         <div className="hotel-card">
-                            <div className="check-icon">✓</div>
-                            <h2 style={{margin: '10px 0', fontSize: '28px'}}>Paid Successfully!</h2>
-                            <p style={{color: '#94a3b8', marginBottom: '25px'}}>Your room at <b>Ayodhya Heritage</b> is confirmed.<br/>Booking ID: AH-{(Math.random()*9000+1000).toFixed(0)}</p>
-                            <button className="main-btn" onClick={() => window.location.href='index.html'}>GO TO DASHBOARD</button>
+                            <div style={{fontSize: '60px', color: '#22c55e'}}>✓</div>
+                            <h2>Booking Confirmed!</h2>
+                            <p style={{color: '#94a3b8'}}>Your room at Ayodhya Heritage is ready.</p>
+                            <button className="main-btn whatsapp-btn" onClick={sendWA}>GET RECEIPT ON WHATSAPP</button>
+                            <button className="main-btn" onClick={() => window.location.reload()}>DONE</button>
                         </div>
                     </div>
                 );
             }
 
+            // 4. Booking & Payment Screen
             return (
                 <div className="wrapper">
                     <div className="hotel-card">
-                        <h2 style={{color: '#38bdf8', marginBottom: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                           <span style={{marginRight: '10px'}}>🏨</span> Ayodhya Heritage
-                        </h2>
-                        
-                        {view === 'form' ? (
-                            <div style={{textAlignment: 'left'}}>
-                                <label style={{fontSize: '12px', color: '#94a3b8', textTransform: 'uppercase'}}>Select Room</label>
+                        <h2 style={{color: '#38bdf8'}}>🏨 Ayodhya Heritage</h2>
+                        {view === 'booking' ? (
+                            <div style={{textAlign: 'left'}}>
+                                <label>Select Room</label>
                                 <select className="input-style" value={room} onChange={(e) => setRoom(Number(e.target.value))}>
-                                    <option value="1500">Standard Room - ₹1,500</option>
-                                    <option value="3500">Deluxe Suite - ₹3,500</option>
-                                    <option value="7000">Royal Villa - ₹7,000</option>
+                                    <option value="1500">Standard (₹1,500)</option>
+                                    <option value="3500">Deluxe (₹3,500)</option>
+                                    <option value="7000">Royal (₹7,000)</option>
                                 </select>
-                                <label style={{fontSize: '12px', color: '#94a3b8', textTransform: 'uppercase'}}>Nights</label>
+                                <label>Total Nights</label>
                                 <input className="input-style" type="number" min="1" value={days} onChange={(e) => setDays(Number(e.target.value))} />
-                                <div style={{background: '#0f172a', padding: '20px', borderRadius: '15px', marginBottom: '20px', borderLeft: '5px solid #38bdf8'}}>
-                                    <div style={{fontSize: '32px', fontWeight: 'bold', color: '#38bdf8'}}>₹{(room * days).toLocaleString()}</div>
-                                    <small style={{color: '#64748b'}}>Inc. all taxes</small>
+                                <div style={{background: '#0f172a', padding: '15px', borderRadius: '10px', margin: '15px 0', borderLeft: '4px solid #38bdf8'}}>
+                                    <div style={{fontSize: '24px', fontWeight: 'bold', color: '#38bdf8'}}>₹{(room * days).toLocaleString()}</div>
                                 </div>
-                                <button className="main-btn" onClick={startPay}>PROCEED TO PAY</button>
+                                <button className="main-btn" onClick={() => { setView('loader'); setTimeout(()=>setView('pay'), 1000); }}>PROCEED TO PAY</button>
                             </div>
                         ) : (
                             <div>
-                                <p style={{fontWeight: 'bold', marginBottom: '20px', color: '#94a3b8'}}>PAY SECURELY VIA:</p>
-                                <div className="pay-box" onClick={confirmPay}>
-                                    <div style={{width: '35px', height: '35px', background: 'white', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                                        <span style={{fontSize: '18px'}}>📱</span>
-                                    </div>
-                                    <span style={{marginLeft: '15px', fontWeight: '600'}}>UPI (GPay, PhonePe)</span>
+                                <p style={{fontWeight: 'bold'}}>Pay Securely via:</p>
+                                <div className="pay-box" onClick={() => { setView('loader'); setTimeout(()=>setView('done'), 1500); }}>
+                                    <span style={{fontSize: '20px'}}>📱</span>
+                                    <span style={{marginLeft: '15px'}}>UPI (GPay, PhonePe)</span>
                                 </div>
-                                <div className="pay-box" onClick={confirmPay}>
-                                    <div style={{width: '35px', height: '35px', background: '#334155', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                                        <span style={{fontSize: '18px'}}>💳</span>
-                                    </div>
-                                    <span style={{marginLeft: '15px', fontWeight: '600'}}>Card / Net Banking</span>
+                                <div className="pay-box" onClick={() => { setView('loader'); setTimeout(()=>setView('done'), 1500); }}>
+                                    <span style={{fontSize: '20px'}}>💳</span>
+                                    <span style={{marginLeft: '15px'}}>Card / Net Banking</span>
                                 </div>
-                                <button style={{background: 'none', border: 'none', color: '#f87171', marginTop: '15px', cursor: 'pointer', fontSize: '14px'}} onClick={() => setView('form')}>Cancel & Return</button>
+                                <button style={{background: 'none', border: 'none', color: '#f87171', marginTop: '15px', cursor: 'pointer'}} onClick={() => setView('booking')}>Cancel</button>
                             </div>
                         )}
                     </div>
@@ -109,7 +131,7 @@
         }
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<HotelBookingApp />);
+        root.render(<FullApp />);
     </script>
 </body>
 </html>
