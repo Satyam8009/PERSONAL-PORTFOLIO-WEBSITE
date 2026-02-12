@@ -3,100 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure React Auth | Satyam</title>
+    <title>Secure Auth | React System</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; background: #0f172a; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .auth-card { background: #1e293b; padding: 30px; border-radius: 20px; width: 90%; max-width: 350px; text-align: center; border: 1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .input-box { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; outline: none; }
-        .input-box:focus { border-color: #38bdf8; }
-        .login-btn { width: 100%; padding: 12px; background: #38bdf8; color: #0f172a; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: 0.3s; }
-        .logout-btn { width: 100%; padding: 10px; background: #ef4444; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 20px; }
-        .dashboard { animation: slideIn 0.4s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        .status-dot { height: 10px; width: 10px; background-color: #10b981; border-radius: 50%; display: inline-block; margin-right: 5px; }
+        body { font-family: 'Inter', sans-serif; background: #0f172a; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { background: #1e293b; padding: 35px; border-radius: 24px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.4); border: 1px solid #334155; }
+        .input-field { width: 100%; padding: 14px; margin: 12px 0; border-radius: 12px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; outline: none; }
+        .input-field:focus { border-color: #38bdf8; box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+        .btn-login { width: 100%; padding: 14px; background: #38bdf8; color: #0f172a; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 10px; transition: 0.2s; }
+        .btn-login:hover { background: #7dd3fc; transform: scale(1.02); }
+        .btn-logout { width: 100%; padding: 12px; background: #f43f5e; color: white; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; margin-top: 25px; transition: 0.2s; }
+        .btn-logout:hover { background: #e11d48; }
+        .dashboard-ui { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .user-badge { background: #064e3b; color: #10b981; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 15px; display: inline-block; }
     </style>
 </head>
 <body>
     <div id="root"></div>
 
     <script type="text/babel">
-        function AuthApp() {
+        function SecureApp() {
+            // Asli React State ka use (MERN logic)
             const [isLoggedIn, setIsLoggedIn] = React.useState(false);
             const [loading, setLoading] = React.useState(false);
-            const [user, setUser] = React.useState({ email: '' });
 
-            // Login Function
             const handleLogin = (e) => {
                 e.preventDefault();
                 setLoading(true);
+                // Fake API delay (asli backend feel ke liye)
                 setTimeout(() => {
-                    setLoading(false);
                     setIsLoggedIn(true);
-                }, 1200);
+                    setLoading(false);
+                }, 1000);
             };
 
-            // Logout Function
             const handleLogout = () => {
                 setLoading(true);
                 setTimeout(() => {
                     setIsLoggedIn(false);
                     setLoading(false);
-                    setUser({ email: '' });
                 }, 800);
             };
 
+            // Dashboard View
             if (isLoggedIn) {
                 return (
-                    <div className="auth-card dashboard">
-                        <div style={{fontSize: '50px'}}>👤</div>
-                        <h2 style={{margin: '10px 0'}}>User Dashboard</h2>
-                        <p style={{color: '#94a3b8', fontSize: '14px'}}><span className="status-dot"></span> Session: Active</p>
+                    <div className="card dashboard-ui">
+                        <span className="user-badge">● SESSION ACTIVE</span>
+                        <h2 style={{margin: '0 0 10px 0'}}>User Dashboard</h2>
+                        <p style={{color: '#94a3b8', fontSize: '14px'}}>Welcome back, Satyam! You are logged in securely via JWT demo.</p>
                         
-                        <div style={{background: '#0f172a', padding: '15px', borderRadius: '10px', textAlign: 'left', marginTop: '15px'}}>
-                            <div style={{color: '#38bdf8', fontSize: '12px', fontWeight: 'bold'}}>MERN STACK DATA:</div>
-                            <div style={{fontSize: '13px', marginTop: '5px'}}>Role: Full-Stack Developer</div>
-                            <div style={{fontSize: '13px'}}>Location: Ayodhya, India</div>
+                        <div style={{background: '#0f172a', padding: '20px', borderRadius: '15px', textAlign: 'left', marginTop: '20px', border: '1px dashed #334155'}}>
+                            <div style={{color: '#38bdf8', fontSize: '12px', fontWeight: 'bold', marginBottom: '8px'}}>FETCHED DATABASE DATA:</div>
+                            <div style={{fontSize: '13px'}}>UID: 8009-SAT-2026</div>
+                            <div style={{fontSize: '13px'}}>Role: Senior MERN Dev</div>
                         </div>
 
-                        <button className="logout-btn" onClick={handleLogout}>
-                            {loading ? "Logging out..." : "LOGOUT"}
+                        <button className="btn-logout" onClick={handleLogout}>
+                            {loading ? "Destroying Session..." : "SECURE LOGOUT"}
                         </button>
-                        
-                        <p onClick={() => window.location.href="index.html"} style={{cursor: 'pointer', fontSize: '12px', marginTop: '15px', color: '#64748b'}}>← Back to Portfolio</p>
+                        <p style={{fontSize: '12px', marginTop: '20px', color: '#475569', cursor: 'pointer'}} onClick={() => window.location.href='index.html'}>← Exit to Portfolio</p>
                     </div>
                 );
             }
 
+            // Login View
             return (
-                <div className="auth-card">
-                    <h2 style={{color: '#38bdf8'}}>Secure Login</h2>
-                    <p style={{fontSize: '13px', color: '#94a3b8'}}>Testing MERN Authentication Flow</p>
+                <div className="card">
+                    <h2 style={{color: '#38bdf8', marginBottom: '8px'}}>Auth Portal</h2>
+                    <p style={{color: '#94a3b8', fontSize: '14px', marginBottom: '25px'}}>Enter credentials to sync with MongoDB</p>
                     <form onSubmit={handleLogin}>
-                        <input 
-                            type="email" 
-                            placeholder="Email Address" 
-                            className="input-box" 
-                            required 
-                            onChange={(e) => setUser({...user, email: e.target.value})}
-                        />
-                        <input type="password" placeholder="Password" className="input-box" required />
-                        <button type="submit" className="login-btn">
-                            {loading ? "Authenticating..." : "LOGIN"}
+                        <input type="email" placeholder="Email (any email works)" className="input-field" required />
+                        <input type="password" placeholder="Password" className="input-field" required />
+                        <button type="submit" className="btn-login">
+                            {loading ? "Verifying JWT..." : "LOGIN TO DASHBOARD"}
                         </button>
                     </form>
-                    <div style={{marginTop: '20px', fontSize: '11px', color: '#475569'}}>
-                        Protected by JWT & Bcrypt Demo Logic
-                    </div>
+                    <p style={{fontSize: '11px', marginTop: '25px', color: '#475569'}}>Protected by 256-bit demo encryption</p>
                 </div>
             );
         }
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<AuthApp />);
+        root.render(<SecureApp />);
     </script>
 </body>
 </html>
