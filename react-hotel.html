@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayodhya Heritage | Booking & Payment</title>
+    <title>Ayodhya Heritage | Luxury Booking</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-        :root { --bg: #0f172a; --card: #1e293b; --accent: #38bdf8; }
-        body { margin: 0; background: var(--bg); color: white; font-family: sans-serif; }
+        :root { --bg: #020617; --card: #1e293b; --accent: #38bdf8; --success: #22c55e; }
+        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', Roboto, sans-serif; }
         .container { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
-        .card { background: var(--card); padding: 25px; border-radius: 15px; width: 100%; max-width: 380px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
-        .input-group { margin-bottom: 15px; }
-        select, input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; margin-top: 5px; }
-        .btn { width: 100%; padding: 14px; background: var(--accent); color: #0f172a; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-        .pay-opt { background: #0f172a; padding: 12px; border-radius: 10px; display: flex; align-items: center; cursor: pointer; margin-bottom: 10px; border: 1px solid #334155; transition: 0.3s; }
-        .pay-opt:hover { border-color: var(--accent); background: #1e293b; }
-        .loader { border: 3px solid #f3f3f3; border-top: 3px solid var(--accent); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 10px auto; }
+        .card { background: var(--card); padding: 30px; border-radius: 24px; width: 100%; max-width: 400px; border: 1px solid #334155; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        .title { color: var(--accent); margin-top: 0; text-align: center; font-size: 24px; }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-size: 13px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+        select, input { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; font-size: 16px; }
+        .price-box { background: #0f172a; padding: 20px; border-radius: 16px; margin: 20px 0; border-left: 5px solid var(--accent); }
+        .btn-primary { width: 100%; padding: 16px; background: var(--accent); color: #0f172a; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; transition: 0.3s; font-size: 16px; }
+        .btn-primary:hover { opacity: 0.9; transform: scale(0.98); }
+        .pay-option { background: #0f172a; padding: 15px; border-radius: 12px; display: flex; align-items: center; cursor: pointer; margin-bottom: 12px; border: 1px solid #334155; transition: 0.2s; }
+        .pay-option:hover { border-color: var(--accent); background: #1e293b; }
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--accent); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes pop { 0% { transform: scale(0.8); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
@@ -28,90 +33,82 @@
         const { useState } = React;
 
         const HotelApp = () => {
-            const [step, setStep] = useState('booking'); // booking, processing, payment, success
-            const [room, setRoom] = useState(1500);
+            const [step, setStep] = useState('booking'); // booking, loading, payment, success
+            const [roomPrice, setRoomPrice] = useState(1500);
             const [nights, setNights] = useState(1);
 
-            const startBooking = () => {
-                setStep('processing');
+            const total = roomPrice * nights;
+
+            const handleBook = () => {
+                setStep('loading');
                 setTimeout(() => setStep('payment'), 1500);
             };
 
-            const completePayment = () => {
-                setStep('processing');
-                setTimeout(() => setStep('success'), 2000);
+            const handlePay = () => {
+                setStep('loading');
+                setTimeout(() => setStep('success'), 2500);
             };
 
-            if (step === 'processing') {
+            // 1. Loading State
+            if (step === 'loading') {
                 return (
                     <div className="container">
                         <div className="card" style={{textAlign: 'center'}}>
                             <div className="loader"></div>
-                            <p>Connecting to Bank...</p>
+                            <p style={{color: '#94a3b8'}}>Processing Secure Transaction...</p>
                         </div>
                     </div>
                 );
             }
 
+            // 2. Success State
             if (step === 'success') {
                 return (
                     <div className="container">
-                        <div className="card" style={{textAlign: 'center'}}>
-                            <div style={{fontSize: '50px', color: '#22c55e'}}>✓</div>
-                            <h2>Payment Success!</h2>
-                            <p style={{color: '#94a3b8'}}>Stay at Ayodhya Heritage is Confirmed.</p>
-                            <button className="btn" onClick={() => window.location.href='index.html'}>Back to Home</button>
+                        <div className="card" style={{textAlign: 'center', animation: 'pop 0.4s ease-out'}}>
+                            <div style={{fontSize: '60px', color: '#22c55e', marginBottom: '10px'}}>✓</div>
+                            <h2 style={{margin: '0'}}>Payment Successful</h2>
+                            <p style={{color: '#94a3b8', fontSize: '14px'}}>Booking Confirmed for Ayodhya Heritage.<br/>Booking ID: <b>#AH-{(Math.random() * 10000).toFixed(0)}</b></p>
+                            <button className="btn-primary" style={{marginTop: '20px'}} onClick={() => window.location.href='index.html'}>Finish & Exit</button>
                         </div>
                     </div>
                 );
             }
 
+            // 3. Main UI (Booking & Payment)
             return (
                 <div className="container">
                     <div className="card">
-                        <h2 style={{color: '#38bdf8', marginTop: 0}}>🏨 Ayodhya Heritage</h2>
+                        <h2 className="title">🏨 Ayodhya Heritage</h2>
                         
                         {step === 'booking' ? (
                             <>
                                 <div className="input-group">
-                                    <label>Room Type</label>
-                                    <select onChange={(e) => setRoom(e.target.value)}>
-                                        <option value="1500">Standard (₹1,500)</option>
-                                        <option value="3500">Deluxe (₹3,500)</option>
-                                        <option value="7000">VIP (₹7,000)</option>
+                                    <label>Select Room</label>
+                                    <select value={roomPrice} onChange={(e) => setRoomPrice(Number(e.target.value))}>
+                                        <option value="1500">Standard Room - ₹1,500</option>
+                                        <option value="3500">Luxury Suite - ₹3,500</option>
+                                        <option value="7000">Royal Villa - ₹7,000</option>
                                     </select>
                                 </div>
                                 <div className="input-group">
-                                    <label>Total Nights</label>
+                                    <label>Number of Nights</label>
                                     <input type="number" min="1" value={nights} onChange={(e) => setNights(e.target.value)} />
                                 </div>
-                                <div style={{background: '#0f172a', padding: '15px', borderRadius: '8px', margin: '15px 0'}}>
-                                    <span style={{color: '#94a3b8'}}>Total Price:</span>
-                                    <div style={{fontSize: '22px', fontWeight: 'bold', color: '#38bdf8'}}>₹{(room * nights).toLocaleString()}</div>
+                                <div className="price-box">
+                                    <span style={{color: '#94a3b8', fontSize: '12px'}}>TOTAL PAYABLE</span>
+                                    <div style={{fontSize: '28px', fontWeight: 'bold', color: var(--accent)}}>₹{total.toLocaleString()}</div>
                                 </div>
-                                <button className="btn" onClick={startBooking}>BOOK NOW</button>
+                                <button className="btn-primary" onClick={handleBook}>PROCEED TO BOOK</button>
                             </>
                         ) : (
                             <>
-                                <p style={{fontWeight: 'bold'}}>Select Payment App:</p>
-                                <div className="pay-opt" onClick={completePayment}>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/UPI-Logo.png/100px-UPI-Logo.png" width="35" />
-                                    <span style={{marginLeft: '10px'}}>GPay / PhonePe / UPI</span>
+                                <p style={{fontWeight: 'bold', marginBottom: '20px', textAlign: 'center'}}>Final Step: Secure Payment</p>
+                                <div className="pay-option" onClick={handlePay}>
+                                    <img src="https://img.icons8.com/color/48/upi.png" width="35" alt="upi" />
+                                    <span style={{marginLeft: '15px', fontWeight: '600'}}>Pay via UPI (GPay/PhonePe)</span>
                                 </div>
-                                <div className="pay-opt" onClick={completePayment}>
-                                    <span style={{fontSize: '20px'}}>💳</span>
-                                    <span style={{marginLeft: '10px'}}>Debit / Credit Card</span>
+                                <div className="pay-option" onClick={handlePay}>
+                                    <span style={{fontSize: '24px'}}>💳</span>
+                                    <span style={{marginLeft: '15px', fontWeight: '600'}}>Debit / Credit Card</span>
                                 </div>
-                                <button style={{background: 'none', border: 'none', color: '#ef4444', width: '100%', cursor: 'pointer', marginTop: '10px'}} onClick={() => setStep('booking')}>Cancel</button>
-                            </>
-                        )}
-                    </div>
-                </div>
-            );
-        };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<HotelApp />);
-    </script>
-</body>
-</html>
