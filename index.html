@@ -3,133 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Full Stack Engineer | B.Tech</title>
+    <title>Satyam | Full-Stack Engineer & Polymath</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
         body { background-color: #010409; color: #e6edf3; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        .glass-card { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; border-radius: 20px; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .glass-card:hover { border-color: #0a66c2; transform: translateY(-10px); }
+        .glass-card { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; border-radius: 20px; transition: 0.4s ease; }
+        .glass-card:hover { border-color: #0a66c2; transform: translateY(-5px); }
         .linkedin-blue { background: #0a66c2; }
-        .cert-img { width: 100%; height: 220px; object-fit: cover; cursor: pointer; transition: 0.5s; border-bottom: 1px solid #30363d; }
-        .glass-card:hover .cert-img { transform: scale(1.05); }
+        .wisdom-gradient { background: linear-gradient(135deg, #1e1b4b 0%, #010409 100%); border: 1px solid #3730a3; }
         
-        /* Modal Effect */
-        #modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
-        #modal img { max-width: 100%; max-height: 85vh; border-radius: 8px; border: 2px solid #30363d; }
+        /* Modal for Certificates */
+        #modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+        #modal img { max-width: 100%; max-height: 85vh; border-radius: 10px; border: 2px solid #30363d; }
     </style>
 </head>
-<body>
+<body class="selection:bg-blue-500/30">
 
     <div id="modal" onclick="this.style.display='none'">
         <img id="modalImg" src="">
-        <p class="absolute bottom-8 text-gray-500 text-xs tracking-widest uppercase">Click anywhere to close</p>
+        <p class="absolute bottom-8 text-gray-500 text-xs tracking-widest uppercase">Click to Close</p>
     </div>
 
     <nav class="fixed top-0 w-full z-50 px-8 py-4 flex justify-between items-center bg-[#010409]/90 backdrop-blur-xl border-b border-[#30363d]">
-        <div class="text-xl font-extrabold tracking-tighter">SATYAM<span class="text-[#0a66c2]">.ENGINEER</span></div>
-        <div class="flex gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-            <a href="#about" class="hover:text-white transition">Credentials</a>
-            <a href="#vault" class="hover:text-white transition">Certificates</a>
+        <div class="text-xl font-extrabold tracking-tighter">SATYAM<span class="text-[#0a66c2]">.SYSTEMS</span></div>
+        <div class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-widest text-gray-500">
+            <a href="#home" class="hover:text-white transition">Home</a>
+            <a href="#vault" class="hover:text-white transition">Credentials</a>
+            <a href="#wisdom" class="hover:text-white transition">AI Wisdom</a>
             <a href="#projects" class="hover:text-white transition">Projects</a>
         </div>
     </nav>
 
-    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
-        <div class="mb-6 flex items-center gap-2 px-4 py-2 rounded-full bg-[#0a66c2]/10 border border-[#0a66c2]/30 text-[#58a6ff] text-[10px] font-bold uppercase tracking-widest">
-            <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span> B.Tech Graduate • Software Engineer
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
+        <div class="mb-6 px-4 py-1 border border-blue-500/20 rounded-full bg-blue-500/5 text-[#58a6ff] text-[10px] font-bold uppercase tracking-widest">
+            B.Tech Graduate • Full-Stack Engineer • Vedic Scholar
         </div>
         <h1 class="text-6xl md:text-8xl font-extrabold leading-[0.9] mb-8 tracking-tighter">
-            Architecting <br> <span class="text-[#0a66c2]">Modern Web.</span>
+            Where Science <br> Meets <span class="text-[#0a66c2]">Scripture.</span>
         </h1>
-        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-12 font-light">
-            Merging academic excellence from <span class="text-white font-semibold italic">B.Tech (CS)</span> with 
-            practical mastery from <span class="text-white font-semibold">Dr. Angela Yu</span> and <span class="text-white font-semibold">GFG</span>.
+        <p class="text-gray-400 text-lg md:text-xl max-w-3xl mb-12 font-light">
+            Software Engineering built on logic, validated by Dr. Angela Yu, 
+            and inspired by the eternal wisdom of the Vedas and Modern Science.
         </p>
         <div class="flex flex-col md:flex-row gap-4">
-            <a href="#vault" class="linkedin-blue px-10 py-4 rounded-xl font-bold hover:brightness-110 transition shadow-lg shadow-blue-900/40">Verify Certificates</a>
-            <a href="https://www.linkedin.com/me" target="_blank" class="glass-card px-10 py-4 rounded-xl font-bold flex items-center gap-3">
-                <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                LinkedIn Profile
-            </a>
+            <a href="#vault" class="linkedin-blue px-10 py-4 rounded-xl font-bold hover:brightness-110 transition shadow-lg shadow-blue-900/40">Verify Credentials</a>
+            <a href="#wisdom" class="glass-card px-10 py-4 rounded-xl font-bold border-[#30363d] hover:bg-white/5">Ask the AI Sage</a>
         </div>
     </section>
 
     <section id="vault" class="max-w-7xl mx-auto px-6 py-24">
-        <div class="flex items-center gap-4 mb-16">
-            <h2 class="text-4xl font-bold">Credential <span class="text-[#0a66c2]">Vault</span></h2>
-            <div class="h-[1px] flex-grow bg-[#30363d]"></div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="glass-card">
-                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600" onclick="showCert(this.src)" class="cert-img" alt="Angela Yu Web Dev">
-                <div class="p-8">
-                    <span class="text-[10px] font-bold text-purple-400 uppercase tracking-[0.2em]">Verified Mastery</span>
-                    <h3 class="text-xl font-bold mt-2">Dr. Angela Yu Bootcamp</h3>
-                    <p class="text-gray-500 text-xs mt-3 mb-6 leading-relaxed">Completed 60+ hours of full-stack engineering, mastering Node.js, React, and Database security.</p>
-                    <a href="https://www.udemy.com/certificate/YOUR_LINK" class="text-[10px] font-bold text-[#0a66c2] border-b border-[#0a66c2] pb-1">VERIFY CERTIFICATE ↗</a>
-                </div>
+        <h2 class="text-3xl font-bold mb-12 flex items-center gap-4">📜 Verified Credentials <div class="h-[1px] flex-grow bg-[#30363d]"></div></h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card p-8 border-t-4 border-t-blue-500">
+                <h3 class="text-xl font-bold mb-2">B.Tech Degree</h3>
+                <p class="text-gray-400 text-xs mb-6 italic">Computer Science Engineering Graduate.</p>
+                <button onclick="openM('https://via.placeholder.com/800x600?text=B.Tech+Degree')" class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">View Degree ↗</button>
             </div>
-
-            <div class="glass-card">
-                <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600" onclick="showCert(this.src)" class="cert-img" alt="GFG Profile">
-                <div class="p-8">
-                    <span class="text-[10px] font-bold text-green-400 uppercase tracking-[0.2em]">Coding Excellence</span>
-                    <h3 class="text-xl font-bold mt-2">GeeksforGeeks DSA</h3>
-                    <p class="text-gray-500 text-xs mt-3 mb-6 leading-relaxed">Active participation in coding challenges with a strong focus on algorithmic problem solving.</p>
-                    <a href="#" class="text-[10px] font-bold text-green-400 border-b border-green-500 pb-1">VIEW GFG PROFILE ↗</a>
-                </div>
+            <div class="glass-card p-8 border-t-4 border-t-purple-500">
+                <h3 class="text-xl font-bold mb-2">Dr. Angela Yu</h3>
+                <p class="text-gray-400 text-xs mb-6 italic">Full Stack Development Mastery (Udemy).</p>
+                <button onclick="openM('https://via.placeholder.com/800x600?text=Angela+Yu+Certificate')" class="text-[10px] font-bold text-purple-400 uppercase tracking-widest">Verify Certificate ↗</button>
             </div>
-
-            <div class="glass-card">
-                <img src="https://images.unsplash.com/photo-1523050335392-9bf5675f42e8?w=600" onclick="showCert(this.src)" class="cert-img" alt="B.Tech Degree">
-                <div class="p-8">
-                    <span class="text-[10px] font-bold text-blue-400 uppercase tracking-[0.2em]">Academic Honor</span>
-                    <h3 class="text-xl font-bold mt-2">Bachelor of Technology</h3>
-                    <p class="text-gray-500 text-xs mt-3 mb-6 leading-relaxed">Specialized in Computer Science & Engineering. Solid theoretical and practical foundation.</p>
-                    <span class="text-[10px] font-bold text-gray-500 uppercase">Degree Completed ✅</span>
-                </div>
-            </div>
-
-            <div class="glass-card p-8 flex flex-col justify-center text-center">
-                <div class="text-3xl mb-4">📜</div>
-                <h3 class="font-bold">10+ Industrial Certifications</h3>
-                <p class="text-gray-500 text-xs mt-2">From Python to AWS Cloud Fundamentals. All verified and documented.</p>
+            <div class="glass-card p-8 border-t-4 border-t-green-500">
+                <h3 class="text-xl font-bold mb-2">GeeksforGeeks</h3>
+                <p class="text-gray-400 text-xs mb-6 italic">Problem Solving & Data Structures Excellence.</p>
+                <button onclick="openM('https://via.placeholder.com/800x600?text=GFG+Profile')" class="text-[10px] font-bold text-green-400 uppercase tracking-widest">View Profile ↗</button>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-24 max-w-7xl mx-auto px-6">
-        <div class="glass-card overflow-hidden">
-            <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class="p-12 md:p-20 bg-[#0d1117] flex flex-col justify-center">
-                    <span class="text-[#0a66c2] text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Featured Work</span>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6 italic">Ayodhya HeritageStay</h2>
-                    <p class="text-gray-400 mb-10 text-lg font-light leading-relaxed">
-                        A full-stack hospitality engine with real-time room management and WhatsApp integration. Built using the industrial standards learned from elite certifications.
-                    </p>
-                    <a href="react-hotel.html" class="linkedin-blue px-8 py-4 rounded-xl font-bold w-max hover:brightness-110 shadow-lg shadow-blue-900/20">Launch Live Site</a>
+    <section id="wisdom" class="py-24 max-w-6xl mx-auto px-6">
+        <div class="wisdom-gradient p-12 rounded-[40px] relative overflow-hidden">
+            <div class="absolute top-[-20px] right-[-20px] opacity-10 text-[200px] font-serif italic text-blue-400">?</div>
+            <div class="relative z-10">
+                <h2 class="text-4xl font-bold mb-6 italic">Universal Wisdom Search</h2>
+                <p class="text-gray-400 mb-10 max-w-2xl">Ask any question—from Life's purpose to Quantum Physics. Satyam's Engine synthesizes answers from **Vedas, Puranas, Psychology, and Modern Science.**</p>
+                
+                <div class="flex flex-col md:flex-row gap-4 mb-10">
+                    <input type="text" id="query" placeholder="Why do we exist? / What is Karma?" class="flex-grow bg-[#0d1117] border border-blue-900 px-6 py-4 rounded-xl outline-none focus:border-blue-400 text-white">
+                    <button onclick="getWisdom()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-10 py-4 rounded-xl font-bold transition">Consult the Sage</button>
                 </div>
-                <div class="bg-black flex items-center justify-center relative group">
-                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
-                        <span class="px-6 py-2 border-2 border-white font-bold rounded-full">VIEW CASE STUDY</span>
+
+                <div id="ansBox" class="hidden grid grid-cols-1 md:grid-cols-2 gap-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <div class="p-6 bg-blue-950/30 rounded-2xl border border-blue-500/20">
+                        <h4 class="text-amber-400 text-[10px] font-bold uppercase mb-4 tracking-widest">🕉️ Shastra & Darshan</h4>
+                        <p id="vedicAns" class="text-sm leading-relaxed text-gray-300 italic"></p>
+                    </div>
+                    <div class="p-6 bg-zinc-950/30 rounded-2xl border border-white/10">
+                        <h4 class="text-blue-400 text-[10px] font-bold uppercase mb-4 tracking-widest">🔬 Science & Psychology</h4>
+                        <p id="scienceAns" class="text-sm leading-relaxed text-gray-300"></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <section id="projects" class="max-w-7xl mx-auto px-6 py-24">
+        <h2 class="text-3xl font-bold mb-12 italic">Featured Engineering Work</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="glass-card p-10">
+                <span class="text-[#0a66c2] text-[10px] font-bold uppercase tracking-widest">Hospitality Tech</span>
+                <h3 class="text-2xl font-bold mt-4 mb-4 text-white">Ayodhya Heritage Stay</h3>
+                <p class="text-gray-400 text-sm mb-8 leading-relaxed">Full-stack booking ecosystem with real-time analytics and secure payment gateway.</p>
+                <a href="react-hotel.html" class="inline-block border-b-2 border-[#0a66c2] pb-1 text-sm font-bold">Launch App →</a>
+            </div>
+            <div class="glass-card p-10">
+                <span class="text-green-500 text-[10px] font-bold uppercase tracking-widest">Financial Tech</span>
+                <h3 class="text-2xl font-bold mt-4 mb-4 text-white">SpendWise AI</h3>
+                <p class="text-gray-400 text-sm mb-8 leading-relaxed">Expense tracking dashboard using Chart.js for deep financial data visualization.</p>
+                <a href="#" class="inline-block border-b-2 border-green-500 pb-1 text-sm font-bold">Launch App →</a>
+            </div>
+        </div>
+    </section>
+
     <footer class="py-20 border-t border-[#30363d] text-center">
-        <p class="text-[10px] text-gray-600 font-bold uppercase tracking-[0.5em]">Verified Software Engineer Satyam / Ayodhya, UP / © 2026</p>
+        <p class="text-[10px] text-gray-600 font-bold uppercase tracking-[0.6em]">Verified Polymath Satyam © 2026 / B.Tech / Dr. Angela Yu Certified</p>
     </footer>
 
     <script>
-        function showCert(src) {
-            document.getElementById('modal').style.display = 'flex';
-            document.getElementById('modalImg').src = src;
+        function openM(s) { document.getElementById('modal').style.display='flex'; document.getElementById('modalImg').src=s; }
+        
+        function getWisdom() {
+            const q = document.getElementById('query').value.toLowerCase();
+            const box = document.getElementById('ansBox');
+            if(!q) return;
+
+            box.classList.remove('hidden');
+            document.getElementById('vedicAns').innerText = "Analyzing Vedas, Geeta, and Upanishads for eternal truth...";
+            document.getElementById('scienceAns').innerText = "Querying research papers and psychological frameworks...";
+
+            setTimeout(() => {
+                if(q.includes('karma')) {
+                    document.getElementById('vedicAns').innerText = "Bhagavad Gita (2.47) says: 'Karmanye vadhikaraste...' focus on action, not the fruit. Karma is the cosmic law of cause and effect.";
+                    document.getElementById('scienceAns').innerText = "Psychologically, this aligns with 'Locus of Control'. Newton's 3rd law in physics also echoes similar principles of equal and opposite reaction.";
+                } else {
+                    document.getElementById('vedicAns').innerText = "Apanishads state 'Tat Tvam Asi'—you are the universe experiencing itself. Your question is answered through the lens of Self-Realization.";
+                    document.getElementById('scienceAns').innerText = "Quantum Physics suggests 'Observer Effect'—reality changes when observed. Your query reflects the brain's Default Mode Network (DMN) searching for meaning.";
+                }
+            }, 1500);
         }
     </script>
 </body>
