@@ -3,116 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Software Engineer</title>
+    <title>Satyam | Portfolio & Projects</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #010409; color: #e6edf3; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        .glass { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; border-radius: 20px; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-        .glass:hover { border-color: #0a66c2; transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
-        .skill-badge { background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 6px 16px; border-radius: 12px; font-size: 13px; font-weight: 700; }
-        #modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(15px); }
-        .hero-gradient { background: linear-gradient(to right, #ffffff 30%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        body { background-color: #010409; color: #e6edf3; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        .glass { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; border-radius: 20px; transition: 0.4s ease; }
+        .hero-gradient { background: linear-gradient(to right, #ffffff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Smooth Page Transitions */
+        .page { display: none; animation: fadeIn 0.5s ease-in-out forwards; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .cert-img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; cursor: pointer; }
+        #modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
 
     <div id="modal" onclick="this.style.display='none'">
-        <img id="modalImg" src="" class="max-w-[90%] max-h-[85vh] rounded-2xl border-2 border-blue-500 shadow-2xl">
-        <p class="absolute bottom-10 text-gray-500 tracking-[0.5em] text-xs">CLICK TO CLOSE</p>
+        <img id="modalImg" src="" class="max-w-[90%] max-h-[80vh] rounded-lg border-2 border-blue-500">
     </div>
 
-    <nav class="fixed top-0 w-full z-50 px-10 py-6 flex justify-between items-center bg-[#010409]/80 backdrop-blur-xl border-b border-[#30363d]">
-        <div class="text-2xl font-black italic tracking-tighter hero-gradient">SATYAM.DEV</div>
-        <div class="hidden md:flex gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
-            <a href="#skills" class="hover:text-white transition">Skills</a>
-            <a href="#vault" class="hover:text-white transition">Credentials</a>
-            <a href="#projects" class="hover:text-white transition">Projects</a>
-        </div>
-    </nav>
+    <main id="main-portfolio" class="page active">
+        <nav class="fixed top-0 w-full z-50 px-10 py-6 flex justify-between items-center bg-[#010409]/80 backdrop-blur-md border-b border-[#30363d]">
+            <div class="text-2xl font-black italic tracking-tighter hero-gradient">SATYAM.DEV</div>
+            <div class="flex gap-8 text-[11px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#vault" class="hover:text-white">Credentials</a>
+                <a href="#projects" class="hover:text-white">Projects</a>
+            </div>
+        </nav>
 
-    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
-        <div class="mb-8 px-6 py-2 border border-blue-500/30 rounded-full bg-blue-500/5 text-blue-400 text-[10px] font-bold uppercase tracking-[0.4em]">
-            B.Tech Graduate • Full-Stack Developer
-        </div>
-        <h1 class="text-7xl md:text-[9rem] font-extrabold mb-8 tracking-tighter leading-[0.85] hero-gradient">
-            BUILDING <br> THE FUTURE.
-        </h1>
-        <p class="text-gray-400 max-w-2xl mb-12 text-xl font-light leading-relaxed">
-            Software Engineer specializing in building exceptional digital experiences. 
-            Blending academic excellence with industrial-grade coding.
-        </p>
-        <div class="flex flex-wrap justify-center gap-6">
-            <a href="#vault" class="bg-blue-600 px-12 py-5 rounded-2xl font-bold text-white shadow-2xl shadow-blue-900/40 hover:scale-105 transition">View My Credentials</a>
-            <a href="#projects" class="glass px-12 py-5 rounded-2xl font-bold border-[#30363d] hover:bg-white/5 transition">Explore Projects</a>
-        </div>
-    </section>
+        <section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+            <h1 class="text-7xl md:text-9xl font-extrabold mb-8 tracking-tighter hero-gradient">SATYAM.</h1>
+            <p class="text-gray-400 max-w-2xl mb-12 text-xl font-light">B.Tech Graduate & Full-Stack Developer. Verified by Dr. Angela Yu & GFG.</p>
+            <div class="flex gap-6">
+                <a href="#projects" class="bg-blue-600 px-10 py-4 rounded-xl font-bold hover:bg-blue-700 transition">View Projects</a>
+            </div>
+        </section>
 
-    <section id="skills" class="max-w-7xl mx-auto px-6 py-32">
-        <h2 class="text-4xl font-black uppercase tracking-tighter mb-16 flex items-center gap-6">
-            Technical Arsenal <div class="h-[1px] flex-grow bg-[#30363d]"></div>
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div class="glass p-10">
-                <h4 class="text-blue-500 text-xs font-black uppercase mb-8">Frontend</h4>
-                <div class="flex flex-wrap gap-4">
-                    <span class="skill-badge">React.js</span> <span class="skill-badge">Next.js</span>
-                    <span class="skill-badge">Tailwind CSS</span> <span class="skill-badge">JavaScript</span>
-                </div>
+        <section id="vault" class="max-w-6xl mx-auto px-6 py-20">
+            <h2 class="text-3xl font-bold mb-10 italic">📜 Verified Credentials</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass p-4"><img src="https://via.placeholder.com/400x300?text=B.Tech+Degree" onclick="openM(this.src)" class="cert-img"><h4 class="mt-4 font-bold text-center text-sm">B.Tech Graduation</h4></div>
+                <div class="glass p-4"><img src="https://via.placeholder.com/400x300?text=Angela+Yu+Cert" onclick="openM(this.src)" class="cert-img"><h4 class="mt-4 font-bold text-center text-sm">Dr. Angela Yu (MERN)</h4></div>
+                <div class="glass p-4"><img src="https://via.placeholder.com/400x300?text=GFG+Expert" onclick="openM(this.src)" class="cert-img"><h4 class="mt-4 font-bold text-center text-sm">GFG Data Structures</h4></div>
             </div>
-            <div class="glass p-10">
-                <h4 class="text-purple-500 text-xs font-black uppercase mb-8">Backend</h4>
-                <div class="flex flex-wrap gap-4">
-                    <span class="skill-badge" style="color:#a855f7;">Node.js</span> <span class="skill-badge" style="color:#a855f7;">Express.js</span>
-                    <span class="skill-badge" style="color:#a855f7;">MongoDB</span> <span class="skill-badge" style="color:#a855f7;">PostgreSQL</span>
-                </div>
-            </div>
-            <div class="glass p-10">
-                <h4 class="text-green-500 text-xs font-black uppercase mb-8">Core Tools</h4>
-                <div class="flex flex-wrap gap-4">
-                    <span class="skill-badge" style="color:#22c55e;">Python</span> <span class="skill-badge" style="color:#22c55e;">C++ (DSA)</span>
-                    <span class="skill-badge" style="color:#22c55e;">Git/GitHub</span> <span class="skill-badge" style="color:#22c55e;">AWS</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="vault" class="max-w-7xl mx-auto px-6 py-32 bg-[#0d1117]/50 rounded-[60px]">
-        <h2 class="text-5xl font-black text-center mb-20 italic">Global Credentials</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div class="glass overflow-hidden group">
-                <img src="https://via.placeholder.com/600x400?text=B.Tech+Degree" onclick="openM(this.src)" class="w-full h-64 object-cover cursor-zoom-in group-hover:scale-110 transition duration-700">
-                <div class="p-10">
-                    <h3 class="font-bold text-2xl mb-4 text-blue-400">B.Tech Graduation</h3>
-                    <p class="text-gray-500 text-sm font-light italic">Computer Science Engineering. Foundation of all logic and systems.</p>
+        <section id="projects" class="max-w-6xl mx-auto px-6 py-20">
+            <h2 class="text-3xl font-bold mb-10 italic">🚀 Featured Work</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="glass p-10 border-l-4 border-l-blue-500">
+                    <h3 class="text-2xl font-bold mb-4">Ayodhya Heritage Stay</h3>
+                    <p class="text-gray-500 mb-8">Luxury hotel booking system with real-time room availability.</p>
+                    <button onclick="showPage('hotel-page')" class="text-blue-400 font-bold border-b border-blue-400 pb-1">Open Full Application →</button>
+                </div>
+                <div class="glass p-10 border-l-4 border-l-green-500">
+                    <h3 class="text-2xl font-bold mb-4">SpendWise AI</h3>
+                    <p class="text-gray-500 mb-8">Financial dashboard using Chart.js for deep analytics.</p>
+                    <button class="text-green-400 font-bold border-b border-green-400 pb-1 opacity-50">Coming Soon</button>
                 </div>
             </div>
-            <div class="glass overflow-hidden group">
-                <img src="https://via.placeholder.com/600x400?text=Angela+Yu+Certificate" onclick="openM(this.src)" class="w-full h-64 object-cover cursor-zoom-in group-hover:scale-110 transition duration-700">
-                <div class="p-10">
-                    <h3 class="font-bold text-2xl mb-4 text-purple-400">Angela Yu Mastery</h3>
-                    <p class="text-gray-500 text-sm font-light italic">Complete Full-Stack Engineering (MERN Stack Certified).</p>
-                </div>
-            </div>
-            <div class="glass overflow-hidden group">
-                <img src="https://via.placeholder.com/600x400?text=GFG+Expert+Badge" onclick="openM(this.src)" class="w-full h-64 object-cover cursor-zoom-in group-hover:scale-110 transition duration-700">
-                <div class="p-10">
-                    <h3 class="font-bold text-2xl mb-4 text-green-400">GeeksforGeeks</h3>
-                    <p class="text-gray-500 text-sm font-light italic">DSA & Algorithmic Excellence. Skilled Problem Solver.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section id="projects" class="max-w-7xl mx-auto px-6 py-32">
-        <h2 class="text-4xl font-black mb-16 italic uppercase">Industrial Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div class="glass p-12 bg-[#0d1117] group relative overflow-hidden">
-                <div class="absolute -right-10 -top-10 text-9xl text-white/5 font-black group-hover:rotate-12 transition">01</div>
-                <h3 class="text-3xl font-black mb-6 hero-gradient">Ayodhya Heritage Stay</h3>
-                <p class="text-gray-400 mb-8 text-lg font-light leading-relaxed">Full-stack booking ecosystem featuring real-time availability and secure transactions.</p>
-                <a href="#" class="text-blue-500 font-black border-b-2 border-blue-500/30 pb-2 hover:border-blue-500 transition text-sm uppercase">Launch App ↗</a>
+    <main id="hotel-page" class="page">
+        <nav class="p-6 border-b border-[#30363d] flex justify-between items-center bg-[#010409]">
+            <button onclick="showPage('main-portfolio')" class="text-blue-500 font-bold">← Back to Portfolio</button>
+            <div class="text-xl font-bold tracking-widest text-amber-500">AYODHYA HERITAGE</div>
+            <div class="text-xs text-gray-500">Project Demo</div>
+        </nav>
+
+        <section class="max-w-5xl mx-auto py-20 px-6">
+            <div class="glass p-1 rounded-3xl overflow-hidden mb-10">
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200" class="w-full h-96 object-cover">
             </div>
-            <div class="glass p-12 bg-[#0d1117] group relative overflow-hidden">
-                <div class="absolute -right-10 -top-10 text-9xl text-white/5 font-black group-hover:rotate-12 transition">02</div>
-                <h3 class="text-3xl font-black mb-6 text-green-500 italic
+            <h1 class="text-5xl font-black mb-6">Ayodhya Heritage Stay</h1>
+            <p class="text-gray-400 text-xl mb-10 leading-relaxed">
+                Ye ek full-stack hotel management system hai. Isme humne React hooks aur Tailwind CSS ka use kiya hai. 
+                Isme users rooms check kar sakte hain, price dekh sakte hain aur login karke booking kar sakte hain.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+                <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
+                    <h4 class="font-bold mb-2">Real-time Booking</h4>
+                    <p class="text-xs text-gray-500">Check availability in seconds.</p>
+                </div>
+                <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
+                    <h4 class="font-bold mb-2">Secure Payment</h4>
+                    <p class="text-xs text-gray-500">Integrated with secure gateways.</p>
+                </div>
+                <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
+                    <h4 class="font-bold mb-2">Admin Dashboard</h4>
+                    <p class="text-xs text-gray-500">Manage rooms and prices easily.</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#" class="bg-amber-600 px-10 py-4 rounded-xl font-bold">Launch Live Site (Link)</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Zoom Modal Logic
+        function openM(s) { 
+            document.getElementById('modal').style.display='flex'; 
+            document.getElementById('modalImg').src=s; 
+        }
+
+        // Page Switching Logic (SPA)
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
