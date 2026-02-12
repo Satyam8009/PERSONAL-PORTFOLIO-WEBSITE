@@ -3,127 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Creative Technologist</title>
+    <title>Satyam | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --accent: #00d2ff; --secondary: #3a7bd5; }
+        * { cursor: default; }
         body {
-            background-color: #02040a;
-            color: #ffffff;
+            background: #000;
+            color: #fff;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        /* Animated Background Mesh */
-        .mesh {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(at 0% 0%, rgba(58, 123, 213, 0.15) 0, transparent 50%), 
-                        radial-gradient(at 100% 100%, rgba(0, 210, 255, 0.1) 0, transparent 50%);
-            z-index: -1;
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #000 70%);
         }
-        .bento-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s ease;
         }
-        .bento-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: var(--accent);
-            transform: translateY(-5px) scale(1.01);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #38bdf8;
+            transform: translateY(-8px);
         }
-        .glow-text {
-            text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+        .text-glow {
+            text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
         }
-        .btn-gradient {
-            background: linear-gradient(135deg, var(--accent), var(--secondary));
-            transition: 0.3s;
+        .animated-bar {
+            width: 0;
+            height: 2px;
+            background: #38bdf8;
+            transition: width 1s ease-in-out;
         }
-        .btn-gradient:hover {
-            filter: brightness(1.2);
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.4);
+        section:hover .animated-bar {
+            width: 100px;
         }
     </style>
 </head>
-<body class="p-4 md:p-8">
-    <div class="mesh"></div>
+<body>
 
-    <div class="max-w-6xl mx-auto">
-        
-        <header class="flex justify-between items-center mb-12">
-            <div class="text-2xl font-extrabold tracking-tighter glow-text">SATYAM<span class="text-cyan-400">.</span></div>
-            <a href="#contact" class="px-6 py-2 border border-white/10 rounded-full text-sm font-bold hover:bg-white/5 transition">Hire Me</a>
-        </header>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-sky-500/10 blur-[120px] pointer-events-none"></div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <div class="md:col-span-2 bento-card p-10 rounded-[3rem] flex flex-col justify-center">
-                <span class="text-cyan-400 font-bold tracking-widest text-xs uppercase mb-4">Based in Ayodhya</span>
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
-                    Full-Stack <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Developer.</span>
-                </h1>
-                <p class="text-gray-400 text-lg max-w-md">I build aesthetic digital products that solve real-world problems through clean code.</p>
-            </div>
-
-            <div class="bento-card p-8 rounded-[3rem] flex flex-col justify-between">
-                <div class="text-4xl">👨‍💻</div>
-                <div>
-                    <h2 class="text-xl font-bold mb-2">My Story</h2>
-                    <p class="text-gray-500 text-sm">B.Tech CS Student specializing in React & Modern UI. Passionate about 3D Web and performance optimization.</p>
-                </div>
-            </div>
-
-            <div class="bento-card p-8 rounded-[3rem]">
-                <h2 class="text-lg font-bold mb-6 flex items-center gap-2">
-                    <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span> Tech Stack
-                </h2>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-white/5 rounded-lg text-xs border border-white/5">React</span>
-                    <span class="px-3 py-1 bg-white/5 rounded-lg text-xs border border-white/5">Tailwind</span>
-                    <span class="px-3 py-1 bg-white/5 rounded-lg text-xs border border-white/5">JavaScript</span>
-                    <span class="px-3 py-1 bg-white/5 rounded-lg text-xs border border-white/5">GitHub</span>
-                    <span class="px-3 py-1 bg-white/5 rounded-lg text-xs border border-white/5">Vercel</span>
-                </div>
-            </div>
-
-            <div class="md:col-span-2 bento-card rounded-[3rem] overflow-hidden group">
-                <div class="flex flex-col md:flex-row h-full">
-                    <div class="p-10 md:w-1/2 flex flex-col justify-center">
-                        <div class="flex gap-2 mb-4">
-                            <span class="text-[10px] bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded">LIVE PROJECT</span>
-                        </div>
-                        <h2 class="text-3xl font-bold mb-4">Ayodhya Heritage Stay</h2>
-                        <p class="text-gray-400 text-sm mb-6">A high-end hotel reservation system with dynamic pricing and WhatsApp API integration.</p>
-                        <a href="react-hotel.html" class="btn-gradient text-black px-6 py-3 rounded-2xl font-bold text-center w-max">Check it Out →</a>
-                    </div>
-                    <div class="md:w-1/2 bg-gradient-to-br from-cyan-900/20 to-transparent p-4 flex items-center justify-center">
-                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=500" class="rounded-2xl shadow-2xl group-hover:rotate-2 transition-transform duration-500">
-                    </div>
-                </div>
-            </div>
-
-            <div id="contact" class="md:col-span-3 bento-card p-10 rounded-[3rem] text-center mt-6">
-                <h2 class="text-4xl font-extrabold mb-4">Let's create something <span class="text-cyan-400">Great</span>.</h2>
-                <p class="text-gray-500 mb-8">Ready to take your business to the digital level?</p>
-                <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                    <input type="text" id="wa-name" placeholder="Enter Name" class="bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-cyan-400 w-full md:w-64">
-                    <button onclick="send()" class="btn-gradient text-black px-10 py-4 rounded-2xl font-bold w-full md:w-auto">Start Chat on WhatsApp</button>
-                </div>
-            </div>
-
+    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center backdrop-blur-md border-b border-white/5">
+        <div class="text-xl font-bold tracking-tighter">SATYAM<span class="text-sky-400">.</span></div>
+        <div class="flex gap-8 text-xs font-medium uppercase tracking-widest text-gray-400">
+            <a href="#about" class="hover:text-white transition">About</a>
+            <a href="#projects" class="hover:text-white transition">Projects</a>
+            <a href="#contact" class="hover:text-white transition">Contact</a>
         </div>
+    </nav>
 
-        <footer class="mt-20 py-10 text-center text-gray-600 text-xs border-t border-white/5">
-            © 2026 Designed & Developed by Satyam. All Rights Reserved.
-        </footer>
+    <section class="h-screen flex flex-col justify-center items-center px-6 hero-gradient">
+        <div class="mb-6 px-4 py-1 border border-sky-500/30 rounded-full text-[10px] font-bold text-sky-400 tracking-[0.2em] uppercase">
+            Product Developer & Student
+        </div>
+        <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter text-center mb-6 leading-none">
+            Digital <span class="text-glow">Experience</span> Designer<span class="text-sky-500">.</span>
+        </h1>
+        <p class="text-gray-500 text-lg md:text-xl max-w-xl text-center leading-relaxed">
+            I craft minimalist, high-performance web applications. Based in Ayodhya, building the next generation of web.
+        </p>
+        <div class="mt-12">
+            <a href="#projects" class="bg-white text-black px-10 py-4 rounded-full font-bold hover:bg-sky-400 transition-all duration-300">Explore Projects</a>
+        </div>
+    </section>
+
+    <div class="max-w-5xl mx-auto px-6">
+        
+        <section id="about" class="py-32">
+            <div class="animated-bar mb-4"></div>
+            <h2 class="text-4xl font-bold mb-12">Personal <span class="text-gray-500">Profile</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card p-10 rounded-3xl">
+                    <h3 class="text-sky-400 font-bold mb-4 uppercase tracking-widest text-xs">Biography</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Self-taught developer with a vision for clean code. Currently pursuing <span class="text-white">B.Tech in Computer Science</span>. I specialize in React and modern UI/UX principles.
+                    </p>
+                </div>
+                <div class="glass-card p-10 rounded-3xl">
+                    <h3 class="text-sky-400 font-bold mb-4 uppercase tracking-widest text-xs">Focus Area</h3>
+                    <ul class="text-gray-400 space-y-3">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-sky-500 rounded-full"></span> Full Stack Web</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-sky-500 rounded-full"></span> App Optimization</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-sky-500 rounded-full"></span> UI Micro-interactions</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 border-y border-white/5">
+            <div class="flex flex-wrap justify-center gap-x-12 gap-y-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+                <span class="text-2xl font-bold">REACT</span>
+                <span class="text-2xl font-bold">TAILWIND</span>
+                <span class="text-2xl font-bold">NODE.JS</span>
+                <span class="text-2xl font-bold">JS(ES6)</span>
+                <span class="text-2xl font-bold">VERCEL</span>
+                <span class="text-2xl font-bold">GIT</span>
+            </div>
+        </section>
+
+        <section id="projects" class="py-32">
+            <div class="animated-bar mb-4"></div>
+            <h2 class="text-4xl font-bold mb-12">Featured <span class="text-gray-500">Work</span></h2>
+            
+            <div class="glass-card rounded-[40px] overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-12 flex flex-col justify-center">
+                        <span class="text-sky-400 text-xs font-bold mb-4 tracking-widest uppercase">Latest Release</span>
+                        <h3 class="text-4xl font-bold mb-6">Ayodhya HeritageStay</h3>
+                        <p class="text-gray-400 mb-10 leading-relaxed">
+                            A premium hotel booking application featuring dynamic pricing, secure authentication, and WhatsApp automation.
+                        </p>
+                        <a href="react-hotel.html" class="flex items-center gap-4 text-white font-bold group">
+                            VIEW PROJECT <span class="group-hover:translate-x-2 transition-transform text-sky-400">→</span>
+                        </a>
+                    </div>
+                    <div class="bg-gradient-to-br from-sky-500/10 to-transparent p-12">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600" class="rounded-2xl shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-500">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-32">
+            <div class="glass-card p-16 rounded-[40px] text-center">
+                <h2 class="text-5xl font-bold mb-8">Let's <span class="text-sky-400">Talk.</span></h2>
+                <p class="text-gray-500 mb-12 max-w-sm mx-auto">Have a project or just want to chat? Send me a message directly.</p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <input type="text" id="wa-name" placeholder="Name" class="bg-white/5 border border-white/10 px-8 py-4 rounded-full outline-none focus:border-sky-400 transition-all">
+                    <button onclick="send()" class="bg-sky-500 text-black px-12 py-4 rounded-full font-bold hover:shadow-[0_0_30px_rgba(56,189,248,0.4)] transition">Message</button>
+                </div>
+            </div>
+        </section>
+
     </div>
+
+    <footer class="py-20 text-center border-t border-white/5 text-[10px] text-gray-600 tracking-widest uppercase">
+        Designed by Satyam &copy; 2026 / Ayodhya Heritage Stay Project
+    </footer>
 
     <script>
         function send() {
             const name = document.getElementById('wa-name').value;
-            if(!name) return alert("Bhai, name toh dalo!");
-            window.open(`https://wa.me/919999999999?text=Hi Satyam, my name is ${name}. I love your portfolio!`);
+            if(!name) return alert("Enter Name");
+            window.open(`https://wa.me/919999999999?text=Hi Satyam! This is ${name}. Loved your portfolio.`);
         }
     </script>
 </body>
