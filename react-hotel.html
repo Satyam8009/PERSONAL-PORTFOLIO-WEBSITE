@@ -4,116 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayodhya Heritage | Secure Booking</title>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-        body { margin: 0; background: #0f172a; color: white; font-family: sans-serif; }
-        .wrapper { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
-        .card { background: #1e293b; padding: 30px; border-radius: 20px; width: 100%; max-width: 400px; border: 1px solid #334155; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .inp { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #475569; background: #0f172a; color: white; margin: 10px 0; box-sizing: border-box; }
-        .btn { width: 100%; padding: 15px; background: #38bdf8; color: #0f172a; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-        .wa-btn { background: #25D366; color: white; margin-bottom: 10px; }
+        :root { --bg: #0f172a; --card: #1e293b; --accent: #38bdf8; --success: #22c55e; }
+        body { margin: 0; background: var(--bg); color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .card { background: var(--card); padding: 30px; border-radius: 20px; width: 100%; max-width: 380px; border: 1px solid #334155; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: none; }
+        .active { display: block; }
+        input, select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #475569; background: #0f172a; color: white; margin: 10px 0; box-sizing: border-box; }
+        .btn { width: 100%; padding: 15px; background: var(--accent); color: #0f172a; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 10px; font-size: 16px; }
+        .wa-btn { background: #25D366; color: white; margin-top: 10px; text-decoration: none; display: block; line-height: 45px; }
         .pay-opt { background: #0f172a; padding: 15px; border-radius: 12px; margin-bottom: 10px; border: 1px solid #334155; cursor: pointer; text-align: left; display: flex; align-items: center; }
-        .loader { border: 4px solid #334155; border-top: 4px solid #38bdf8; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+        .loader { border: 4px solid #334155; border-top: 4px solid var(--accent); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
-    <div id="root"></div>
 
-    <script type="text/babel">
-        const { useState } = React;
+    <div id="login-view" class="card active">
+        <h2 style="color: var(--accent)">🔐 Client Login</h2>
+        <div style="text-align: left">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="name@example.com">
+            <label>Password</label>
+            <input type="password" id="pass" placeholder="••••••••">
+            <button class="btn" onclick="showBooking()">LOGIN TO BOOK</button>
+        </div>
+    </div>
 
-        function App() {
-            const [page, setPage] = useState('login'); // login, book, pay, load, done
-            const [user, setUser] = useState('');
-            const [total, setTotal] = useState(1500);
+    <div id="booking-view" class="card">
+        <h2 style="color: var(--accent)">🏨 Ayodhya Heritage</h2>
+        <div style="text-align: left">
+            <p>Welcome, <b id="user-name">Guest</b></p>
+            <label>Select Room</label>
+            <select id="room-type" onchange="updatePrice()">
+                <option value="1500">Standard Room (₹1,500)</option>
+                <option value="3500">Deluxe Suite (₹3,500)</option>
+            </select>
+            <div style="background:#0f172a; padding:15px; border-radius:10px; border-left:4px solid var(--accent); margin:15px 0">
+                <span style="font-size:24px; font-weight:bold" id="total-price">₹1,500</span>
+            </div>
+            <button class="btn" onclick="showPayment()">PROCEED TO PAY</button>
+        </div>
+    </div>
 
-            const handleLogin = (e) => {
-                e.preventDefault();
-                const email = e.target.email.value;
-                setUser(email.split('@')[0]);
-                setPage('book');
-            };
+    <div id="payment-view" class="card">
+        <h2 style="color: var(--accent)">Payment</h2>
+        <p>Select Method:</p>
+        <div class="pay-opt" onclick="processPayment()">📱 <span style="margin-left:10px">UPI (GPay/PhonePe)</span></div>
+        <div class="pay-opt" onclick="processPayment()">💳 <span style="margin-left:10px">Debit / Credit Card</span></div>
+        <button style="background:none; border:none; color:#f87171; cursor:pointer" onclick="showBooking()">Cancel</button>
+    </div>
 
-            const startPayment = () => {
-                setPage('load');
-                setTimeout(() => setPage('done'), 2000);
-            };
+    <div id="loading-view" class="card">
+        <div class="loader"></div>
+        <p>Processing Transaction...</p>
+    </div>
 
-            // 1. LOGIN
-            if (page === 'login') return (
-                <div className="wrapper">
-                    <div className="card">
-                        <h2 style={{color: '#38bdf8'}}>🔐 Client Login</h2>
-                        <form onSubmit={handleLogin} style={{textAlign:'left'}}>
-                            <label>Email Address</label>
-                            <input name="email" type="email" className="inp" required placeholder="name@example.com" />
-                            <label>Password</label>
-                            <input type="password" className="inp" required placeholder="••••••••" />
-                            <button type="submit" className="btn">LOGIN TO BOOK</button>
-                        </form>
-                    </div>
-                </div>
-            );
+    <div id="success-view" class="card">
+        <div style="font-size:60px; color:var(--success)">✓</div>
+        <h2>Booking Confirmed!</h2>
+        <p>Your receipt is ready.</p>
+        <a id="wa-link" href="#" target="_blank" class="btn wa-btn">WHATSAPP RECEIPT 📱</a>
+        <button class="btn" onclick="location.reload()">DONE</button>
+    </div>
 
-            // 2. LOADING
-            if (page === 'load') return (
-                <div className="wrapper">
-                    <div className="card">
-                        <div className="loader"></div>
-                        <p>Processing Payment...</p>
-                    </div>
-                </div>
-            );
-
-            // 3. SUCCESS
-            if (page === 'done') return (
-                <div className="wrapper">
-                    <div className="card">
-                        <div style={{fontSize:'60px', color:'#22c55e'}}>✓</div>
-                        <h2>Booking Confirmed!</h2>
-                        <p>Hi {user}, your stay is ready.</p>
-                        <button className="btn wa-btn" onClick={() => window.open('https://wa.me/919999999999')}>GET RECEIPT ON WHATSAPP</button>
-                        <button className="btn" onClick={() => setPage('book')}>BACK</button>
-                    </div>
-                </div>
-            );
-
-            // 4. BOOKING & PAYMENT UI
-            return (
-                <div className="wrapper">
-                    <div className="card">
-                        <h2 style={{color:'#38bdf8'}}>🏨 Ayodhya Heritage</h2>
-                        {page === 'book' ? (
-                            <div style={{textAlign:'left'}}>
-                                <p>Welcome, <b>{user}</b></p>
-                                <label>Select Room</label>
-                                <select className="inp" onChange={(e) => setTotal(e.target.value)}>
-                                    <option value="1500">Standard Room (₹1,500)</option>
-                                    <option value="3500">Deluxe Suite (₹3,500)</option>
-                                </select>
-                                <div style={{background:'#0f172a', padding:'15px', borderRadius:'10px', borderLeft:'4px solid #38bdf8', margin:'15px 0'}}>
-                                    <span style={{fontSize:'24px', fontWeight:'bold'}}>₹{Number(total).toLocaleString()}</span>
-                                </div>
-                                <button className="btn" onClick={() => setPage('pay')}>PROCEED TO PAY</button>
-                            </div>
-                        ) : (
-                            <div>
-                                <p style={{fontWeight:'bold'}}>Pay via:</p>
-                                <div className="pay-opt" onClick={startPayment}><span>📱</span><span style={{marginLeft:'10px'}}>UPI (GPay/PhonePe)</span></div>
-                                <div className="pay-opt" onClick={startPayment}><span>💳</span><span style={{marginLeft:'10px'}}>Debit / Credit Card</span></div>
-                                <button style={{background:'none', border:'none', color:'#f87171', cursor:'pointer', marginTop:'10px'}} onClick={() => setPage('book')}>Cancel</button>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            );
+    <script>
+        function hideAll() {
+            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
         }
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+        function showBooking() {
+            const email = document.getElementById('email').value;
+            if(!email) { alert("Please enter email"); return; }
+            document.getElementById('user-name').innerText = email.split('@')[0];
+            hideAll();
+            document.getElementById('booking-view').classList.add('active');
+        }
+
+        function updatePrice() {
+            const price = document.getElementById('room-type').value;
+            document.getElementById('total-price').innerText = "₹" + Number(price).toLocaleString();
+        }
+
+        function showPayment() {
+            hideAll();
+            document.getElementById('payment-view').classList.add('active');
+        }
+
+        function processPayment() {
+            hideAll();
+            document.getElementById('loading-view').classList.add('active');
+            
+            setTimeout(() => {
+                const user = document.getElementById('user-name').innerText;
+                const price = document.getElementById('room-type').value;
+                const msg = `Booking Confirmed for ${user}. Amount: ₹${price}`;
+                document.getElementById('wa-link').href = `https://wa.me/919999999999?text=${encodeURIComponent(msg)}`;
+                
+                hideAll();
+                document.getElementById('success-view').classList.add('active');
+            }, 2000);
+        }
     </script>
 </body>
 </html>
