@@ -3,133 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Professional Portfolio</title>
+    <title>Satyam | Full Stack Engineer | B.Tech</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         body { background-color: #010409; color: #e6edf3; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        .glass-card { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; border-radius: 20px; transition: all 0.4s ease; }
-        .glass-card:hover { border-color: #0a66c2; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(10, 102, 194, 0.15); }
+        .glass-card { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; border-radius: 20px; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-card:hover { border-color: #0a66c2; transform: translateY(-10px); }
         .linkedin-blue { background: #0a66c2; }
-        .gradient-text { background: linear-gradient(to right, #58a6ff, #0a66c2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .cert-img { width: 100%; height: 220px; object-fit: cover; cursor: pointer; transition: 0.5s; border-bottom: 1px solid #30363d; }
+        .glass-card:hover .cert-img { transform: scale(1.05); }
+        
+        /* Modal Effect */
+        #modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+        #modal img { max-width: 100%; max-height: 85vh; border-radius: 8px; border: 2px solid #30363d; }
     </style>
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-[#010409]/90 backdrop-blur-md border-b border-[#30363d]">
-        <div class="text-xl font-bold">SATYAM<span class="text-[#0a66c2]">.DEV</span></div>
-        <div class="flex gap-4 md:gap-8 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-            <a href="#credentials" class="hover:text-white transition">Credentials</a>
-            <a href="#projects" class="hover:text-white transition">Work</a>
-            <a href="#contact" class="hidden md:block hover:text-white">Contact</a>
+    <div id="modal" onclick="this.style.display='none'">
+        <img id="modalImg" src="">
+        <p class="absolute bottom-8 text-gray-500 text-xs tracking-widest uppercase">Click anywhere to close</p>
+    </div>
+
+    <nav class="fixed top-0 w-full z-50 px-8 py-4 flex justify-between items-center bg-[#010409]/90 backdrop-blur-xl border-b border-[#30363d]">
+        <div class="text-xl font-extrabold tracking-tighter">SATYAM<span class="text-[#0a66c2]">.ENGINEER</span></div>
+        <div class="flex gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+            <a href="#about" class="hover:text-white transition">Credentials</a>
+            <a href="#vault" class="hover:text-white transition">Certificates</a>
+            <a href="#projects" class="hover:text-white transition">Projects</a>
         </div>
     </nav>
 
     <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#58a6ff] text-[10px] font-bold mb-6 uppercase tracking-widest">
-            B.Tech Graduate • Verified Engineer
+        <div class="mb-6 flex items-center gap-2 px-4 py-2 rounded-full bg-[#0a66c2]/10 border border-[#0a66c2]/30 text-[#58a6ff] text-[10px] font-bold uppercase tracking-widest">
+            <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span> B.Tech Graduate • Software Engineer
         </div>
-        <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter mb-8 leading-[1.1]">
-            Engineering <br> <span class="gradient-text">Digital Value.</span>
+        <h1 class="text-6xl md:text-8xl font-extrabold leading-[0.9] mb-8 tracking-tighter">
+            Architecting <br> <span class="text-[#0a66c2]">Modern Web.</span>
         </h1>
-        <p class="text-gray-400 text-lg max-w-2xl mb-12">
-            Software Engineer specialized in high-performance web systems. <br>
-            Certified by <span class="text-white font-semibold">Dr. Angela Yu</span> & <span class="text-white font-semibold">GeeksforGeeks</span>.
+        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-12 font-light">
+            Merging academic excellence from <span class="text-white font-semibold italic">B.Tech (CS)</span> with 
+            practical mastery from <span class="text-white font-semibold">Dr. Angela Yu</span> and <span class="text-white font-semibold">GFG</span>.
         </p>
-        <div class="flex gap-4">
-            <a href="#projects" class="linkedin-blue px-8 py-4 rounded-xl font-bold hover:brightness-110 transition">View Projects</a>
-            <a href="#credentials" class="glass-card px-8 py-4 rounded-xl font-bold hover:bg-white/5 transition">Certifications</a>
+        <div class="flex flex-col md:flex-row gap-4">
+            <a href="#vault" class="linkedin-blue px-10 py-4 rounded-xl font-bold hover:brightness-110 transition shadow-lg shadow-blue-900/40">Verify Certificates</a>
+            <a href="https://www.linkedin.com/me" target="_blank" class="glass-card px-10 py-4 rounded-xl font-bold flex items-center gap-3">
+                <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                LinkedIn Profile
+            </a>
         </div>
     </section>
 
-    <section id="credentials" class="py-24 max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-12 flex items-center gap-4">
-            Professional <span class="text-[#0a66c2]">Verification</span>
+    <section id="vault" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="flex items-center gap-4 mb-16">
+            <h2 class="text-4xl font-bold">Credential <span class="text-[#0a66c2]">Vault</span></h2>
             <div class="h-[1px] flex-grow bg-[#30363d]"></div>
-        </h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="glass-card p-8 border-t-4 border-t-sky-500">
-                <div class="text-2xl mb-4">🎓</div>
-                <h3 class="text-xl font-bold mb-2">B.Tech Degree</h3>
-                <p class="text-gray-500 text-sm mb-6">Computer Science & Engineering Graduate. Foundational expertise in OS, DBMS, and DSA.</p>
-                <span class="text-[10px] font-bold text-sky-400 uppercase">Degree Verified ✅</span>
-            </div>
-
-            <div class="glass-card p-8 border-t-4 border-t-purple-500">
-                <div class="text-2xl mb-4">🏅</div>
-                <h3 class="text-xl font-bold mb-2">Web Bootcamp</h3>
-                <p class="text-gray-500 text-sm mb-6">Mastered MERN Stack and Backend Architecture under Dr. Angela Yu's curriculum.</p>
-                <a href="#" class="text-[10px] font-bold text-purple-400 uppercase tracking-widest">Verify Credential ↗</a>
-            </div>
-
-            <div class="glass-card p-8 border-t-4 border-t-green-500">
-                <div class="text-2xl mb-4">💻</div>
-                <h3 class="text-xl font-bold mb-2">GFG Participation</h3>
-                <p class="text-gray-500 text-sm mb-6">Consistent problem solving on GeeksforGeeks platform with 200+ challenges solved.</p>
-                <a href="#" class="text-[10px] font-bold text-green-400 uppercase tracking-widest">View Profile ↗</a>
-            </div>
         </div>
 
-        <div class="mt-12">
-            <h3 class="text-lg font-bold mb-6 text-gray-500 uppercase tracking-widest">Extra Skills & Certifications</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="glass-card p-6 text-center">
-                    <div class="text-xs font-bold text-white">Python Advanced</div>
-                    <div class="text-[8px] text-gray-500 mt-2 uppercase">Verified ✅</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="glass-card">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600" onclick="showCert(this.src)" class="cert-img" alt="Angela Yu Web Dev">
+                <div class="p-8">
+                    <span class="text-[10px] font-bold text-purple-400 uppercase tracking-[0.2em]">Verified Mastery</span>
+                    <h3 class="text-xl font-bold mt-2">Dr. Angela Yu Bootcamp</h3>
+                    <p class="text-gray-500 text-xs mt-3 mb-6 leading-relaxed">Completed 60+ hours of full-stack engineering, mastering Node.js, React, and Database security.</p>
+                    <a href="https://www.udemy.com/certificate/YOUR_LINK" class="text-[10px] font-bold text-[#0a66c2] border-b border-[#0a66c2] pb-1">VERIFY CERTIFICATE ↗</a>
                 </div>
-                <div class="glass-card p-6 text-center">
-                    <div class="text-xs font-bold text-white">Java Fundamentals</div>
-                    <div class="text-[8px] text-gray-500 mt-2 uppercase">Verified ✅</div>
+            </div>
+
+            <div class="glass-card">
+                <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600" onclick="showCert(this.src)" class="cert-img" alt="GFG Profile">
+                <div class="p-8">
+                    <span class="text-[10px] font-bold text-green-400 uppercase tracking-[0.2em]">Coding Excellence</span>
+                    <h3 class="text-xl font-bold mt-2">GeeksforGeeks DSA</h3>
+                    <p class="text-gray-500 text-xs mt-3 mb-6 leading-relaxed">Active participation in coding challenges with a strong focus on algorithmic problem solving.</p>
+                    <a href="#" class="text-[10px] font-bold text-green-400 border-b border-green-500 pb-1">VIEW GFG PROFILE ↗</a>
                 </div>
-                <div class="glass-card p-6 text-center">
-                    <div class="text-xs font-bold text-white">AWS Cloud Basics</div>
-                    <div class="text-[8px] text-gray-500 mt-2 uppercase">Verified ✅</div>
+            </div>
+
+            <div class="glass-card">
+                <img src="https://images.unsplash.com/photo-1523050335392-9bf5675f42e8?w=600" onclick="showCert(this.src)" class="cert-img" alt="B.Tech Degree">
+                <div class="p-8">
+                    <span class="text-[10px] font-bold text-blue-400 uppercase tracking-[0.2em]">Academic Honor</span>
+                    <h3 class="text-xl font-bold mt-2">Bachelor of Technology</h3>
+                    <p class="text-gray-500 text-xs mt-3 mb-6 leading-relaxed">Specialized in Computer Science & Engineering. Solid theoretical and practical foundation.</p>
+                    <span class="text-[10px] font-bold text-gray-500 uppercase">Degree Completed ✅</span>
                 </div>
-                <div class="glass-card p-6 text-center">
-                    <div class="text-xs font-bold text-white">Database Design</div>
-                    <div class="text-[8px] text-gray-500 mt-2 uppercase">Verified ✅</div>
-                </div>
-                </div>
+            </div>
+
+            <div class="glass-card p-8 flex flex-col justify-center text-center">
+                <div class="text-3xl mb-4">📜</div>
+                <h3 class="font-bold">10+ Industrial Certifications</h3>
+                <p class="text-gray-500 text-xs mt-2">From Python to AWS Cloud Fundamentals. All verified and documented.</p>
+            </div>
         </div>
     </section>
 
-    <section id="projects" class="py-24 max-w-6xl mx-auto px-6">
+    <section id="projects" class="py-24 max-w-7xl mx-auto px-6">
         <div class="glass-card overflow-hidden">
             <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class="p-12 flex flex-col justify-center">
-                    <span class="text-[#0a66c2] text-[10px] font-bold uppercase mb-4 tracking-[0.3em]">Featured App</span>
-                    <h3 class="text-4xl font-extrabold mb-6">Ayodhya HeritageStay</h3>
-                    <p class="text-gray-400 mb-10 leading-relaxed font-light">
-                        A high-end hotel reservation system featuring real-time room booking, dynamic pricing, and automated WhatsApp API notifications.
+                <div class="p-12 md:p-20 bg-[#0d1117] flex flex-col justify-center">
+                    <span class="text-[#0a66c2] text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Featured Work</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 italic">Ayodhya HeritageStay</h2>
+                    <p class="text-gray-400 mb-10 text-lg font-light leading-relaxed">
+                        A full-stack hospitality engine with real-time room management and WhatsApp integration. Built using the industrial standards learned from elite certifications.
                     </p>
-                    <a href="react-hotel.html" class="linkedin-blue px-8 py-4 rounded-xl font-bold text-center inline-block w-max hover:brightness-110 transition shadow-lg shadow-blue-900/20">Launch Live Case Study</a>
+                    <a href="react-hotel.html" class="linkedin-blue px-8 py-4 rounded-xl font-bold w-max hover:brightness-110 shadow-lg shadow-blue-900/20">Launch Live Site</a>
                 </div>
-                <div class="bg-zinc-900 flex items-center justify-center p-12">
-                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800" class="rounded-xl shadow-2xl opacity-60">
+                <div class="bg-black flex items-center justify-center relative group">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
+                        <span class="px-6 py-2 border-2 border-white font-bold rounded-full">VIEW CASE STUDY</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-32 text-center">
-        <h2 class="text-5xl font-extrabold mb-8 tracking-tighter">Ready to <span class="text-[#0a66c2]">Hire?</span></h2>
-        <p class="text-gray-400 mb-12">Currently open for Software Engineering roles and technical collaborations.</p>
-        <div class="flex flex-col md:flex-row gap-4 justify-center items-center px-6">
-            <input type="text" id="v_name" placeholder="Your Name" class="glass-card px-8 py-4 outline-none focus:border-[#0a66c2] w-full md:w-64">
-            <button onclick="send()" class="linkedin-blue px-10 py-4 rounded-xl font-bold w-full md:w-auto">Contact via WhatsApp</button>
-        </div>
-    </section>
-
-    <footer class="py-12 border-t border-[#30363d] text-center text-[10px] text-gray-600 tracking-[0.5em] uppercase">
-        Satyam © 2026 / B.Tech / Dr. Angela Yu Certified / GFG Active
+    <footer class="py-20 border-t border-[#30363d] text-center">
+        <p class="text-[10px] text-gray-600 font-bold uppercase tracking-[0.5em]">Verified Software Engineer Satyam / Ayodhya, UP / © 2026</p>
     </footer>
 
     <script>
-        function send() {
-            const name = document.getElementById('v_name').value;
-            if(!name) return alert("Please enter your name!");
-            window.open(`https://wa.me/919999999999?text=Hi Satyam! I checked your B.Tech and Angela Yu certifications. I'm ${name}, let's talk!`);
+        function showCert(src) {
+            document.getElementById('modal').style.display = 'flex';
+            document.getElementById('modalImg').src = src;
         }
     </script>
 </body>
