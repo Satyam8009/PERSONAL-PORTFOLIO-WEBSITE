@@ -1,1 +1,84 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React MERN Project | Satyam</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #0f172a; color: white; margin: 0; padding: 20px; }
+        .app-container { display: flex; justify-content: center; align-items: center; min-height: 90vh; }
+        .hotel-card { background: #1e293b; padding: 30px; border-radius: 20px; width: 100%; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #334155; }
+        h2 { color: #38bdf8; margin-top: 0; }
+        .input-group { margin-bottom: 20px; text-align: left; }
+        label { display: block; margin-bottom: 8px; font-size: 14px; color: #94a3b8; }
+        select, input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; }
+        .price-display { background: rgba(56, 189, 248, 0.1); padding: 15px; border-radius: 10px; border: 1px solid #38bdf8; margin: 20px 0; text-align: center; }
+        .total-amt { font-size: 28px; font-weight: bold; color: #38bdf8; }
+        .book-btn { width: 100%; padding: 15px; background: #38bdf8; color: #0f172a; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .book-btn:hover { background: #7dd3fc; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function HotelApp() {
+            // React Hooks (State Management)
+            const [roomType, setRoomType] = React.useState(1500);
+            const [nights, setNights] = React.useState(1);
+            const [loading, setLoading] = React.useState(false);
+
+            const total = roomType * nights;
+
+            const handleBooking = () => {
+                setLoading(true);
+                setTimeout(() => {
+                    alert("MERN API Connected: Booking Saved for Satyam Heritage!");
+                    setLoading(false);
+                }, 1500);
+            };
+
+            return (
+                <div className="app-container">
+                    <div className="hotel-card">
+                        <h2>🏨 React Booking</h2>
+                        <p style={{color: '#94a3b8', fontSize: '13px'}}>Powered by React Functional Components</p>
+                        
+                        <div className="input-group">
+                            <label>Room Category</label>
+                            <select value={roomType} onChange={(e) => setRoomType(Number(e.target.value))}>
+                                <option value="1500">Standard (₹1,500)</option>
+                                <option value="3500">Deluxe (₹3,500)</option>
+                                <option value="7000">VIP Suite (₹7,000)</option>
+                            </select>
+                        </div>
+
+                        <div className="input-group">
+                            <label>Total Nights</label>
+                            <input type="number" min="1" value={nights} onChange={(e) => setNights(e.target.value)} />
+                        </div>
+
+                        <div className="price-display">
+                            <div style={{fontSize: '12px'}}>Final Price to Pay</div>
+                            <div className="total-amt">₹{total.toLocaleString()}</div>
+                        </div>
+
+                        <button className="book-btn" onClick={handleBooking}>
+                            {loading ? "Syncing with Server..." : "CONFIRM BOOKING"}
+                        </button>
+                    </div>
+                </div>
+            );
+        }
+
+        // React ko Render karna
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<HotelApp />);
+    </script>
+</body>
+</html>
