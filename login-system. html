@@ -6,42 +6,83 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-        body { margin: 0; background: #0f172a; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
-        .box { background: #1e293b; padding: 40px; border-radius: 20px; text-align: center; width: 300px; border: 1px solid #334155; }
-        .in { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; box-sizing: border-box; }
-        .btn-l { width: 100%; padding: 10px; background: #22c55e; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
-        .btn-o { width: 100%; padding: 10px; background: #ef4444; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        body { margin: 0; background: #0f172a; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .box { background: #1e293b; padding: 40px; border-radius: 20px; text-align: center; width: 320px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .in { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; outline: none; }
+        .in:focus { border-color: #38bdf8; }
+        .btn-primary { width: 100%; padding: 12px; background: #38bdf8; color: #0f172a; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        .btn-logout { width: 100%; padding: 10px; background: #ef4444; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        .toggle-link { color: #38bdf8; cursor: pointer; font-size: 13px; margin-top: 15px; display: block; text-decoration: underline; }
+        .success-msg { color: #22c55e; font-weight: bold; margin-bottom: 15px; }
     </style>
 </head>
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        function Auth() {
-            const [isLogged, setIsLogged] = React.useState(false);
+        function AuthSystem() {
+            const [view, setView] = React.useState('login'); // 'login', 'signup', 'dashboard'
+            const [loading, setLoading] = React.useState(false);
 
-            if (isLogged) {
+            const handleProcess = (e, nextView) => {
+                e.preventDefault();
+                setLoading(true);
+                setTimeout(() => {
+                    setView(nextView);
+                    setLoading(false);
+                }, 1000);
+            };
+
+            // 1. DASHBOARD VIEW
+            if (view === 'dashboard') {
                 return (
                     <div className="box">
-                        <h2 style={{color: '#22c55e'}}>Logged In! ✅</h2>
-                        <p>User: Satyam Admin</p>
-                        <button className="btn-o" onClick={() => setIsLogged(false)}>LOGOUT</button>
+                        <div style={{fontSize: '50px'}}>🎊</div>
+                        <h2 className="success-msg">Access Granted!</h2>
+                        <p style={{fontSize: '14px', color: '#94a3b8'}}>Welcome to your secure MERN dashboard, Satyam.</p>
+                        <button className="btn-logout" onClick={() => setView('login')}>LOGOUT</button>
                     </div>
                 );
             }
 
+            // 2. SIGN UP VIEW
+            if (view === 'signup') {
+                return (
+                    <div className="box">
+                        <h2 style={{color: '#38bdf8'}}>Create Account</h2>
+                        <p style={{fontSize: '13px', color: '#94a3b8'}}>Join the secure platform</p>
+                        <form onSubmit={(e) => handleProcess(e, 'dashboard')}>
+                            <input className="in" type="text" placeholder="Full Name" required />
+                            <input className="in" type="email" placeholder="Email Address" required />
+                            <input className="in" type="password" placeholder="Create Password" required />
+                            <button className="btn-primary" type="submit">
+                                {loading ? "Creating Account..." : "SIGN UP"}
+                            </button>
+                        </form>
+                        <span className="toggle-link" onClick={() => setView('login')}>Already have an account? Login</span>
+                    </div>
+                );
+            }
+
+            // 3. LOGIN VIEW
             return (
                 <div className="box">
-                    <h2>Secure Login</h2>
-                    <form onSubmit={(e) => { e.preventDefault(); setIsLogged(true); }}>
+                    <h2 style={{color: '#38bdf8'}}>Welcome Back</h2>
+                    <p style={{fontSize: '13px', color: '#94a3b8'}}>Login to your account</p>
+                    <form onSubmit={(e) => handleProcess(e, 'dashboard')}>
                         <input className="in" type="email" placeholder="Email" required />
                         <input className="in" type="password" placeholder="Password" required />
-                        <button className="btn-l" type="submit">LOGIN</button>
+                        <button className="btn-primary" type="submit">
+                            {loading ? "Verifying..." : "LOGIN"}
+                        </button>
                     </form>
+                    <span className="toggle-link" onClick={() => setView('signup')}>New here? Create an account</span>
+                    <p style={{fontSize: '11px', color: '#475569', marginTop: '20px', cursor: 'pointer'}} onClick={() => window.location.href='index.html'}>← Back to Portfolio</p>
                 </div>
             );
         }
+
         const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<Auth />);
+        root.render(<AuthSystem />);
     </script>
 </body>
 </html>
