@@ -112,3 +112,20 @@
                                     <span style={{fontSize: '24px'}}>💳</span>
                                     <span style={{marginLeft: '15px', fontWeight: '600'}}>Debit / Credit Card</span>
                                 </div>
+                                <div className="pay-option" onClick={handlePay}>
+                                    <span style={{fontSize: '24px'}}>🏦</span>
+                                    <span style={{marginLeft: '15px', fontWeight: '600'}}>Net Banking</span>
+                                </div>
+                                <button style={{background: 'none', border: 'none', color: '#ef4444', width: '100%', cursor: 'pointer', marginTop: '15px'}} onClick={() => setStep('booking')}>← Change Booking</button>
+                            </>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<HotelApp />);
+    </script>
+</body>
+</html>
