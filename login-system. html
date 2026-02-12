@@ -1,67 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure React Auth</title>
+    <title>Secure Auth | Satyam</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-        body { font-family: sans-serif; background: #0f172a; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .card { background: #1e293b; padding: 40px; border-radius: 20px; width: 320px; text-align: center; border: 2px solid #334155; }
-        .input-box { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; }
-        .login-btn { width: 100%; padding: 12px; background: #22c55e; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; }
-        .logout-btn { width: 100%; padding: 12px; background: #ef4444; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 20px; }
-        .dashboard { animation: fadeIn 0.3s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        body { margin: 0; background: #0f172a; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .box { background: #1e293b; padding: 40px; border-radius: 20px; text-align: center; width: 300px; border: 1px solid #334155; }
+        .in { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; box-sizing: border-box; }
+        .btn-l { width: 100%; padding: 10px; background: #22c55e; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        .btn-o { width: 100%; padding: 10px; background: #ef4444; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 20px; }
     </style>
 </head>
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        function App() {
-            const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-            const [loading, setLoading] = React.useState(false);
+        function Auth() {
+            const [isLogged, setIsLogged] = React.useState(false);
 
-            const handleAction = (status) => {
-                setLoading(true);
-                setTimeout(() => {
-                    setIsLoggedIn(status);
-                    setLoading(false);
-                }, 800);
-            };
-
-            if (isLoggedIn) {
+            if (isLogged) {
                 return (
-                    <div className="card dashboard">
-                        <h1 style={{color: '#22c55e'}}>✅ Logged In</h1>
-                        <p>Welcome to Secure Dashboard</p>
-                        <div style={{background: '#0f172a', padding: '10px', borderRadius: '8px', fontSize: '12px', color: '#38bdf8'}}>
-                            Status: Session Active
-                        </div>
-                        <button className="logout-btn" onClick={() => handleAction(false)}>
-                            {loading ? "Logging out..." : "LOGOUT NOW"}
-                        </button>
+                    <div className="box">
+                        <h2 style={{color: '#22c55e'}}>Logged In! ✅</h2>
+                        <p>User: Satyam Admin</p>
+                        <button className="btn-o" onClick={() => setIsLogged(false)}>LOGOUT</button>
                     </div>
                 );
             }
 
             return (
-                <div className="card">
-                    <h1 style={{color: '#38bdf8'}}>Secure Login</h1>
-                    <form onSubmit={(e) => { e.preventDefault(); handleAction(true); }}>
-                        <input type="email" placeholder="Email" className="input-box" required />
-                        <input type="password" placeholder="Password" className="input-box" required />
-                        <button type="submit" className="login-btn">
-                            {loading ? "Verifying..." : "LOGIN"}
-                        </button>
+                <div className="box">
+                    <h2>Secure Login</h2>
+                    <form onSubmit={(e) => { e.preventDefault(); setIsLogged(true); }}>
+                        <input className="in" type="email" placeholder="Email" required />
+                        <input className="in" type="password" placeholder="Password" required />
+                        <button className="btn-l" type="submit">LOGIN</button>
                     </form>
                 </div>
             );
         }
         const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+        root.render(<Auth />);
     </script>
 </body>
 </html>
