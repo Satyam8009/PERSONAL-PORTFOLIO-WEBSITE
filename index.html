@@ -3,136 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Full Stack Software Engineer</title>
+    <title>Satyam | Professional Software Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #010409;
             color: #e6edf3;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             scroll-behavior: smooth;
         }
-        .linkedin-gradient {
-            background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
-        }
+        .linkedin-blue { background: #0a66c2; }
         .glass-card {
-            background: rgba(22, 27, 34, 0.8);
+            background: rgba(22, 27, 34, 0.7);
             border: 1px solid #30363d;
-            border-radius: 16px;
-            transition: all 0.3s ease;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .glass-card:hover {
             border-color: #0a66c2;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(10, 102, 194, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
-        .section-tag {
-            color: #58a6ff;
-            font-weight: 700;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
+        .cert-badge {
+            font-size: 10px;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 100px;
             text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero-mesh {
+            background: radial-gradient(circle at 50% 50%, #0a2339 0%, #010409 100%);
         }
     </style>
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-[#010409]/80 backdrop-blur-md border-b border-[#30363d]">
-        <div class="text-lg font-bold tracking-tight">SATYAM<span class="text-[#0a66c2]">_DEV</span></div>
-        <div class="flex gap-6 text-xs font-semibold tracking-wide">
-            <a href="#about" class="text-gray-400 hover:text-white">Credentials</a>
-            <a href="#projects" class="text-gray-400 hover:text-white">Work</a>
-            <a href="#contact" class="px-4 py-2 linkedin-gradient rounded-md">Hire Me</a>
+    <nav class="fixed top-0 w-full z-50 px-8 py-4 flex justify-between items-center bg-[#010409]/80 backdrop-blur-xl border-b border-[#30363d]">
+        <div class="text-xl font-extrabold tracking-tighter">SATYAM<span class="text-[#0a66c2]">.PRO</span></div>
+        <div class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
+            <a href="#about" class="hover:text-white transition">About</a>
+            <a href="#credentials" class="hover:text-white transition">Certifications</a>
+            <a href="#projects" class="hover:text-white transition">Projects</a>
+            <a href="#contact" class="hover:text-white transition">Contact</a>
         </div>
     </nav>
 
-    <section class="min-h-screen flex flex-col justify-center px-6 md:px-24">
-        <div class="max-w-4xl">
-            <span class="section-tag mb-4 block">Software Engineer & B.Tech Graduate</span>
-            <h1 class="text-5xl md:text-8xl font-extrabold leading-tight mb-8">
-                Turning Code Into <br> <span class="text-[#58a6ff]">Professional Solutions.</span>
-            </h1>
-            <p class="text-gray-400 text-lg md:text-2xl max-w-2xl mb-12 leading-relaxed">
-                Expertise in Full-Stack Development with a solid engineering foundation. 
-                Certified by <span class="text-white border-b-2 border-[#0a66c2]">Dr. Angela Yu</span> and active in <span class="text-white border-b-2 border-green-500">GeeksforGeeks</span>.
-            </p>
-            <div class="flex flex-wrap gap-4">
-                <a href="#projects" class="linkedin-gradient px-8 py-4 rounded-lg font-bold text-white shadow-lg shadow-blue-900/20">View Portfolio</a>
-                <a href="https://www.linkedin.com/me" target="_blank" class="border border-[#30363d] px-8 py-4 rounded-lg font-bold hover:bg-white/5 transition">LinkedIn Profile ↗</a>
-            </div>
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 hero-mesh">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#58a6ff] text-[10px] font-bold mb-8 tracking-widest uppercase">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            B.Tech Graduate • Verified Full Stack Engineer
         </div>
-    </section>
-
-    <section id="about" class="py-24 px-6 md:px-24">
-        <h2 class="text-3xl font-bold mb-12 flex items-center gap-4">
-            Professional Experience & Education <span class="h-[1px] flex-grow bg-[#30363d]"></span>
-        </h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="glass-card p-8">
-                <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mb-6">🎓</div>
-                <h3 class="text-xl font-bold mb-2">B.Tech Degree</h3>
-                <p class="text-gray-400 text-sm mb-4 italic text-xs leading-relaxed">Bachelor of Technology in Computer Science.</p>
-                <span class="text-[#58a6ff] text-[10px] font-bold uppercase tracking-widest">Completed ✅</span>
-            </div>
-
-            <div class="glass-card p-8">
-                <div class="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center mb-6">🎖️</div>
-                <h3 class="text-xl font-bold mb-2">Web Bootcamp</h3>
-                <p class="text-gray-400 text-sm mb-4">Certified by Dr. Angela Yu. Expertise in MERN Stack & UI/UX.</p>
-                <a href="https://www.udemy.com/certificate/YOUR_ID" class="text-[#58a6ff] text-[10px] font-bold uppercase tracking-widest hover:underline">Verify Credential ↗</a>
-            </div>
-
-            <div class="glass-card p-8">
-                <div class="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center mb-6">💻</div>
-                <h3 class="text-xl font-bold mb-2">GFG Participation</h3>
-                <p class="text-gray-400 text-sm mb-4">Focused on Problem Solving & Data Structures Achievement.</p>
-                <a href="#" class="text-green-400 text-[10px] font-bold uppercase tracking-widest hover:underline">Code Profile ↗</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-24 px-6 md:px-24">
-        <div class="glass-card overflow-hidden">
-            <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class="p-12 flex flex-col justify-center bg-[#0d1117]">
-                    <span class="section-tag mb-4">Major Application</span>
-                    <h3 class="text-4xl font-extrabold mb-6">Ayodhya HeritageStay</h3>
-                    <p class="text-gray-400 mb-10 leading-relaxed">
-                        A high-end hotel reservation ecosystem featuring real-time room booking, dynamic pricing, and automated WhatsApp communication. Built using advanced React patterns.
-                    </p>
-                    <a href="react-hotel.html" class="inline-block text-white font-bold border-b-2 border-[#0a66c2] pb-1 w-max hover:text-[#58a6ff] transition">Launch Case Study →</a>
-                </div>
-                <div class="bg-[#161b22] flex items-center justify-center p-8 relative overflow-hidden group">
-                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800" class="rounded-xl shadow-2xl group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-[#0a66c2]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-32 px-6 text-center">
-        <div class="max-w-2xl mx-auto">
-            <h2 class="text-4xl font-bold mb-6">Ready to Build the Future?</h2>
-            <p class="text-gray-400 mb-12">I'm currently looking for new opportunities and challenges. Let's connect and discuss your next project.</p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                <input type="text" id="visitor" placeholder="Your Name" class="bg-[#0d1117] border border-[#30363d] px-6 py-4 rounded-lg focus:border-[#0a66c2] outline-none w-full md:w-64">
-                <button onclick="send()" class="linkedin-gradient text-white px-10 py-4 rounded-lg font-bold w-full md:w-auto">Send Direct Message</button>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-12 border-t border-[#30363d] text-center text-gray-500 text-[10px] tracking-[0.2em] uppercase">
-        Satyam © 2026 / B.Tech Graduate / Certified Software Engineer
-    </footer>
-
-    <script>
-        function send() {
-            const name = document.getElementById('visitor').value;
-            if(!name) return alert("Please enter your name!");
-            window.open(`https://wa.me/919999999999?text=Hi Satyam! I'm ${name}. Saw your professional engineer portfolio and would love to connect regarding an opportunity.`);
-        }
-    </script>
-</body>
-</html>
+        <h1 class="text-5xl md:text-8xl font-extrabold leading-[0.9] mb-8 tracking-tighter">
+            Engineering <br> <span class="text-[#0a66c2]">Digital Value.</span>
+        </h1>
+        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-12 font-light leading-relaxed">
+            Highly skilled B.Tech Graduate. Professionally certified by <span class="text
