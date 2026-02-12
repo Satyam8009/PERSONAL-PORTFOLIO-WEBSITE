@@ -267,4 +267,31 @@
         input.value = "";
     }
 </script>
+<section id="contact" style="padding: 40px 20px; background: #1e293b; border-radius: 20px; margin: 40px 0; border: 1px solid #334155; text-align: center;">
+    <h2 style="color: #38bdf8; margin-bottom: 10px;">Get In Touch</h2>
+    <p style="color: #94a3b8; font-size: 14px; margin-bottom: 25px;">Let's discuss your next big project!</p>
+    
+    <div style="max-width: 400px; margin: 0 auto;">
+        <input type="text" id="wa-name" placeholder="Your Name" style="width: 100%; padding: 12px; margin-bottom: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white;">
+        
+        <textarea id="wa-msg" placeholder="Tell me about your project..." rows="3" style="width: 100%; padding: 12px; margin-bottom: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; resize: none;"></textarea>
+        
+        <button onclick="sendWA()" style="width: 100%; padding: 12px; background: #38bdf8; color: #0f172a; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s;">
+            Send WhatsApp Message
+        </button>
+    </div>
+</section>
+
+<script>
+    function sendWA() {
+        const name = document.getElementById('wa-name').value;
+        const msg = document.getElementById('wa-msg').value;
+        if(!name || !msg) return alert("Please fill name and message!");
+        
+        // Apna number yahan 91 ke saath likhein
+        const myNum = "918009484452"; 
+        const text = encodeURIComponent(`*Portfolio Inquiry*\n*Name:* ${name}\n*Message:* ${msg}`);
+        window.open(`https://wa.me/${myNum}?text=${text}`, '_blank');
+    }
+</script>
 </html>
