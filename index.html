@@ -3,152 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Portfolio</title>
+    <title>Satyam | Graduate Software Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        * { cursor: default; }
-        body {
-            background: #000;
-            color: #fff;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-        }
-        .hero-gradient {
-            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #000 70%);
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.5s ease;
-        }
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: #38bdf8;
-            transform: translateY(-8px);
-        }
-        .text-glow {
-            text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
-        }
-        .animated-bar {
-            width: 0;
-            height: 2px;
-            background: #38bdf8;
-            transition: width 1s ease-in-out;
-        }
-        section:hover .animated-bar {
-            width: 100px;
-        }
+        :root { --accent: #38bdf8; --bg: #020617; }
+        body { background: var(--bg); color: #fff; font-family: 'Outfit', sans-serif; scroll-behavior: smooth; }
+        .font-heading { font-family: 'Space Grotesk', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; }
+        .cert-card { transition: 0.3s; border-left: 4px solid transparent; }
+        .cert-card:hover { border-left-color: var(--accent); background: rgba(56, 189, 248, 0.05); transform: translateX(10px); }
+        .grad-text { background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body>
+<body class="selection:bg-sky-500/30">
 
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-sky-500/10 blur-[120px] pointer-events-none"></div>
-
-    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center backdrop-blur-md border-b border-white/5">
-        <div class="text-xl font-bold tracking-tighter">SATYAM<span class="text-sky-400">.</span></div>
-        <div class="flex gap-8 text-xs font-medium uppercase tracking-widest text-gray-400">
-            <a href="#about" class="hover:text-white transition">About</a>
-            <a href="#projects" class="hover:text-white transition">Projects</a>
-            <a href="#contact" class="hover:text-white transition">Contact</a>
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center backdrop-blur-xl border-b border-white/5">
+        <div class="text-xl font-bold font-heading tracking-tight">SATYAM<span class="text-sky-400">.ENGINEER</span></div>
+        <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+            <a href="#about" class="hover:text-sky-400 transition">Credentials</a>
+            <a href="#projects" class="hover:text-sky-400 transition">Projects</a>
+            <a href="#contact" class="hover:text-sky-400 transition">Contact</a>
         </div>
     </nav>
 
-    <section class="h-screen flex flex-col justify-center items-center px-6 hero-gradient">
-        <div class="mb-6 px-4 py-1 border border-sky-500/30 rounded-full text-[10px] font-bold text-sky-400 tracking-[0.2em] uppercase">
-            Product Developer & Student
+    <section class="min-h-screen flex flex-col justify-center items-center px-6 text-center pt-20">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-bold mb-8">
+            <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span></span>
+            B.TECH GRADUATE & CERTIFIED DEVELOPER
         </div>
-        <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter text-center mb-6 leading-none">
-            Digital <span class="text-glow">Experience</span> Designer<span class="text-sky-500">.</span>
+        <h1 class="text-5xl md:text-8xl font-heading font-bold mb-6 tracking-tighter">
+            Building Digital <br> <span class="grad-text">Infrastructure.</span>
         </h1>
-        <p class="text-gray-500 text-lg md:text-xl max-w-xl text-center leading-relaxed">
-            I craft minimalist, high-performance web applications. Based in Ayodhya, building the next generation of web.
+        <p class="text-gray-400 max-w-2xl text-lg md:text-xl font-light">
+            B.Tech in Computer Science with a specialization in Full-Stack Development. 
+            Trained by industry leaders like <span class="text-white">Dr. Angela Yu</span>.
         </p>
-        <div class="mt-12">
-            <a href="#projects" class="bg-white text-black px-10 py-4 rounded-full font-bold hover:bg-sky-400 transition-all duration-300">Explore Projects</a>
+        <div class="mt-12 flex gap-4">
+            <a href="#projects" class="bg-white text-black px-10 py-4 rounded-xl font-bold hover:bg-sky-400 transition-all">View My Stack</a>
+            <a href="#contact" class="glass px-10 py-4 rounded-xl font-bold hover:bg-white/5 transition-all">Work With Me</a>
         </div>
     </section>
 
-    <div class="max-w-5xl mx-auto px-6">
-        
-        <section id="about" class="py-32">
-            <div class="animated-bar mb-4"></div>
-            <h2 class="text-4xl font-bold mb-12">Personal <span class="text-gray-500">Profile</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="glass-card p-10 rounded-3xl">
-                    <h3 class="text-sky-400 font-bold mb-4 uppercase tracking-widest text-xs">Biography</h3>
-                    <p class="text-gray-400 leading-relaxed">
-                        Self-taught developer with a vision for clean code. Currently pursuing <span class="text-white">B.Tech in Computer Science</span>. I specialize in React and modern UI/UX principles.
+    <section id="about" class="max-w-6xl mx-auto px-6 py-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="text-4xl font-heading font-bold mb-8">Academic & <br> Professional Background</h2>
+                <p class="text-gray-400 mb-8 leading-relaxed">
+                    My engineering degree provided the theoretical foundation, while specialized training under Dr. Angela Yu and various professional bootcamps sharpened my practical implementation skills.
+                </p>
+                <div class="flex gap-4">
+                    <div class="glass p-6 text-center flex-1">
+                        <div class="text-3xl font-bold text-sky-400">B.Tech</div>
+                        <div class="text-xs text-gray-500 uppercase mt-2">Computer Science</div>
+                    </div>
+                    <div class="glass p-6 text-center flex-1">
+                        <div class="text-3xl font-bold text-indigo-400">100+</div>
+                        <div class="text-xs text-gray-500 uppercase mt-2">Tutorial Hours</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="cert-card p-6 glass">
+                    <h4 class="text-sky-400 text-xs font-bold uppercase mb-1">Professional Certification</h4>
+                    <h3 class="text-xl font-bold">The Complete Web Dev Bootcamp</h3>
+                    <p class="text-gray-500 text-sm mt-2">Verified by Dr. Angela Yu (Udemy/App Brewery)</p>
+                </div>
+                <div class="cert-card p-6 glass">
+                    <h4 class="text-indigo-400 text-xs font-bold uppercase mb-1">University Degree</h4>
+                    <h3 class="text-xl font-bold">Bachelor of Technology (CS)</h3>
+                    <p class="text-gray-500 text-sm mt-2">Completed Engineering Degree with core focus on DSA & Web.</p>
+                </div>
+                <div class="cert-card p-6 glass">
+                    <h4 class="text-emerald-400 text-xs font-bold uppercase mb-1">Tech Stack Expertise</h4>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 text-gray-300">React.js</span>
+                        <span class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 text-gray-300">Node.js</span>
+                        <span class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 text-gray-300">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="max-w-6xl mx-auto px-6 py-20">
+        <h2 class="text-3xl font-heading font-bold mb-12 flex items-center gap-4">
+            <span class="h-[1px] w-12 bg-sky-500"></span> Main Application
+        </h2>
+        <div class="glass overflow-hidden relative group">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="p-10 md:p-16">
+                    <h3 class="text-4xl font-bold mb-6">Ayodhya Heritage Stay</h3>
+                    <p class="text-gray-400 mb-8 text-lg">
+                        Developed a production-ready hotel reservation engine with dynamic room management and integrated WhatsApp notification system.
                     </p>
+                    <a href="react-hotel.html" class="inline-block bg-sky-500 text-black px-8 py-4 rounded-xl font-bold transition-transform group-hover:scale-105">Execute Live Demo</a>
                 </div>
-                <div class="glass-card p-10 rounded-3xl">
-                    <h3 class="text-sky-400 font-bold mb-4 uppercase tracking-widest text-xs">Focus Area</h3>
-                    <ul class="text-gray-400 space-y-3">
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-sky-500 rounded-full"></span> Full Stack Web</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-sky-500 rounded-full"></span> App Optimization</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-sky-500 rounded-full"></span> UI Micro-interactions</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-20 border-y border-white/5">
-            <div class="flex flex-wrap justify-center gap-x-12 gap-y-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
-                <span class="text-2xl font-bold">REACT</span>
-                <span class="text-2xl font-bold">TAILWIND</span>
-                <span class="text-2xl font-bold">NODE.JS</span>
-                <span class="text-2xl font-bold">JS(ES6)</span>
-                <span class="text-2xl font-bold">VERCEL</span>
-                <span class="text-2xl font-bold">GIT</span>
-            </div>
-        </section>
-
-        <section id="projects" class="py-32">
-            <div class="animated-bar mb-4"></div>
-            <h2 class="text-4xl font-bold mb-12">Featured <span class="text-gray-500">Work</span></h2>
-            
-            <div class="glass-card rounded-[40px] overflow-hidden">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div class="p-12 flex flex-col justify-center">
-                        <span class="text-sky-400 text-xs font-bold mb-4 tracking-widest uppercase">Latest Release</span>
-                        <h3 class="text-4xl font-bold mb-6">Ayodhya HeritageStay</h3>
-                        <p class="text-gray-400 mb-10 leading-relaxed">
-                            A premium hotel booking application featuring dynamic pricing, secure authentication, and WhatsApp automation.
-                        </p>
-                        <a href="react-hotel.html" class="flex items-center gap-4 text-white font-bold group">
-                            VIEW PROJECT <span class="group-hover:translate-x-2 transition-transform text-sky-400">→</span>
-                        </a>
-                    </div>
-                    <div class="bg-gradient-to-br from-sky-500/10 to-transparent p-12">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600" class="rounded-2xl shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-500">
+                <div class="bg-gradient-to-br from-sky-500/20 to-indigo-500/10 p-12 flex items-center justify-center">
+                    <div class="glass p-4 rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600" class="rounded-xl grayscale hover:grayscale-0 transition-all duration-700">
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="contact" class="py-32">
-            <div class="glass-card p-16 rounded-[40px] text-center">
-                <h2 class="text-5xl font-bold mb-8">Let's <span class="text-sky-400">Talk.</span></h2>
-                <p class="text-gray-500 mb-12 max-w-sm mx-auto">Have a project or just want to chat? Send me a message directly.</p>
-                <div class="flex flex-col md:flex-row gap-4 justify-center">
-                    <input type="text" id="wa-name" placeholder="Name" class="bg-white/5 border border-white/10 px-8 py-4 rounded-full outline-none focus:border-sky-400 transition-all">
-                    <button onclick="send()" class="bg-sky-500 text-black px-12 py-4 rounded-full font-bold hover:shadow-[0_0_30px_rgba(56,189,248,0.4)] transition">Message</button>
-                </div>
+    <section id="contact" class="max-w-4xl mx-auto px-6 py-32">
+        <div class="glass p-12 text-center relative overflow-hidden">
+            <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-sky-500/10 blur-[100px]"></div>
+            <h2 class="text-4xl font-heading font-bold mb-6">Start a Conversation</h2>
+            <p class="text-gray-500 mb-10">I am currently open to software engineering roles and freelance collaborations.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <input type="text" id="c-name" placeholder="Full Name" class="bg-white/5 border border-white/10 px-8 py-4 rounded-xl outline-none focus:border-sky-400 w-full md:w-64">
+                <button onclick="send()" class="bg-white text-black px-12 py-4 rounded-xl font-bold hover:bg-sky-500 transition-all">Send WhatsApp</button>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </div>
-
-    <footer class="py-20 text-center border-t border-white/5 text-[10px] text-gray-600 tracking-widest uppercase">
-        Designed by Satyam &copy; 2026 / Ayodhya Heritage Stay Project
+    <footer class="py-12 text-center text-gray-600 text-[10px] tracking-[0.3em] uppercase">
+        © 2026 Engineer Satyam / Ayodhya UP / Built with Industry Standards
     </footer>
 
     <script>
         function send() {
-            const name = document.getElementById('wa-name').value;
-            if(!name) return alert("Enter Name");
-            window.open(`https://wa.me/919999999999?text=Hi Satyam! This is ${name}. Loved your portfolio.`);
+            const n = document.getElementById('c-name').value;
+            if(!n) return alert("Bhai, name?");
+            window.open(`https://wa.me/919999999999?text=Hi Satyam, I'm ${n}. Interested in your profile.`);
         }
     </script>
 </body>
