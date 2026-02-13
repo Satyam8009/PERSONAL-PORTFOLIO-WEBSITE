@@ -3,68 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SATYAM.DEV | Advanced Suite</title>
+    <title>Satyam.Dev | Advanced Portfolio</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap');
-        :root { --accent: #38bdf8; --bg: #030712; }
-        body { background-color: var(--bg); color: #f3f4f6; font-family: 'Outfit', sans-serif; scroll-behavior: smooth; }
-        .glass { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); }
-        .bento-card { border-radius: 2rem; padding: 2rem; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .bento-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(56, 189, 248, 0.1); }
-        .hidden { display: none !important; }
-        .active-link { color: var(--accent); border-bottom: 2px solid var(--accent); }
-        
-        /* Animations */
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-up { animation: slideUp 0.6s ease-out forwards; }
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&display=swap');
+        body { background-color: #020617; font-family: 'Outfit', sans-serif; color: white; }
+        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); }
+        .bento { border-radius: 1.5rem; padding: 1.5rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body>
+    <div id="root"></div>
 
-    <div id="gatekeeper" class="min-h-screen flex items-center justify-center p-6 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-900/20 via-slate-900 to-black">
-        <div class="glass p-10 rounded-[3rem] w-full max-w-md shadow-2xl animate-up">
-            <div class="text-center mb-10">
-                <div class="h-20 w-20 bg-sky-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-sky-500/20">
-                    <i class="fas fa-fingerprint text-sky-500 text-3xl"></i>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // --- 1. LOGIN COMPONENT ---
+        const Login = ({ onLogin }) => {
+            const [pass, setPass] = useState('');
+            return (
+                <div className="min-h-screen flex items-center justify-center p-6">
+                    <div className="glass p-10 rounded-[2.5rem] w-full max-w-md text-center shadow-2xl">
+                        <div className="h-20 w-20 bg-sky-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i className="fas fa-lock text-sky-400 text-3xl"></i>
+                        </div>
+                        <h2 className="text-3xl font-black mb-8">Satyam<span className="text-sky-400">.Dev</span></h2>
+                        <input 
+                            type="password" 
+                            placeholder="Key (1234)" 
+                            className="w-full bg-slate-900 border border-slate-800 p-4 rounded-2xl mb-4 text-center outline-none focus:border-sky-500"
+                            onChange={(e) => setPass(e.target.value)}
+                        />
+                        <button 
+                            onClick={() => pass === "1234" ? onLogin() : alert("Wrong Key!")}
+                            className="w-full bg-sky-500 text-black font-black py-4 rounded-2xl shadow-lg shadow-sky-500/20"
+                        >INITIALIZE SESSION</button>
+                    </div>
                 </div>
-                <h2 class="text-4xl font-black tracking-tight">Access <span class="text-sky-400">Hub</span></h2>
-                <p class="text-slate-500 text-sm mt-2">Personal Secure Terminal</p>
-            </div>
-            <form onsubmit="app.login(event)" class="space-y-4">
-                <input type="password" id="entryPass" placeholder="Secret Key (1234)" required 
-                       class="w-full bg-black/40 border border-slate-800 p-5 rounded-2xl outline-none focus:border-sky-500 text-white transition-all">
-                <button type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-black py-5 rounded-2xl transition-all shadow-lg shadow-sky-500/20 uppercase tracking-widest">Initialise Session</button>
-            </form>
-        </div>
-    </div>
+            );
+        };
 
-    <div id="core-interface" class="hidden">
-        <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl">
-            <div class="glass px-8 py-4 rounded-full flex justify-between items-center shadow-2xl">
-                <h1 class="text-xl font-black text-sky-400 tracking-tighter">SATYAM<span class="text-white">.DEV</span></h1>
-                <div class="hidden md:flex gap-8 text-sm font-bold">
-                    <button onclick="app.navigate('home-view')" class="hover:text-sky-400 transition">HOME</button>
-                    <button onclick="app.navigate('hotel-view')" class="hover:text-sky-400 transition">HOTEL APP</button>
-                    <button onclick="app.navigate('resume-view')" class="hover:text-sky-400 transition">RESUME</button>
+        // --- 2. HOTEL PROJECT COMPONENT ---
+        const HotelApp = ({ onBack }) => {
+            const [step, setStep] = useState(1);
+            const [room, setRoom] = useState(1500);
+
+            return (
+                <div className="max-w-md mx-auto animate-pulse-once">
+                    <button onClick={onBack} className="text-slate-400 mb-6 flex items-center gap-2">
+                        <i className="fas fa-arrow-left"></i> Back to Home
+                    </button>
+                    <div className="glass p-8 rounded-[2.5rem] border-2 border-sky-500/20">
+                        {step === 1 ? (
+                            <div className="space-y-6">
+                                <h3 className="text-2xl font-black text-sky-400 text-center uppercase tracking-tighter">Ayodhya Heritage</h3>
+                                <select onChange={(e) => setRoom(e.target.value)} className="w-full bg-slate-900 p-4 rounded-2xl border border-slate-800">
+                                    <option value="1500">Standard Room - ₹1,500</option>
+                                    <option value="3500">Deluxe Room - ₹3,500</option>
+                                    <option value="7000">Heritage Suite - ₹7,000</option>
+                                </select>
+                                <div className="bg-sky-500/5 p-8 rounded-3xl text-center border border-sky-500/10">
+                                    <p className="text-xs text-slate-500 font-bold uppercase">Payable</p>
+                                    <h2 className="text-5xl font-black text-white">₹{room}</h2>
+                                </div>
+                                <button onClick={() => setStep(2)} className="w-full bg-sky-500 text-black font-black py-4 rounded-2xl">BOOK NOW</button>
+                            </div>
+                        ) : (
+                            <div className="text-center space-y-6 py-4">
+                                <i className="fas fa-check-circle text-7xl text-green-500"></i>
+                                <h2 className="text-3xl font-black">Confirmed!</h2>
+                                <p className="text-slate-400 text-sm">Room reserved at Ayodhya Heritage.</p>
+                                <button onClick={() => window.open('https://wa.me/91XXXXXXXXXX')} className="w-full bg-green-500 text-black font-black py-4 rounded-2xl">WHATSAPP RECEIPT</button>
+                                <button onClick={() => setStep(1)} className="text-sky-400 text-xs font-bold underline">Book Another</button>
+                            </div>
+                        )}
+                    </div>
                 </div>
-                <button onclick="app.logout()" class="text-red-500 text-lg hover:scale-110 transition"><i class="fas fa-sign-out-alt"></i></button>
-            </div>
-        </nav>
+            );
+        };
 
-        <main id="home-view" class="pt-32 pb-20 px-6 max-w-6xl mx-auto animate-up">
-            <div class="mb-16">
-                <h2 class="text-6xl md:text-8xl font-black tracking-tighter mb-4">MERN <span class="text-sky-400">ARCHITECT.</span></h2>
-                <p class="text-slate-400 text-xl max-w-2xl">Crafting high-logic web ecosystems for the next generation. Verified by industry leaders.</p>
-            </div>
+        // --- 3. MAIN DASHBOARD ---
+        const Dashboard = ({ onSwitch }) => (
+            <div className="max-w-5xl mx-auto space-y-12 pb-20">
+                <header className="pt-20 text-center">
+                    <h1 className="text-5xl md:text-7xl font-black mb-4">MERN <span className="text-sky-400">Expert.</span></h1>
+                    <p className="text-slate-400 text-lg">B.Tech Graduate | GFG Specialist | Clean UI Architect</p>
+                </header>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="md:col-span-2 bento-card glass">
-                    <span class="text-sky-400 text-xs font-black uppercase tracking-widest">Main Credentials</span>
-                    <h3 class="text-3xl font-bold mt-4">B.Tech Graduate <br> (Computer Science)</h3>
-                    <p class="text-slate-500 mt-4 text-sm leading-relaxed">Specialized in scalable system architecture and full-stack deployment patterns.</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-4">
+                    <div className="bento md:col-span-2">
+                        <h4 className="text-sky-400 font-bold text-xs uppercase mb-2">My Profile</h4>
+                        <h2 className="text-2xl font-black">Building Digital Solutions with High-End Logic.</h2>
+                    </div>
+                    <div onClick={onSwitch} className="bento bg-sky-500 text-black cursor-pointer shadow-xl shadow-sky-500/20">
+                        <i className="fas fa-hotel text-2xl mb-4"></i>
+                        <h2 className="font-black text-xl">LIVE PROJECT:<br/>Hotel App →</h2>
+                    </div>
+                    <div className="bento flex items-center justify-between">
+                        <span>B.Tech CS</span>
+                        <i className="fas fa-graduation-cap text-sky-400"></i>
+                    </div>
+                    <div className="bento flex items-center justify-between">
+                        <span>GFG Certified</span>
+                        <i className="fas fa-code text-sky-400"></i>
+                    </div>
+                    <div className="bento flex items-center justify-between">
+                        <span>React Stack</span>
+                        <i className="fab fa-react text-sky-400"></i>
+                    </div>
                 </div>
-                <div class="bento-card bg-sky-500 text-slate-950">
-                    <i class="fab fa-react text-4xl mb-4"></i>
-                    <h4 class="font-black text-xl
+            </div>
+        );
+
+        // --- MAIN APP ENGINE ---
+        const App = () => {
+            const [view, setView] = useState('login'); // login, home, hotel
+
+            useEffect(() => {
+                if(localStorage.getItem('auth') === 'true') setView('home');
+            }, []);
+
+            const handleLogin = () => {
+                localStorage.setItem('auth', 'true');
+                setView('home');
+            };
+
+            const handleLogout = () => {
+                localStorage.clear();
+                setView('login');
+            };
+
+            if (view === 'login') return <Login onLogin={handleLogin} />;
+
+            return (
+                <div className="min-h-screen">
+                    <nav className="fixed top-0 w-full glass z-50 px-6 py-4 flex justify-between items-center">
+                        <h1 className="font-black text-sky-400">SATYAM.DEV</h1>
+                        <button onClick={handleLogout} className="text-red-500 text-xs font-bold uppercase">Logout</button>
+                    </nav>
+                    <div className="pt-10">
+                        {view === 'home' ? <Dashboard onSwitch={() => setView('hotel')} /> : <HotelApp onBack={() => setView('home')} />}
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
