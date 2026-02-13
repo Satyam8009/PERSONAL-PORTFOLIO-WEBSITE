@@ -3,131 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Portfolio & Developer</title>
+    <title>Satyam | Full-Stack Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { background-color: #0f172a; color: white; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 2rem; }
-        .hero-gradient { background: radial-gradient(circle at top right, #38bdf822, transparent); }
-        .input-dark { background: #0f172a; border: 1px solid #334155; border-radius: 12px; color: white; }
+        body { background-color: #0f172a; color: white; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        .hidden { display: none; }
     </style>
 </head>
-<body class="hero-gradient">
+<body>
 
-    <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-[#0f172a]/80 backdrop-blur-md">
-        <h1 class="text-xl font-bold tracking-tighter text-sky-400">SATYAM<span class="text-white">.DEV</span></h1>
-        <div class="space-x-6 text-sm font-medium">
-            <a href="#vault" class="hover:text-sky-400 transition">Credentials</a>
-            <a href="#projects" class="hover:text-sky-400 transition">Projects</a>
-            <a href="https://wa.me/91XXXXXXXXXX" class="bg-sky-500 text-slate-900 px-4 py-2 rounded-full font-bold">Hire Me</a>
-        </div>
-    </nav>
-
-    <section class="pt-32 pb-20 px-6 text-center">
-        <h2 class="text-5xl md:text-7xl font-extrabold mb-4">I'm <span class="text-sky-400">SATYAM.</span></h2>
-        <p class="text-gray-400 text-lg max-w-xl mx-auto mb-8">
-            B.Tech Graduate & Full-Stack Developer. Verified by Dr. Angela Yu & GFG. Specialist in modern UI/UX and logic-driven apps.
-        </p>
-        <div class="flex justify-center gap-4">
-            <a href="#projects" class="border border-gray-600 px-8 py-3 rounded-full hover:bg-white hover:text-black transition font-semibold">View Work</a>
-        </div>
-    </section>
-
-    <section id="vault" class="py-20 px-6 max-w-5xl mx-auto">
-        <h3 class="text-2xl font-bold mb-10 text-center"><i class="fas fa-certificate text-sky-400 mr-2"></i>Verified Credentials</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="glass-card p-6 text-center">
-                <i class="fas fa-graduation-cap text-3xl mb-4 text-sky-400"></i>
-                <h4 class="font-bold">B.Tech Degree</h4>
-                <p class="text-xs text-gray-500 mt-2">Computer Science & Engineering</p>
+    <div id="auth-section" class="min-h-screen flex items-center justify-center p-6">
+        <div class="glass p-8 rounded-[2.5rem] w-full max-w-md shadow-2xl border-t-2 border-sky-500/50">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-sky-400">Welcome Back</h2>
+                <p class="text-gray-400 text-sm mt-2">Login to access Satyam's Portfolio</p>
             </div>
-            <div class="glass-card p-6 text-center">
-                <i class="fab fa-react text-3xl mb-4 text-sky-400"></i>
-                <h4 class="font-bold">MERN Stack</h4>
-                <p class="text-xs text-gray-500 mt-2">Certified by Dr. Angela Yu</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <i class="fas fa-code text-3xl mb-4 text-sky-400"></i>
-                <h4 class="font-bold">GFG Expert</h4>
-                <p class="text-xs text-gray-500 mt-2">Data Structures & Algorithms</p>
-            </div>
+            <form id="loginForm" class="space-y-5">
+                <input type="email" id="userEmail" placeholder="Email Address" required class="w-full bg-[#0f172a] border border-gray-700 p-4 rounded-2xl outline-none focus:border-sky-500">
+                <input type="password" id="userPass" placeholder="Password" required class="w-full bg-[#0f172a] border border-gray-700 p-4 rounded-2xl outline-none focus:border-sky-500">
+                <button type="submit" class="w-full bg-sky-500 text-slate-900 font-bold py-4 rounded-2xl hover:bg-sky-400 transition-all uppercase tracking-widest">Login</button>
+            </form>
         </div>
-    </section>
+    </div>
 
-    <section id="projects" class="py-20 px-6 bg-slate-900/50">
-        <div class="max-w-6xl mx-auto">
-            <h3 class="text-3xl font-bold mb-12 text-center">Featured Projects</h3>
+    <div id="main-content" class="hidden">
+        <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-[#0f172a]/90 backdrop-blur-md border-b border-white/5">
+            <h1 class="text-xl font-bold text-sky-400">SATYAM.DEV</h1>
+            <div class="flex items-center gap-6">
+                <button onclick="handleLogout()" class="text-red-400 text-sm font-bold border border-red-400/30 px-4 py-1 rounded-full hover:bg-red-400/10">Logout</button>
+            </div>
+        </nav>
+
+        <section class="pt-32 pb-10 px-6 text-center">
+            <h2 class="text-5xl font-extrabold mb-4">Hello, <span id="displayUserName" class="text-sky-400">User</span>!</h2>
+            <p class="text-gray-400 max-w-xl mx-auto">B.Tech Graduate | Verified by Dr. Angela Yu & GFG</p>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <span class="text-sky-400 font-bold uppercase tracking-widest text-sm">Full-Stack Application</span>
-                    <h2 class="text-4xl font-bold mt-2 mb-6">Ayodhya Heritage Stay</h2>
-                    <p class="text-gray-400 mb-6">
-                        Maine ye hotel booking interface banaya hai jisme real-time price calculation aur WhatsApp integration hai. Isme modern glassmorphism UI ka use kiya gaya hai.
-                    </p>
-                    <ul class="space-y-3 text-gray-300 mb-8">
-                        <li><i class="fas fa-check-circle text-sky-400 mr-2"></i> Dynamic Price Selection</li>
-                        <li><i class="fas fa-check-circle text-sky-400 mr-2"></i> Secure Client Login Mockup</li>
-                        <li><i class="fas fa-check-circle text-sky-400 mr-2"></i> Direct WhatsApp Booking</li>
-                    </ul>
+            <div id="vault" class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12 max-w-5xl mx-auto">
+                <div class="glass p-6 rounded-3xl">
+                    <i class="fas fa-graduation-cap text-sky-400 text-2xl mb-2"></i>
+                    <h4 class="font-bold">B.Tech Degree</h4>
                 </div>
+                <div class="glass p-6 rounded-3xl">
+                    <i class="fab fa-react text-sky-400 text-2xl mb-2"></i>
+                    <h4 class="font-bold">MERN Certified</h4>
+                </div>
+                <div class="glass p-6 rounded-3xl">
+                    <i class="fas fa-code text-sky-400 text-2xl mb-2"></i>
+                    <h4 class="font-bold">GFG Expert</h4>
+                </div>
+            </div>
+        </section>
 
-                <div class="glass-card p-8 border-sky-500/30 border-2 shadow-2xl shadow-sky-500/10">
-                    <div id="booking-logic">
-                        <div class="flex justify-between items-center mb-6">
-                            <h4 class="text-xl font-bold text-sky-400">🏨 Reserve Room</h4>
-                            <span class="bg-green-500/20 text-green-400 text-[10px] px-2 py-1 rounded-full font-bold">ONLINE</span>
+        <section id="projects" class="py-20 px-6 bg-slate-900/30">
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold mb-8 text-center uppercase tracking-widest text-sky-500">New Project: Ayodhya Heritage</h3>
+                <div class="glass p-8 rounded-[2rem] border-2 border-sky-500/20">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h4 class="text-2xl font-bold mb-4">Live Booking UI</h4>
+                            <p class="text-gray-400 text-sm mb-6">Ye interface maine modern users ke liye banaya hai jisme WhatsApp integration aur dynamic pricing hai.</p>
+                            <select id="room" onchange="updateUI()" class="w-full bg-[#0f172a] p-4 rounded-xl border border-gray-700 outline-none">
+                                <option value="1500">Standard Room - ₹1,500</option>
+                                <option value="2500">Deluxe Room - ₹2,500</option>
+                                <option value="5000">Royal Heritage - ₹5,000</option>
+                            </select>
                         </div>
-
-                        <div class="space-y-5">
-                            <div>
-                                <label class="text-xs text-gray-500 uppercase font-bold">Select Luxury Level</label>
-                                <select id="roomSelect" onchange="calculatePrice()" class="w-full input-dark p-4 mt-2 outline-none cursor-pointer focus:border-sky-500">
-                                    <option value="1500">Standard Room - ₹1,500</option>
-                                    <option value="2500">Deluxe Room - ₹2,500</option>
-                                    <option value="4500">Heritage Suite - ₹4,500</option>
-                                </select>
-                            </div>
-
-                            <div class="bg-sky-500/10 p-6 rounded-2xl border-l-4 border-sky-500">
-                                <p class="text-sm text-gray-400">Total Price (Inc. GST)</p>
-                                <h2 id="displayPrice" class="text-4xl font-black text-white mt-1">₹1,500</h2>
-                            </div>
-
-                            <button onclick="bookNow()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-900 font-black py-4 rounded-xl transition-all transform hover:scale-[1.02] active:scale-95">
-                                BOOK VIA WHATSAPP <i class="fab fa-whatsapp ml-2"></i>
-                            </button>
+                        <div class="bg-sky-500/10 p-8 rounded-3xl text-center border border-sky-500/30">
+                            <span class="text-xs text-sky-400 font-bold">TOTAL PRICE</span>
+                            <h2 id="priceTag" class="text-4xl font-black mt-2">₹1,500</h2>
+                            <button onclick="sendWhatsApp()" class="mt-6 w-full bg-green-500 py-3 rounded-xl font-bold hover:bg-green-600 transition">Book on WhatsApp</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <footer class="py-10 text-center border-t border-gray-800">
-        <p class="text-gray-500 text-sm">© 2026 Satyam. Made with ❤️ and Logic.</p>
-        <div class="mt-4 flex justify-center gap-6 text-xl">
-            <a href="#" class="hover:text-sky-400"><i class="fab fa-github"></i></a>
-            <a href="#" class="hover:text-sky-400"><i class="fab fa-linkedin"></i></a>
-            <a href="https://wa.me/91XXXXXXXXXX" class="text-green-500 hover:scale-110 transition"><i class="fab fa-whatsapp"></i></a>
-        </div>
-    </footer>
+        </section>
+    </div>
 
     <script>
-        // 1. Price Change Logic
-        function calculatePrice() {
-            const val = document.getElementById('roomSelect').value;
-            // Format number with commas
-            const formatted = new Intl.NumberFormat('en-IN').format(val);
-            document.getElementById('displayPrice').innerText = "₹" + formatted;
+        // --- AUTH LOGIC (Dimaag yahan laga hai) ---
+        const authSection = document.getElementById('auth-section');
+        const mainContent = document.getElementById('main-content');
+        const loginForm = document.getElementById('loginForm');
+
+        // 1. Check if user is already logged in
+        window.onload = () => {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if(isLoggedIn === 'true') {
+                showDashboard();
+            }
+        };
+
+        // 2. Handle Login
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('userEmail').value;
+            // Basic logic: Kuch bhi email daalo abhi ke liye
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userEmail', email);
+            showDashboard();
+        });
+
+        function showDashboard() {
+            authSection.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            const email = localStorage.getItem('userEmail');
+            document.getElementById('displayUserName').innerText = email.split('@')[0];
         }
 
-        // 2. WhatsApp Integration
-        function bookNow() {
-            const roomName = document.getElementById('roomSelect').options[document.getElementById('roomSelect').selectedIndex].text;
-            const price = document.getElementById('displayPrice').innerText;
-            const myNum = "91XXXXXXXXXX"; // <--- YAHAN APNA WHATSAPP NUMBER DAALEIN
+        // 3. Handle Logout
+        function handleLogout() {
+            localStorage.clear();
+            location.reload();
+        }
 
-            const msg = `Hi Satyam! I am interested in booking:%
+        // --- PROJECT LOGIC ---
+        function updateUI() {
+            const price = document.getElementById('room').value;
+            document.getElementById('priceTag').innerText = "₹" + parseInt(price).toLocaleString('en-IN');
+        }
+
+        function sendWhatsApp() {
+            const room = document.getElementById('room').options[document.getElementById('room').selectedIndex].text;
+            const price = document.getElementById('priceTag').innerText;
+            const msg = `Hi Satyam, I want to book: ${room} at ${price}`;
+            window.open(`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
