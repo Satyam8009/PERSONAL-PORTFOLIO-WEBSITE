@@ -3,199 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam Portfolio | Full-Stack</title>
+    <title>SATYAM.DEV | Advanced Suite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        body { background-color: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
-        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap');
+        :root { --accent: #38bdf8; --bg: #030712; }
+        body { background-color: var(--bg); color: #f3f4f6; font-family: 'Outfit', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); }
+        .bento-card { border-radius: 2rem; padding: 2rem; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .bento-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(56, 189, 248, 0.1); }
         .hidden { display: none !important; }
-        .custom-input { width: 100%; background: #020617; border: 1px solid #1e293b; padding: 1.25rem; border-radius: 1.25rem; color: white; outline: none; transition: 0.3s; }
-        .custom-input:focus { border-color: #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.2); }
-        .primary-btn { background: #38bdf8; color: #020617; font-weight: 800; padding: 1rem; border-radius: 1.25rem; transition: 0.3s; width: 100%; text-transform: uppercase; }
-        .primary-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3); }
-        .nav-link { font-size: 0.875rem; font-weight: 600; color: #94a3b8; transition: 0.3s; }
-        .nav-link:hover { color: #38bdf8; }
+        .active-link { color: var(--accent); border-bottom: 2px solid var(--accent); }
+        
+        /* Animations */
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-up { animation: slideUp 0.6s ease-out forwards; }
     </style>
 </head>
-<body>
+<body class="overflow-x-hidden">
 
-    <div id="auth-screen" class="min-h-screen flex items-center justify-center p-6 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-950 to-black">
-        <div class="glass p-10 rounded-[2.5rem] w-full max-w-md shadow-2xl border-t border-white/10 text-center">
-            <div class="h-16 w-16 bg-sky-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-sky-500/20">
-                <i class="fas fa-user-shield text-sky-500 text-2xl"></i>
+    <div id="gatekeeper" class="min-h-screen flex items-center justify-center p-6 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-900/20 via-slate-900 to-black">
+        <div class="glass p-10 rounded-[3rem] w-full max-w-md shadow-2xl animate-up">
+            <div class="text-center mb-10">
+                <div class="h-20 w-20 bg-sky-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-sky-500/20">
+                    <i class="fas fa-fingerprint text-sky-500 text-3xl"></i>
+                </div>
+                <h2 class="text-4xl font-black tracking-tight">Access <span class="text-sky-400">Hub</span></h2>
+                <p class="text-slate-500 text-sm mt-2">Personal Secure Terminal</p>
             </div>
-            <h2 class="text-3xl font-black mb-2 tracking-tight">Satyam<span class="text-sky-400">.Vault</span></h2>
-            <p class="text-slate-500 text-sm mb-8">Login to see my projects and resume</p>
-            <form id="loginForm" class="space-y-4 text-left">
-                <input type="email" id="email" placeholder="Email" required class="custom-input">
-                <input type="password" id="pass" placeholder="Password (Try 1234)" required class="custom-input">
-                <button type="submit" class="primary-btn mt-2">Open Portfolio</button>
+            <form onsubmit="app.login(event)" class="space-y-4">
+                <input type="password" id="entryPass" placeholder="Secret Key (1234)" required 
+                       class="w-full bg-black/40 border border-slate-800 p-5 rounded-2xl outline-none focus:border-sky-500 text-white transition-all">
+                <button type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-black py-5 rounded-2xl transition-all shadow-lg shadow-sky-500/20 uppercase tracking-widest">Initialise Session</button>
             </form>
         </div>
     </div>
 
-    <div id="portfolio-home" class="hidden">
-        <nav class="fixed top-0 w-full z-50 px-8 py-4 flex justify-between items-center bg-slate-950/80 backdrop-blur-xl border-b border-white/5">
-            <h1 class="text-xl font-black text-sky-400">SATYAM<span class="text-white">.DEV</span></h1>
-            <div class="flex gap-6">
-                <button onclick="showSection('hotel-app')" class="bg-sky-500 text-black px-4 py-2 rounded-full text-xs font-bold hover:scale-105 transition">HOTEL APP</button>
-                <button onclick="logout()" class="text-red-500 text-xs font-bold hover:underline">LOGOUT</button>
+    <div id="core-interface" class="hidden">
+        <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl">
+            <div class="glass px-8 py-4 rounded-full flex justify-between items-center shadow-2xl">
+                <h1 class="text-xl font-black text-sky-400 tracking-tighter">SATYAM<span class="text-white">.DEV</span></h1>
+                <div class="hidden md:flex gap-8 text-sm font-bold">
+                    <button onclick="app.navigate('home-view')" class="hover:text-sky-400 transition">HOME</button>
+                    <button onclick="app.navigate('hotel-view')" class="hover:text-sky-400 transition">HOTEL APP</button>
+                    <button onclick="app.navigate('resume-view')" class="hover:text-sky-400 transition">RESUME</button>
+                </div>
+                <button onclick="app.logout()" class="text-red-500 text-lg hover:scale-110 transition"><i class="fas fa-sign-out-alt"></i></button>
             </div>
         </nav>
 
-        <header class="pt-40 pb-20 px-6 max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="text-sky-400 font-bold tracking-widest text-xs uppercase">Available for Hire</span>
-                <h2 class="text-6xl font-black mt-4 mb-6 leading-tight text-white">B.Tech <br> Graduate.</h2>
-                <p class="text-slate-400 text-lg leading-relaxed mb-8">
-                    Verified Full-Stack Developer by <span class="text-white font-bold">Dr. Angela Yu</span>. 
-                    MERN Stack expert with focus on logic and clean UI.
-                </p>
-                <div class="flex gap-4">
-                    <a href="https://wa.me/91XXXXXXXXXX" class="glass px-6 py-3 rounded-full flex items-center gap-2 hover:bg-green-500/10 transition">
-                        <i class="fab fa-whatsapp text-green-500"></i> WhatsApp
-                    </a>
-                </div>
+        <main id="home-view" class="pt-32 pb-20 px-6 max-w-6xl mx-auto animate-up">
+            <div class="mb-16">
+                <h2 class="text-6xl md:text-8xl font-black tracking-tighter mb-4">MERN <span class="text-sky-400">ARCHITECT.</span></h2>
+                <p class="text-slate-400 text-xl max-w-2xl">Crafting high-logic web ecosystems for the next generation. Verified by industry leaders.</p>
             </div>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="glass p-6 rounded-3xl">
-                    <i class="fas fa-graduation-cap text-sky-400 mb-4 block"></i>
-                    <h4 class="font-bold text-sm">B.Tech Degree</h4>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="md:col-span-2 bento-card glass">
+                    <span class="text-sky-400 text-xs font-black uppercase tracking-widest">Main Credentials</span>
+                    <h3 class="text-3xl font-bold mt-4">B.Tech Graduate <br> (Computer Science)</h3>
+                    <p class="text-slate-500 mt-4 text-sm leading-relaxed">Specialized in scalable system architecture and full-stack deployment patterns.</p>
                 </div>
-                <div class="glass p-6 rounded-3xl">
-                    <i class="fab fa-react text-sky-400 mb-4 block"></i>
-                    <h4 class="font-bold text-sm">MERN Stack</h4>
-                </div>
-                <div class="glass p-6 rounded-3xl">
-                    <i class="fas fa-code text-sky-400 mb-4 block"></i>
-                    <h4 class="font-bold text-sm">GFG Expert</h4>
-                </div>
-                <div class="glass p-6 rounded-3xl border-sky-500/30">
-                    <i class="fas fa-hotel text-sky-400 mb-4 block"></i>
-                    <h4 class="font-bold text-sm">Hotel Project</h4>
-                </div>
-            </div>
-        </header>
-    </div>
-
-    <div id="hotel-app" class="hidden min-h-screen bg-[#0f172a] p-6">
-        <div class="max-w-md mx-auto pt-10">
-            <button onclick="showSection('portfolio-home')" class="text-slate-400 mb-8 flex items-center gap-2 hover:text-white transition">
-                <i class="fas fa-arrow-left"></i> Back to Portfolio
-            </button>
-
-            <div class="glass p-8 rounded-[2.5rem] border-2 border-sky-500/20 shadow-2xl">
-                <div id="hotel-header" class="text-center mb-8">
-                    <div class="h-20 w-20 bg-sky-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-sky-500/20">
-                        <i class="fas fa-hotel text-sky-400 text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-black text-sky-400 uppercase tracking-tighter">Ayodhya Heritage</h3>
-                    <p class="text-slate-500 text-xs mt-1">Select Room & Book via WhatsApp</p>
-                </div>
-
-                <div id="hotel-step1" class="space-y-6">
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-2">Choose Luxury Tier</label>
-                        <select id="roomPrice" onchange="updateHotelPrice()" class="custom-input">
-                            <option value="1500">Standard Room - ₹1,500</option>
-                            <option value="2500">Deluxe Room - ₹2,500</option>
-                            <option value="5000">Heritage Suite - ₹5,000</option>
-                        </select>
-                    </div>
-                    <div class="bg-sky-500/5 p-8 rounded-[2rem] border border-sky-500/10 text-center">
-                        <p class="text-[10px] text-slate-500 font-bold mb-1">TOTAL COST</p>
-                        <h2 id="hotel-price" class="text-5xl font-black text-white">₹1,500</h2>
-                    </div>
-                    <button onclick="showHotelPay()" class="primary-btn py-5">Proceed to Payment</button>
-                </div>
-
-                <div id="hotel-step2" class="hidden space-y-4">
-                    <h4 class="text-center font-bold mb-4">Select Method</h4>
-                    <button onclick="finishHotel()" class="custom-input flex items-center justify-between hover:border-sky-500">
-                        <span>UPI Payment</span> <i class="fas fa-mobile-alt text-sky-400"></i>
-                    </button>
-                    <button onclick="finishHotel()" class="custom-input flex items-center justify-between hover:border-sky-500">
-                        <span>Debit Card</span> <i class="fas fa-credit-card text-sky-400"></i>
-                    </button>
-                    <button onclick="showHotelSelection()" class="w-full text-red-500 text-sm mt-4 font-bold">Go Back</button>
-                </div>
-
-                <div id="hotel-step3" class="hidden text-center space-y-6 py-6">
-                    <i class="fas fa-check-circle text-7xl text-green-500 animate-pulse"></i>
-                    <h2 class="text-3xl font-black">Success!</h2>
-                    <p class="text-slate-400 text-sm">Your booking for <span class="text-white font-bold" id="final-room">Room</span> is confirmed.</p>
-                    <button onclick="whatsappHotel()" class="bg-green-500 text-black font-black p-4 rounded-2xl w-full flex items-center justify-center gap-2">
-                        <i class="fab fa-whatsapp text-xl"></i> GET RECEIPT
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // --- 1. CORE LOGIC ---
-        const loginForm = document.getElementById('loginForm');
-        
-        window.onload = () => {
-            if (localStorage.getItem('isLogged') === 'true') {
-                showSection('portfolio-home');
-            }
-        };
-
-        loginForm.onsubmit = (e) => {
-            e.preventDefault();
-            if (document.getElementById('pass').value === "1234") {
-                localStorage.setItem('isLogged', 'true');
-                showSection('portfolio-home');
-            } else {
-                alert("Incorrect Password!");
-            }
-        };
-
-        function showSection(sectionId) {
-            document.getElementById('auth-screen').classList.add('hidden');
-            document.getElementById('portfolio-home').classList.add('hidden');
-            document.getElementById('hotel-app').classList.add('hidden');
-            
-            document.getElementById(sectionId).classList.remove('hidden');
-            window.scrollTo(0,0);
-        }
-
-        function logout() {
-            localStorage.clear();
-            location.reload();
-        }
-
-        // --- 2. HOTEL APP LOGIC ---
-        function updateHotelPrice() {
-            const val = document.getElementById('roomPrice').value;
-            document.getElementById('hotel-price').innerText = "₹" + parseInt(val).toLocaleString('en-IN');
-        }
-
-        function showHotelPay() {
-            document.getElementById('hotel-step1').classList.add('hidden');
-            document.getElementById('hotel-step2').classList.remove('hidden');
-        }
-
-        function showHotelSelection() {
-            document.getElementById('hotel-step2').classList.add('hidden');
-            document.getElementById('hotel-step1').classList.remove('hidden');
-        }
-
-        function finishHotel() {
-            document.getElementById('hotel-step2').classList.add('hidden');
-            document.getElementById('hotel-step3').classList.remove('hidden');
-            document.getElementById('final-room').innerText = document.getElementById('roomPrice').options[document.getElementById('roomPrice').selectedIndex].text.split(' -')[0];
-        }
-
-        function whatsappHotel() {
-            const room = document.getElementById('final-room').innerText;
-            const price = document.getElementById('hotel-price').innerText;
-            const msg = `Booking Confirmation: ${room} - ${price}. ID: AH-901`;
-            window.open(`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(msg)}`, '_blank');
-        }
-    </script>
-</body>
-</html>
+                <div class="bento-card bg-sky-500 text-slate-950">
+                    <i class="fab fa-react text-4xl mb-4"></i>
+                    <h4 class="font-black text-xl
