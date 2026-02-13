@@ -1,125 +1,133 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Portfolio & Projects</title>
+    <title>Satyam | Portfolio & Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #010409; color: #e6edf3; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
-        .glass { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; border-radius: 20px; transition: 0.4s ease; }
-        .hero-gradient { background: linear-gradient(to right, #ffffff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* Smooth Page Transitions */
-        .page { display: none; animation: fadeIn 0.5s ease-in-out forwards; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .cert-img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; cursor: pointer; }
-        #modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { background-color: #0f172a; color: white; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 2rem; }
+        .hero-gradient { background: radial-gradient(circle at top right, #38bdf822, transparent); }
+        .input-dark { background: #0f172a; border: 1px solid #334155; border-radius: 12px; color: white; }
     </style>
 </head>
-<body>
+<body class="hero-gradient">
 
-    <div id="modal" onclick="this.style.display='none'">
-        <img id="modalImg" src="" class="max-w-[90%] max-h-[80vh] rounded-lg border-2 border-blue-500">
-    </div>
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-[#0f172a]/80 backdrop-blur-md">
+        <h1 class="text-xl font-bold tracking-tighter text-sky-400">SATYAM<span class="text-white">.DEV</span></h1>
+        <div class="space-x-6 text-sm font-medium">
+            <a href="#vault" class="hover:text-sky-400 transition">Credentials</a>
+            <a href="#projects" class="hover:text-sky-400 transition">Projects</a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="bg-sky-500 text-slate-900 px-4 py-2 rounded-full font-bold">Hire Me</a>
+        </div>
+    </nav>
 
-    <main id="main-portfolio" class="page active">
-        <nav class="fixed top-0 w-full z-50 px-10 py-6 flex justify-between items-center bg-[#010409]/80 backdrop-blur-md border-b border-[#30363d]">
-            <div class="text-2xl font-black italic tracking-tighter hero-gradient">SATYAM.DEV</div>
-            <div class="flex gap-8 text-[11px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#vault" class="hover:text-white">Credentials</a>
-                <a href="#projects" class="hover:text-white">Projects</a>
+    <section class="pt-32 pb-20 px-6 text-center">
+        <h2 class="text-5xl md:text-7xl font-extrabold mb-4">I'm <span class="text-sky-400">SATYAM.</span></h2>
+        <p class="text-gray-400 text-lg max-w-xl mx-auto mb-8">
+            B.Tech Graduate & Full-Stack Developer. Verified by Dr. Angela Yu & GFG. Specialist in modern UI/UX and logic-driven apps.
+        </p>
+        <div class="flex justify-center gap-4">
+            <a href="#projects" class="border border-gray-600 px-8 py-3 rounded-full hover:bg-white hover:text-black transition font-semibold">View Work</a>
+        </div>
+    </section>
+
+    <section id="vault" class="py-20 px-6 max-w-5xl mx-auto">
+        <h3 class="text-2xl font-bold mb-10 text-center"><i class="fas fa-certificate text-sky-400 mr-2"></i>Verified Credentials</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-card p-6 text-center">
+                <i class="fas fa-graduation-cap text-3xl mb-4 text-sky-400"></i>
+                <h4 class="font-bold">B.Tech Degree</h4>
+                <p class="text-xs text-gray-500 mt-2">Computer Science & Engineering</p>
             </div>
-        </nav>
-
-        <section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
-            <h1 class="text-7xl md:text-9xl font-extrabold mb-8 tracking-tighter hero-gradient">SATYAM.</h1>
-            <p class="text-gray-400 max-w-2xl mb-12 text-xl font-light">B.Tech Graduate & Full-Stack Developer. Verified by Dr. Angela Yu & GFG.</p>
-            <div class="flex gap-6">
-                <a href="#projects" class="bg-blue-600 px-10 py-4 rounded-xl font-bold hover:bg-blue-700 transition">View Projects</a>
+            <div class="glass-card p-6 text-center">
+                <i class="fab fa-react text-3xl mb-4 text-sky-400"></i>
+                <h4 class="font-bold">MERN Stack</h4>
+                <p class="text-xs text-gray-500 mt-2">Certified by Dr. Angela Yu</p>
             </div>
-        </section>
-
-        <section id="vault" class="max-w-6xl mx-auto px-6 py-20">
-            <h2 class="text-3xl font-bold mb-10 italic">📜 Verified Credentials</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass p-4"><img src="https://via.placeholder.com/400x300?text=B.Tech+Degree" onclick="openM(this.src)" class="cert-img"><h4 class="mt-4 font-bold text-center text-sm">B.Tech Graduation</h4></div>
-                <div class="glass p-4"><img src="https://via.placeholder.com/400x300?text=Angela+Yu+Cert" onclick="openM(this.src)" class="cert-img"><h4 class="mt-4 font-bold text-center text-sm">Dr. Angela Yu (MERN)</h4></div>
-                <div class="glass p-4"><img src="https://via.placeholder.com/400x300?text=GFG+Expert" onclick="openM(this.src)" class="cert-img"><h4 class="mt-4 font-bold text-center text-sm">GFG Data Structures</h4></div>
+            <div class="glass-card p-6 text-center">
+                <i class="fas fa-code text-3xl mb-4 text-sky-400"></i>
+                <h4 class="font-bold">GFG Expert</h4>
+                <p class="text-xs text-gray-500 mt-2">Data Structures & Algorithms</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects" class="max-w-6xl mx-auto px-6 py-20">
-            <h2 class="text-3xl font-bold mb-10 italic">🚀 Featured Work</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="glass p-10 border-l-4 border-l-blue-500">
-                    <h3 class="text-2xl font-bold mb-4">Ayodhya Heritage Stay</h3>
-                    <p class="text-gray-500 mb-8">Luxury hotel booking system with real-time room availability.</p>
-                    <button onclick="showPage('hotel-page')" class="text-blue-400 font-bold border-b border-blue-400 pb-1">Open Full Application →</button>
-                </div>
-                <div class="glass p-10 border-l-4 border-l-green-500">
-                    <h3 class="text-2xl font-bold mb-4">SpendWise AI</h3>
-                    <p class="text-gray-500 mb-8">Financial dashboard using Chart.js for deep analytics.</p>
-                    <button class="text-green-400 font-bold border-b border-green-400 pb-1 opacity-50">Coming Soon</button>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <main id="hotel-page" class="page">
-        <nav class="p-6 border-b border-[#30363d] flex justify-between items-center bg-[#010409]">
-            <button onclick="showPage('main-portfolio')" class="text-blue-500 font-bold">← Back to Portfolio</button>
-            <div class="text-xl font-bold tracking-widest text-amber-500">AYODHYA HERITAGE</div>
-            <div class="text-xs text-gray-500">Project Demo</div>
-        </nav>
-
-        <section class="max-w-5xl mx-auto py-20 px-6">
-            <div class="glass p-1 rounded-3xl overflow-hidden mb-10">
-                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200" class="w-full h-96 object-cover">
-            </div>
-            <h1 class="text-5xl font-black mb-6">Ayodhya Heritage Stay</h1>
-            <p class="text-gray-400 text-xl mb-10 leading-relaxed">
-                Ye ek full-stack hotel management system hai. Isme humne React hooks aur Tailwind CSS ka use kiya hai. 
-                Isme users rooms check kar sakte hain, price dekh sakte hain aur login karke booking kar sakte hain.
-            </p>
+    <section id="projects" class="py-20 px-6 bg-slate-900/50">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-3xl font-bold mb-12 text-center">Featured Projects</h3>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-                <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
-                    <h4 class="font-bold mb-2">Real-time Booking</h4>
-                    <p class="text-xs text-gray-500">Check availability in seconds.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-sky-400 font-bold uppercase tracking-widest text-sm">Full-Stack Application</span>
+                    <h2 class="text-4xl font-bold mt-2 mb-6">Ayodhya Heritage Stay</h2>
+                    <p class="text-gray-400 mb-6">
+                        Maine ye hotel booking interface banaya hai jisme real-time price calculation aur WhatsApp integration hai. Isme modern glassmorphism UI ka use kiya gaya hai.
+                    </p>
+                    <ul class="space-y-3 text-gray-300 mb-8">
+                        <li><i class="fas fa-check-circle text-sky-400 mr-2"></i> Dynamic Price Selection</li>
+                        <li><i class="fas fa-check-circle text-sky-400 mr-2"></i> Secure Client Login Mockup</li>
+                        <li><i class="fas fa-check-circle text-sky-400 mr-2"></i> Direct WhatsApp Booking</li>
+                    </ul>
                 </div>
-                <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
-                    <h4 class="font-bold mb-2">Secure Payment</h4>
-                    <p class="text-xs text-gray-500">Integrated with secure gateways.</p>
-                </div>
-                <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
-                    <h4 class="font-bold mb-2">Admin Dashboard</h4>
-                    <p class="text-xs text-gray-500">Manage rooms and prices easily.</p>
-                </div>
-            </div>
 
-            <div class="text-center">
-                <a href="#" class="bg-amber-600 px-10 py-4 rounded-xl font-bold">Launch Live Site (Link)</a>
+                <div class="glass-card p-8 border-sky-500/30 border-2 shadow-2xl shadow-sky-500/10">
+                    <div id="booking-logic">
+                        <div class="flex justify-between items-center mb-6">
+                            <h4 class="text-xl font-bold text-sky-400">🏨 Reserve Room</h4>
+                            <span class="bg-green-500/20 text-green-400 text-[10px] px-2 py-1 rounded-full font-bold">ONLINE</span>
+                        </div>
+
+                        <div class="space-y-5">
+                            <div>
+                                <label class="text-xs text-gray-500 uppercase font-bold">Select Luxury Level</label>
+                                <select id="roomSelect" onchange="calculatePrice()" class="w-full input-dark p-4 mt-2 outline-none cursor-pointer focus:border-sky-500">
+                                    <option value="1500">Standard Room - ₹1,500</option>
+                                    <option value="2500">Deluxe Room - ₹2,500</option>
+                                    <option value="4500">Heritage Suite - ₹4,500</option>
+                                </select>
+                            </div>
+
+                            <div class="bg-sky-500/10 p-6 rounded-2xl border-l-4 border-sky-500">
+                                <p class="text-sm text-gray-400">Total Price (Inc. GST)</p>
+                                <h2 id="displayPrice" class="text-4xl font-black text-white mt-1">₹1,500</h2>
+                            </div>
+
+                            <button onclick="bookNow()" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-900 font-black py-4 rounded-xl transition-all transform hover:scale-[1.02] active:scale-95">
+                                BOOK VIA WHATSAPP <i class="fab fa-whatsapp ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center border-t border-gray-800">
+        <p class="text-gray-500 text-sm">© 2026 Satyam. Made with ❤️ and Logic.</p>
+        <div class="mt-4 flex justify-center gap-6 text-xl">
+            <a href="#" class="hover:text-sky-400"><i class="fab fa-github"></i></a>
+            <a href="#" class="hover:text-sky-400"><i class="fab fa-linkedin"></i></a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="text-green-500 hover:scale-110 transition"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
 
     <script>
-        // Zoom Modal Logic
-        function openM(s) { 
-            document.getElementById('modal').style.display='flex'; 
-            document.getElementById('modalImg').src=s; 
+        // 1. Price Change Logic
+        function calculatePrice() {
+            const val = document.getElementById('roomSelect').value;
+            // Format number with commas
+            const formatted = new Intl.NumberFormat('en-IN').format(val);
+            document.getElementById('displayPrice').innerText = "₹" + formatted;
         }
 
-        // Page Switching Logic (SPA)
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            window.scrollTo(0, 0);
-        }
-    </script>
-</body>
-</html>
+        // 2. WhatsApp Integration
+        function bookNow() {
+            const roomName = document.getElementById('roomSelect').options[document.getElementById('roomSelect').selectedIndex].text;
+            const price = document.getElementById('displayPrice').innerText;
+            const myNum = "91XXXXXXXXXX"; // <--- YAHAN APNA WHATSAPP NUMBER DAALEIN
+
+            const msg = `Hi Satyam! I am interested in booking:%
