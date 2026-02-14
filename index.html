@@ -3,103 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Property Tech & Automation Expert</title>
+    <title>Satyam | Property Tech Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #050505; color: #ffffff; font-family: 'Plus Jakarta Sans', sans-serif; }
-        .hero-gradient { background: linear-gradient(135deg, #fff 0%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glass { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border-radius: 32px; }
-        .input-field { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 14px; border-radius: 16px; width: 100%; outline: none; }
+        body { background-color: #020202; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #fff 30%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px); border-radius: 32px; }
+        .room-card { transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: 1px solid transparent; }
+        .room-card:hover { border-color: #6366f1; transform: scale(1.02); background: rgba(99, 102, 241, 0.05); }
+        .active-room { border-color: #6366f1; background: rgba(99, 102, 241, 0.1); }
     </style>
 </head>
 <body>
 
-    <nav class="p-8 flex justify-between items-center max-w-7xl mx-auto">
+    <nav class="p-8 flex justify-between items-center max-w-7xl mx-auto border-b border-white/5">
         <div class="text-2xl font-black italic hero-gradient tracking-tighter">SATYAM.DEV</div>
-        <div class="hidden md:block text-[10px] font-bold text-indigo-400 uppercase tracking-[0.3em] bg-indigo-500/10 px-4 py-2 rounded-full border border-indigo-500/20">
-            Property Management Solutions
+        <div class="flex gap-4 items-center">
+            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">System Online</span>
         </div>
     </nav>
 
-    <header class="max-w-7xl mx-auto px-6 py-20">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <main class="max-w-7xl mx-auto px-6 py-16">
+        
+        <div class="mb-16 text-center md:text-left">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 hero-gradient tracking-tighter">Luxury Rental <br> Engine v2.0</h1>
+            <p class="text-gray-500 max-w-xl text-lg">A full-stack architecture designed for seamless property management and automated high-ticket bookings.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
             
-            <div>
-                <h1 class="text-6xl md:text-8xl font-extrabold mb-8 tracking-tighter leading-[0.9]">Transforming <br> <span class="hero-gradient">Real Estate</span> <br> Operations.</h1>
-                <p class="text-gray-400 text-xl max-w-lg mb-10 font-light leading-relaxed">
-                    I build custom reservation systems and property portals for firms looking to automate bookings and increase direct revenue.
-                </p>
-                <div class="flex gap-4">
-                    <a href="mailto:info@hcmpm.com" class="bg-white text-black px-10 py-5 rounded-2xl font-bold hover:bg-indigo-500 hover:text-white transition-all">Start Project</a>
-                </div>
-            </div>
-
-            <div class="glass p-8 md:p-10 shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-20 text-[60px]">🏠</div>
-                <h3 class="text-xl font-bold mb-2">Live Tech Demo</h3>
-                <p class="text-gray-500 text-xs mb-8 uppercase tracking-widest font-bold">Ayodhya Heritage Engine</p>
+            <div class="lg:col-span-2 space-y-6">
+                <h3 class="text-sm font-bold uppercase tracking-widest text-indigo-400 mb-4">Available Units</h3>
                 
-                <div id="demo-box" class="space-y-6">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-[10px] font-bold text-gray-400 uppercase">Check-In</label>
-                            <input type="date" id="cin" class="input-field mt-2">
-                        </div>
-                        <div>
-                            <label class="text-[10px] font-bold text-gray-400 uppercase">Check-Out</label>
-                            <input type="date" id="cout" class="input-field mt-2">
+                <div onclick="selectRoom(this, 250, 'Royal Heritage Suite')" class="room-card glass p-6 flex gap-6 items-center active-room">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400" class="w-32 h-32 rounded-2xl object-cover shadow-xl">
+                    <div class="flex-grow">
+                        <h4 class="text-xl font-bold">Royal Heritage Suite</h4>
+                        <p class="text-xs text-gray-500 mt-1">✦ King Bed  ✦ Pool View  ✦ 450 sqft</p>
+                        <div class="mt-4 flex gap-2">
+                            <span class="text-[9px] bg-white/5 px-2 py-1 rounded border border-white/10 uppercase font-bold">Free WiFi</span>
+                            <span class="text-[9px] bg-white/5 px-2 py-1 rounded border border-white/10 uppercase font-bold">Breakfast Inc.</span>
                         </div>
                     </div>
-                    <div class="p-4 bg-white/5 rounded-2xl flex justify-between items-center">
-                        <span class="text-gray-400 text-sm italic">Premium Rate</span>
-                        <span class="font-bold text-indigo-400">$250/night</span>
+                    <div class="text-right">
+                        <p class="text-2xl font-black text-indigo-400">$250</p>
+                        <p class="text-[9px] text-gray-600 uppercase font-bold">Per Night</p>
                     </div>
-                    <button onclick="runDemo()" class="w-full bg-indigo-600 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-indigo-500 transition">Test Booking Logic</button>
                 </div>
 
-                <div id="result-box" class="hidden py-10 text-center animate-pulse">
-                    <h4 class="text-3xl font-black text-green-500 mb-2">AVAILABLE</h4>
-                    <p class="text-gray-400">System calculated <span id="nights" class="text-white font-bold"></span> nights.</p>
-                    <p class="text-4xl font-black mt-4 hero-gradient" id="price"></p>
-                    <button onclick="location.reload()" class="mt-8 text-xs text-gray-600 underline">RESET DEMO</button>
+                <div onclick="selectRoom(this, 450, 'Presidential Villa')" class="room-card glass p-6 flex gap-6 items-center">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400" class="w-32 h-32 rounded-2xl object-cover shadow-xl opacity-80">
+                    <div class="flex-grow">
+                        <h4 class="text-xl font-bold">Presidential Villa</h4>
+                        <p class="text-xs text-gray-500 mt-1">✦ Private Pool  ✦ Butler Service  ✦ 1200 sqft</p>
+                        <div class="mt-4 flex gap-2">
+                            <span class="text-[9px] bg-white/5 px-2 py-1 rounded border border-white/10 uppercase font-bold">Airport Pick</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-2xl font-black text-indigo-400">$450</p>
+                        <p class="text-[9px] text-gray-600 uppercase font-bold">Per Night</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1">
+                <div class="glass p-8 sticky top-32 border-indigo-500/20 shadow-2xl shadow-indigo-500/5">
+                    <h3 class="text-xl font-bold mb-6">Reservation</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-500 uppercase">Check-In</label>
+                            <input type="date" id="cin" class="w-full mt-2 bg-white/5 border border-white/10 p-4 rounded-xl text-sm outline-none focus:border-indigo-500 transition">
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-500 uppercase">Check-Out</label>
+                            <input type="date" id="cout" class="w-full mt-2 bg-white/5 border border-white/10 p-4 rounded-xl text-sm outline-none focus:border-indigo-500 transition">
+                        </div>
+                        
+                        <div class="pt-6 border-t border-white/5 space-y-3">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500" id="selected-room-name">Royal Heritage Suite</span>
+                                <span class="font-bold text-indigo-400" id="room-price-display">$250</span>
+                            </div>
+                            <div class="flex justify-between text-lg font-black border-t border-white/5 pt-3">
+                                <span>Grand Total</span>
+                                <span id="total-display">$0</span>
+                            </div>
+                        </div>
+
+                        <button onclick="calculate()" class="w-full bg-indigo-600 hover:bg-indigo-500 py-5 rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl shadow-indigo-600/20 transition-all">Confirm Booking</button>
+                    </div>
                 </div>
             </div>
 
         </div>
-    </header>
-
-    <section class="max-w-7xl mx-auto px-6 py-20 border-t border-white/5">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div class="space-y-4">
-                <h4 class="font-bold text-indigo-400 uppercase text-xs tracking-widest">01. Automation</h4>
-                <p class="text-gray-400 text-sm">Automated invoicing and payment workflows for tenants.</p>
-            </div>
-            <div class="space-y-4">
-                <h4 class="font-bold text-indigo-400 uppercase text-xs tracking-widest">02. Integration</h4>
-                <p class="text-gray-400 text-sm">Seamlessly sync listings across internal portals and 3rd party sites.</p>
-            </div>
-            <div class="space-y-4">
-                <h4 class="font-bold text-indigo-400 uppercase text-xs tracking-widest">03. Performance</h4>
-                <p class="text-gray-400 text-sm">Optimized for SEO and 99.9% uptime for business critical systems.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-20 text-center opacity-20 text-[10px] font-bold tracking-[1em]">
-        SATYAM.DEV // 2026 PROPERTY TECH
-    </footer>
+    </main>
 
     <script>
-        function runDemo() {
+        let currentRate = 250;
+        let currentRoom = "Royal Heritage Suite";
+
+        function selectRoom(el, rate, name) {
+            document.querySelectorAll('.room-card').forEach(c => c.classList.remove('active-room'));
+            el.classList.add('active-room');
+            currentRate = rate;
+            currentRoom = name;
+            document.getElementById('selected-room-name').innerText = name;
+            document.getElementById('room-price-display').innerText = "$" + rate;
+            calculate();
+        }
+
+        function calculate() {
             const d1 = new Date(document.getElementById('cin').value);
             const d2 = new Date(document.getElementById('cout').value);
-            if(!d1 || !d2 || d2 <= d1) { alert("Please select valid dates"); return; }
-            const diff = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
-            document.getElementById('nights').innerText = diff;
-            document.getElementById('price').innerText = "$" + (diff * 250);
-            document.getElementById('demo-box').classList.add('hidden');
-            document.getElementById('result-box').classList.remove('hidden');
+            if(d1 && d2 && d2 > d1) {
+                const diff = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
+                document.getElementById('total-display').innerText = "$" + (diff * currentRate);
+            } else {
+                document.getElementById('total-display').innerText = "$0";
+            }
         }
     </script>
 </body>
