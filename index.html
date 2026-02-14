@@ -1,116 +1,58 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Full-Stack Developer</title>
+    <title>Satyam | High-End Web Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #010409; color: #e6edf3; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
-        .glass { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; border-radius: 20px; transition: 0.4s; }
-        .glass:hover { border-color: #0a66c2; transform: translateY(-5px); }
-        .hero-gradient { background: linear-gradient(to right, #ffffff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        /* Page Switching Logic */
-        .page { display: none; animation: fadeIn 0.4s ease forwards; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .skill-badge { background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 4px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111; }
+        .hero-text { font-size: clamp(3rem, 10vw, 6rem); line-height: 0.9; font-weight: 900; letter-spacing: -0.05em; }
+        .btn-black { background: #000; color: #fff; padding: 18px 35px; border-radius: 100px; font-weight: 600; transition: 0.3s; }
+        .btn-black:hover { transform: scale(1.05); background: #333; }
+        .card { border: 1px solid #eee; padding: 40px; border-radius: 30px; transition: 0.4s; }
+        .card:hover { border-color: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full z-50 px-10 py-6 flex justify-between items-center bg-[#010409]/90 backdrop-blur-md border-b border-[#30363d]">
-        <div class="text-2xl font-black italic tracking-tighter hero-gradient">SATYAM.DEV</div>
-        <div class="flex gap-6">
-            <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="bg-green-600 hover:bg-green-500 text-white px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition">Hire Me</a>
-        </div>
+    <nav class="p-8 flex justify-between items-center">
+        <div class="text-xl font-black tracking-tighter">SATYAM.DEV</div>
+        <a href="mailto:info@hcmpm.com" class="text-sm font-bold border-b-2 border-black">LET'S TALK</a>
     </nav>
 
-    <main id="portfolio-home" class="page active">
-        <section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
-            <h1 class="text-7xl md:text-9xl font-extrabold mb-6 tracking-tighter hero-gradient">SATYAM.</h1>
-            <p class="text-gray-400 max-w-2xl mb-12 text-xl font-light">Software Engineer specializing in High-Conversion Web Systems.</p>
-            <div class="flex gap-4">
-                <a href="#projects" class="bg-blue-600 px-10 py-4 rounded-xl font-bold">See Projects</a>
-                <a href="#skills" class="glass px-10 py-4 rounded-xl font-bold">My Skills</a>
-            </div>
-        </section>
+    <header class="px-8 py-20 max-w-7xl mx-auto">
+        <p class="text-xs font-bold uppercase tracking-widest mb-6 text-gray-400">Full-Stack Engineer / Real Estate Solutions</p>
+        <h1 class="hero-text mb-12">Building Digital <br> Real Estate.</h1>
+        <p class="max-w-xl text-xl text-gray-500 mb-12 leading-relaxed">
+            Helping property management firms like yours transition from legacy systems to modern, high-conversion web applications.
+        </p>
+        <div class="flex gap-4">
+            <a href="#work" class="btn-black">View Case Studies</a>
+        </div>
+    </header>
 
-        <section id="skills" class="max-w-6xl mx-auto px-6 py-20">
-            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">🛠 Tech Stack <div class="h-[1px] flex-grow bg-[#30363d]"></div></h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                <div class="glass p-8">
-                    <h4 class="text-blue-500 text-xs font-bold uppercase mb-4">Frontend</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge">React.js</span><span class="skill-badge">Tailwind</span><span class="skill-badge">JavaScript</span>
+    <section id="work" class="px-8 py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-16 tracking-tight">Selected Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="card bg-white">
+                    <span class="text-[10px] font-bold text-blue-600 uppercase">Hospitality & Rental</span>
+                    <h3 class="text-3xl font-bold mt-4 mb-6">Ayodhya Heritage Booking Engine</h3>
+                    <p class="text-gray-500 mb-8 leading-relaxed">A custom-built reservation system designed for luxury heritage stays, focusing on mobile-first booking experience.</p>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-gray-100 rounded-md text-[10px] font-bold">REACT</span>
+                        <span class="px-3 py-1 bg-gray-100 rounded-md text-[10px] font-bold">NODE.JS</span>
                     </div>
                 </div>
-                <div class="glass p-8">
-                    <h4 class="text-purple-500 text-xs font-bold uppercase mb-4">Backend</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge">Node.js</span><span class="skill-badge">MongoDB</span><span class="skill-badge">Express</span>
-                    </div>
                 </div>
-                <div class="glass p-8">
-                    <h4 class="text-green-500 text-xs font-bold uppercase mb-4">Others</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge">Python</span><span class="skill-badge">DSA (C++)</span><span class="skill-badge">Git</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects" class="max-w-6xl mx-auto px-6 py-20">
-            <h2 class="text-3xl font-bold mb-10 italic">Industrial Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="glass p-10 border-l-4 border-l-amber-500">
-                    <h3 class="text-3xl font-bold mb-4">Ayodhya Heritage Stay</h3>
-                    <p class="text-gray-500 mb-8 italic">Full-stack hotel booking platform for luxury heritage stays.</p>
-                    <button onclick="togglePage('hotel-detail')" class="text-amber-500 font-bold border-b border-amber-500 pb-1 uppercase text-xs tracking-widest">Open Application →</button>
-                </div>
-                <div class="glass p-10 border-l-4 border-l-blue-500">
-                    <h3 class="text-3xl font-bold mb-4">SpendWise AI</h3>
-                    <p class="text-gray-500 mb-8 italic">Financial analytics dashboard for smart expense tracking.</p>
-                    <span class="text-blue-500 font-bold uppercase text-[10px] opacity-50">In Development</span>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <main id="hotel-detail" class="page">
-        <section class="max-w-5xl mx-auto py-32 px-6">
-            <button onclick="togglePage('portfolio-home')" class="mb-10 text-blue-500 font-bold">← Back to Portfolio</button>
-            <div class="glass overflow-hidden mb-12">
-                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200" class="w-full h-96 object-cover">
-            </div>
-            <h2 class="text-5xl font-black mb-6">Ayodhya Heritage Stay</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
-                <div>
-                    <h4 class="text-amber-500 font-bold mb-4 uppercase text-xs">The Problem</h4>
-                    <p class="text-gray-400 leading-relaxed">Businesses like <b>HCM Property Management</b> need a way to showcase luxury rentals with real-time availability. Static websites lose 60% of customers due to poor mobile UI.</p>
-                </div>
-                <div>
-                    <h4 class="text-green-500 font-bold mb-4 uppercase text-xs">My Solution</h4>
-                    <p class="text-gray-400 leading-relaxed">Built a lightning-fast React application with a custom booking engine, increasing user engagement and booking speed.</p>
-                </div>
-            </div>
-            <div class="text-center">
-                <a href="https://wa.me/91XXXXXXXXXX?text=Hi Satyam, I saw your Hotel project and want to discuss a website." class="bg-green-600 px-12 py-5 rounded-2xl font-black text-white hover:bg-green-500 transition shadow-2xl">I want a website like this</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="py-10 text-center border-t border-[#30363d] text-[10px] text-gray-700 tracking-[1em] uppercase">
-        Satyam Developer © 2026
+    <footer class="p-20 text-center text-gray-300 text-xs tracking-widest uppercase">
+        © 2026 Designed for Performance
     </footer>
 
-    <script>
-        function togglePage(id) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            window.scrollTo(0,0);
-        }
-    </script>
 </body>
 </html>
