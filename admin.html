@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCM Admin | Property Control Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; color: #1e293b; }
+        .sidebar { background: #0f172a; }
+        .stat-card { background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; }
+    </style>
+</head>
+<body class="flex min-h-screen">
 
+    <aside class="w-64 sidebar text-white hidden md:flex flex-col p-6">
+        <div class="text-xl font-bold mb-10 text-indigo-400">HCM ADMIN</div>
+        <nav class="space-y-4 flex-grow">
+            <a href="#" class="block p-3 bg-indigo-600 rounded-lg text-sm font-semibold">Dashboard</a>
+            <a href="#" class="block p-3 hover:bg-white/5 rounded-lg text-sm text-gray-400">All Properties</a>
+            <a href="#" class="block p-3 hover:bg-white/5 rounded-lg text-sm text-gray-400">Bookings</a>
+            <a href="#" class="block p-3 hover:bg-white/5 rounded-lg text-sm text-gray-400">Analytics</a>
+        </nav>
+        <div class="text-xs text-gray-500 font-medium tracking-widest">v1.0 BETA</div>
+    </aside>
+
+    <main class="flex-grow p-8">
+        <header class="flex justify-between items-center mb-10">
+            <h1 class="text-2xl font-bold italic text-slate-900">Operations Overview</h1>
+            <button class="bg-indigo-600 text-white px-6 py-2 rounded-full font-bold text-sm">+ Add New Property</button>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="stat-card">
+                <p class="text-gray-500 text-xs font-bold uppercase mb-2">Monthly Revenue</p>
+                <p class="text-3xl font-black text-slate-900">$42,500.00</p>
+                <p class="text-green-500 text-xs font-bold mt-2">↑ 12.5% from last month</p>
+            </div>
+            <div class="stat-card">
+                <p class="text-gray-500 text-xs font-bold uppercase mb-2">Active Bookings</p>
+                <p class="text-3xl font-black text-slate-900">18</p>
+                <p class="text-slate-400 text-xs mt-2 italic">Next check-in: 2 hours</p>
+            </div>
+            <div class="stat-card">
+                <p class="text-gray-500 text-xs font-bold uppercase mb-2">Occupancy Rate</p>
+                <p class="text-3xl font-black text-slate-900">84%</p>
+                <div class="w-full bg-gray-200 h-2 rounded-full mt-4">
+                    <div class="bg-indigo-600 h-2 rounded-full w-[84%]"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card overflow-hidden">
+            <h3 class="text-lg font-bold mb-6">Recent Guest Activity</h3>
+            <table class="w-full text-left">
+                <thead>
+                    <tr class="text-gray-400 text-xs uppercase border-b">
+                        <th class="pb-4">Guest Name</th>
+                        <th class="pb-4">Property</th>
+                        <th class="pb-4">Check-in</th>
+                        <th class="pb-4">Status</th>
+                        <th class="pb-4 text-right">Amount</th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm">
+                    <tr class="border-b last:border-0">
+                        <td class="py-4 font-bold">Niket Shah</td>
+                        <td class="py-4">Presidential Villa</td>
+                        <td class="py-4 text-gray-500">Feb 20, 2026</td>
+                        <td class="py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-bold">PAID</span></td>
+                        <td class="py-4 text-right font-bold">$1,350</td>
+                    </tr>
+                    <tr class="border-b last:border-0">
+                        <td class="py-4 font-bold">John Doe</td>
+                        <td class="py-4">Royal Heritage Suite</td>
+                        <td class="py-4 text-gray-500">Feb 22, 2026</td>
+                        <td class="py-4"><span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-[10px] font-bold">PENDING</span></td>
+                        <td class="py-4 text-right font-bold">$750</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+</body>
+</html>
