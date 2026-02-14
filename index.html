@@ -1,160 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam.Dev | Advanced Portfolio</title>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Satyam | Full-Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&display=swap');
-        body { background-color: #020617; font-family: 'Outfit', sans-serif; color: white; }
-        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); }
-        .bento { border-radius: 1.5rem; padding: 1.5rem; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.05); }
+        body { background-color: #010409; color: #e6edf3; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        .glass { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; border-radius: 20px; transition: 0.4s; }
+        .glass:hover { border-color: #0a66c2; transform: translateY(-5px); }
+        .hero-gradient { background: linear-gradient(to right, #ffffff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* Page Switching Logic */
+        .page { display: none; animation: fadeIn 0.4s ease forwards; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .skill-badge { background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 4px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; }
     </style>
 </head>
 <body>
-    <div id="root"></div>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+    <nav class="fixed top-0 w-full z-50 px-10 py-6 flex justify-between items-center bg-[#010409]/90 backdrop-blur-md border-b border-[#30363d]">
+        <div class="text-2xl font-black italic tracking-tighter hero-gradient">SATYAM.DEV</div>
+        <div class="flex gap-6">
+            <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="bg-green-600 hover:bg-green-500 text-white px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition">Hire Me</a>
+        </div>
+    </nav>
 
-        // --- 1. LOGIN COMPONENT ---
-        const Login = ({ onLogin }) => {
-            const [pass, setPass] = useState('');
-            return (
-                <div className="min-h-screen flex items-center justify-center p-6">
-                    <div className="glass p-10 rounded-[2.5rem] w-full max-w-md text-center shadow-2xl">
-                        <div className="h-20 w-20 bg-sky-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i className="fas fa-lock text-sky-400 text-3xl"></i>
-                        </div>
-                        <h2 className="text-3xl font-black mb-8">Satyam<span className="text-sky-400">.Dev</span></h2>
-                        <input 
-                            type="password" 
-                            placeholder="Key (1234)" 
-                            className="w-full bg-slate-900 border border-slate-800 p-4 rounded-2xl mb-4 text-center outline-none focus:border-sky-500"
-                            onChange={(e) => setPass(e.target.value)}
-                        />
-                        <button 
-                            onClick={() => pass === "1234" ? onLogin() : alert("Wrong Key!")}
-                            className="w-full bg-sky-500 text-black font-black py-4 rounded-2xl shadow-lg shadow-sky-500/20"
-                        >INITIALIZE SESSION</button>
+    <main id="portfolio-home" class="page active">
+        <section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+            <h1 class="text-7xl md:text-9xl font-extrabold mb-6 tracking-tighter hero-gradient">SATYAM.</h1>
+            <p class="text-gray-400 max-w-2xl mb-12 text-xl font-light">Software Engineer specializing in High-Conversion Web Systems.</p>
+            <div class="flex gap-4">
+                <a href="#projects" class="bg-blue-600 px-10 py-4 rounded-xl font-bold">See Projects</a>
+                <a href="#skills" class="glass px-10 py-4 rounded-xl font-bold">My Skills</a>
+            </div>
+        </section>
+
+        <section id="skills" class="max-w-6xl mx-auto px-6 py-20">
+            <h2 class="text-3xl font-bold mb-10 flex items-center gap-4">🛠 Tech Stack <div class="h-[1px] flex-grow bg-[#30363d]"></div></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="glass p-8">
+                    <h4 class="text-blue-500 text-xs font-bold uppercase mb-4">Frontend</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge">React.js</span><span class="skill-badge">Tailwind</span><span class="skill-badge">JavaScript</span>
                     </div>
                 </div>
-            );
-        };
-
-        // --- 2. HOTEL PROJECT COMPONENT ---
-        const HotelApp = ({ onBack }) => {
-            const [step, setStep] = useState(1);
-            const [room, setRoom] = useState(1500);
-
-            return (
-                <div className="max-w-md mx-auto animate-pulse-once">
-                    <button onClick={onBack} className="text-slate-400 mb-6 flex items-center gap-2">
-                        <i className="fas fa-arrow-left"></i> Back to Home
-                    </button>
-                    <div className="glass p-8 rounded-[2.5rem] border-2 border-sky-500/20">
-                        {step === 1 ? (
-                            <div className="space-y-6">
-                                <h3 className="text-2xl font-black text-sky-400 text-center uppercase tracking-tighter">Ayodhya Heritage</h3>
-                                <select onChange={(e) => setRoom(e.target.value)} className="w-full bg-slate-900 p-4 rounded-2xl border border-slate-800">
-                                    <option value="1500">Standard Room - ₹1,500</option>
-                                    <option value="3500">Deluxe Room - ₹3,500</option>
-                                    <option value="7000">Heritage Suite - ₹7,000</option>
-                                </select>
-                                <div className="bg-sky-500/5 p-8 rounded-3xl text-center border border-sky-500/10">
-                                    <p className="text-xs text-slate-500 font-bold uppercase">Payable</p>
-                                    <h2 className="text-5xl font-black text-white">₹{room}</h2>
-                                </div>
-                                <button onClick={() => setStep(2)} className="w-full bg-sky-500 text-black font-black py-4 rounded-2xl">BOOK NOW</button>
-                            </div>
-                        ) : (
-                            <div className="text-center space-y-6 py-4">
-                                <i className="fas fa-check-circle text-7xl text-green-500"></i>
-                                <h2 className="text-3xl font-black">Confirmed!</h2>
-                                <p className="text-slate-400 text-sm">Room reserved at Ayodhya Heritage.</p>
-                                <button onClick={() => window.open('https://wa.me/91XXXXXXXXXX')} className="w-full bg-green-500 text-black font-black py-4 rounded-2xl">WHATSAPP RECEIPT</button>
-                                <button onClick={() => setStep(1)} className="text-sky-400 text-xs font-bold underline">Book Another</button>
-                            </div>
-                        )}
+                <div class="glass p-8">
+                    <h4 class="text-purple-500 text-xs font-bold uppercase mb-4">Backend</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge">Node.js</span><span class="skill-badge">MongoDB</span><span class="skill-badge">Express</span>
                     </div>
                 </div>
-            );
-        };
-
-        // --- 3. MAIN DASHBOARD ---
-        const Dashboard = ({ onSwitch }) => (
-            <div className="max-w-5xl mx-auto space-y-12 pb-20">
-                <header className="pt-20 text-center">
-                    <h1 className="text-5xl md:text-7xl font-black mb-4">MERN <span className="text-sky-400">Expert.</span></h1>
-                    <p className="text-slate-400 text-lg">B.Tech Graduate | GFG Specialist | Clean UI Architect</p>
-                </header>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-4">
-                    <div className="bento md:col-span-2">
-                        <h4 className="text-sky-400 font-bold text-xs uppercase mb-2">My Profile</h4>
-                        <h2 className="text-2xl font-black">Building Digital Solutions with High-End Logic.</h2>
-                    </div>
-                    <div onClick={onSwitch} className="bento bg-sky-500 text-black cursor-pointer shadow-xl shadow-sky-500/20">
-                        <i className="fas fa-hotel text-2xl mb-4"></i>
-                        <h2 className="font-black text-xl">LIVE PROJECT:<br/>Hotel App →</h2>
-                    </div>
-                    <div className="bento flex items-center justify-between">
-                        <span>B.Tech CS</span>
-                        <i className="fas fa-graduation-cap text-sky-400"></i>
-                    </div>
-                    <div className="bento flex items-center justify-between">
-                        <span>GFG Certified</span>
-                        <i className="fas fa-code text-sky-400"></i>
-                    </div>
-                    <div className="bento flex items-center justify-between">
-                        <span>React Stack</span>
-                        <i className="fab fa-react text-sky-400"></i>
+                <div class="glass p-8">
+                    <h4 class="text-green-500 text-xs font-bold uppercase mb-4">Others</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge">Python</span><span class="skill-badge">DSA (C++)</span><span class="skill-badge">Git</span>
                     </div>
                 </div>
             </div>
-        );
+        </section>
 
-        // --- MAIN APP ENGINE ---
-        const App = () => {
-            const [view, setView] = useState('login'); // login, home, hotel
-
-            useEffect(() => {
-                if(localStorage.getItem('auth') === 'true') setView('home');
-            }, []);
-
-            const handleLogin = () => {
-                localStorage.setItem('auth', 'true');
-                setView('home');
-            };
-
-            const handleLogout = () => {
-                localStorage.clear();
-                setView('login');
-            };
-
-            if (view === 'login') return <Login onLogin={handleLogin} />;
-
-            return (
-                <div className="min-h-screen">
-                    <nav className="fixed top-0 w-full glass z-50 px-6 py-4 flex justify-between items-center">
-                        <h1 className="font-black text-sky-400">SATYAM.DEV</h1>
-                        <button onClick={handleLogout} className="text-red-500 text-xs font-bold uppercase">Logout</button>
-                    </nav>
-                    <div className="pt-10">
-                        {view === 'home' ? <Dashboard onSwitch={() => setView('hotel')} /> : <HotelApp onBack={() => setView('home')} />}
-                    </div>
+        <section id="projects" class="max-w-6xl mx-auto px-6 py-20">
+            <h2 class="text-3xl font-bold mb-10 italic">Industrial Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="glass p-10 border-l-4 border-l-amber-500">
+                    <h3 class="text-3xl font-bold mb-4">Ayodhya Heritage Stay</h3>
+                    <p class="text-gray-500 mb-8 italic">Full-stack hotel booking platform for luxury heritage stays.</p>
+                    <button onclick="togglePage('hotel-detail')" class="text-amber-500 font-bold border-b border-amber-500 pb-1 uppercase text-xs tracking-widest">Open Application →</button>
                 </div>
-            );
-        };
+                <div class="glass p-10 border-l-4 border-l-blue-500">
+                    <h3 class="text-3xl font-bold mb-4">SpendWise AI</h3>
+                    <p class="text-gray-500 mb-8 italic">Financial analytics dashboard for smart expense tracking.</p>
+                    <span class="text-blue-500 font-bold uppercase text-[10px] opacity-50">In Development</span>
+                </div>
+            </div>
+        </section>
+    </main>
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+    <main id="hotel-detail" class="page">
+        <section class="max-w-5xl mx-auto py-32 px-6">
+            <button onclick="togglePage('portfolio-home')" class="mb-10 text-blue-500 font-bold">← Back to Portfolio</button>
+            <div class="glass overflow-hidden mb-12">
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200" class="w-full h-96 object-cover">
+            </div>
+            <h2 class="text-5xl font-black mb-6">Ayodhya Heritage Stay</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+                <div>
+                    <h4 class="text-amber-500 font-bold mb-4 uppercase text-xs">The Problem</h4>
+                    <p class="text-gray-400 leading-relaxed">Businesses like <b>HCM Property Management</b> need a way to showcase luxury rentals with real-time availability. Static websites lose 60% of customers due to poor mobile UI.</p>
+                </div>
+                <div>
+                    <h4 class="text-green-500 font-bold mb-4 uppercase text-xs">My Solution</h4>
+                    <p class="text-gray-400 leading-relaxed">Built a lightning-fast React application with a custom booking engine, increasing user engagement and booking speed.</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="https://wa.me/91XXXXXXXXXX?text=Hi Satyam, I saw your Hotel project and want to discuss a website." class="bg-green-600 px-12 py-5 rounded-2xl font-black text-white hover:bg-green-500 transition shadow-2xl">I want a website like this</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-10 text-center border-t border-[#30363d] text-[10px] text-gray-700 tracking-[1em] uppercase">
+        Satyam Developer © 2026
+    </footer>
+
+    <script>
+        function togglePage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
+        }
     </script>
 </body>
 </html>
