@@ -3,133 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Full-Stack Property Tech Expert</title>
+    <title>Satyam | Real Estate Tech Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #050505; color: #ffffff; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
-        .glass { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border-radius: 24px; }
-        .btn-prime { background: #6366f1; transition: 0.3s; }
-        .btn-prime:hover { background: #4f46e5; transform: scale(1.02); }
-        .booking-flow { display: none; }
-        .booking-flow.active { display: block; animation: slideIn 0.4s ease forwards; }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        body { background-color: #030303; color: #ffffff; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #fff 0%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 24px; }
+        .input-field { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 12px; border-radius: 12px; outline: none; transition: 0.3s; }
+        .input-field:focus { border-color: #6366f1; background: rgba(255,255,255,0.1); }
     </style>
 </head>
 <body>
 
-    <nav class="p-8 flex justify-between items-center border-b border-white/5">
-        <div class="text-xl font-black italic text-indigo-500">SATYAM.DEV</div>
-        <div class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Available for Remote Projects</div>
+    <nav class="p-8 flex justify-between items-center border-b border-white/5 max-w-7xl mx-auto">
+        <div class="text-2xl font-black italic hero-gradient">SATYAM.DEV</div>
+        <div class="flex gap-6 items-center">
+            <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest bg-indigo-500/10 px-3 py-1 rounded-full">Available for USA Projects</span>
+        </div>
     </nav>
 
-    <header class="max-w-7xl mx-auto px-6 py-20 text-center">
-        <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter">Property Tech <br> <span class="text-indigo-500">Redefined.</span></h1>
-        <p class="text-gray-400 text-xl max-w-2xl mx-auto mb-10">Building high-conversion reservation engines for luxury rentals and property management firms.</p>
+    <header class="max-w-7xl mx-auto px-6 py-24">
+        <h1 class="text-6xl md:text-8xl font-extrabold mb-8 tracking-tighter leading-none">Modernizing <br> <span class="hero-gradient">Property Management.</span></h1>
+        <p class="text-gray-400 text-xl max-w-2xl mb-12 font-light">
+            I help real estate firms build custom booking engines, tenant portals, and automated reservation systems that outperform legacy platforms.
+        </p>
     </header>
 
-    <section class="max-w-5xl mx-auto px-6 py-10 pb-32">
-        <div class="glass p-8 md:p-12">
-            <div class="flex items-center gap-4 mb-10">
-                <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
-                <h2 class="text-sm font-bold uppercase tracking-[0.2em] text-indigo-400">Live Demo: Ayodhya Heritage Stay Engine</h2>
-            </div>
+    <section class="max-w-7xl mx-auto px-6 pb-32">
+        <div class="glass p-8 md:p-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 italic">Featured Case Study: <br> Ayodhya Heritage Stay Portal</h2>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        A high-performance reservation engine designed for high-value properties. It features a <b>Dynamic Pricing API</b> and a <b>Real-time Availability Tracker</b>.
+                    </p>
+                    <ul class="space-y-4 text-sm text-gray-300 mb-10">
+                        <li class="flex items-center gap-3"><span class="text-indigo-500">✔</span> Instant Booking Logic</li>
+                        <li class="flex items-center gap-3"><span class="text-indigo-500">✔</span> Automated Invoice Generation</li>
+                        <li class="flex items-center gap-3"><span class="text-indigo-500">✔</span> Mobile-First Responsive UI</li>
+                    </ul>
+                </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="relative rounded-3xl overflow-hidden border border-white/10">
-                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800" class="w-full h-full object-cover opacity-60">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black p-8 flex flex-col justify-end">
-                        <h3 class="text-2xl font-bold">Royal Heritage Suite</h3>
-                        <p class="text-gray-400 text-sm">Ayodhya, UP - India</p>
+                <div class="bg-black/40 p-8 rounded-[32px] border border-white/10 shadow-2xl">
+                    <h4 class="text-sm font-bold uppercase tracking-widest text-indigo-400 mb-6">Interactive Prototype</h4>
+                    <div id="demo-box" class="space-y-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex flex-col">
+                                <label class="text-[10px] font-bold uppercase text-gray-500 mb-2">Check-In</label>
+                                <input type="date" id="cin" class="input-field">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="text-[10px] font-bold uppercase text-gray-500 mb-2">Check-Out</label>
+                                <input type="date" id="cout" class="input-field">
+                            </div>
+                        </div>
+                        <div class="py-4 border-y border-white/10">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-400 text-sm">Property Rate</span>
+                                <span class="font-bold text-indigo-400">$250 / Night</span>
+                            </div>
+                        </div>
+                        <button onclick="runDemo()" class="w-full bg-indigo-600 hover:bg-indigo-500 py-4 rounded-xl font-bold transition">Check Availability</button>
+                    </div>
+
+                    <div id="result-box" class="hidden text-center py-6">
+                        <div class="w-16 h-16 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">✓</div>
+                        <h4 class="text-xl font-bold mb-1">Dates Available</h4>
+                        <p class="text-gray-400 text-sm mb-6">Total for <span id="nights" class="text-white"></span> nights: <span id="price" class="text-white font-bold"></span></p>
+                        <button onclick="resetDemo()" class="text-xs text-gray-500 underline uppercase tracking-widest">Back to dates</button>
                     </div>
                 </div>
 
-                <div class="flex flex-col justify-center">
-                    <div id="step-1" class="booking-flow active">
-                        <h4 class="text-xl font-bold mb-6 text-white">Select Your Dates</h4>
-                        <div class="space-y-4">
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="text-[10px] font-bold text-gray-500 uppercase">Check-In</label>
-                                    <input type="date" id="checkin" class="w-full mt-2 bg-white/5 border border-white/10 p-4 rounded-xl text-sm">
-                                </div>
-                                <div>
-                                    <label class="text-[10px] font-bold text-gray-500 uppercase">Check-Out</label>
-                                    <input type="date" id="checkout" class="w-full mt-2 bg-white/5 border border-white/10 p-4 rounded-xl text-sm">
-                                </div>
-                            </div>
-                            <div class="py-4 border-y border-white/5 my-6">
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-400">Base Price (Per Night)</span>
-                                    <span class="font-bold text-indigo-400">$250</span>
-                                </div>
-                            </div>
-                            <button onclick="calculateTotal()" class="w-full btn-prime py-5 rounded-2xl font-black text-sm uppercase tracking-widest">Check Availability</button>
-                        </div>
-                    </div>
-
-                    <div id="step-2" class="booking-flow">
-                        <div class="text-center p-6">
-                            <div class="w-20 h-20 bg-indigo-500/20 text-indigo-500 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">✓</div>
-                            <h4 class="text-2xl font-bold mb-2">Room Available!</h4>
-                            <p class="text-gray-400 text-sm mb-8">Total for <span id="days-count" class="text-white font-bold">0</span> nights: <span id="total-price" class="text-indigo-400 font-bold">$0</span></p>
-                            
-                            <div class="space-y-3">
-                                <button onclick="resetDemo()" class="w-full bg-white text-black py-4 rounded-xl font-bold text-sm">Proceed to Payment</button>
-                                <button onclick="resetDemo()" class="w-full text-gray-500 text-xs font-bold uppercase tracking-widest">Back to dates</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            <div class="glass p-6 text-sm">
-                <p class="text-indigo-400 font-bold mb-2">01. Dynamic Pricing</p>
-                <p class="text-gray-500">Automatically adjust rates based on season and occupancy.</p>
-            </div>
-            <div class="glass p-6 text-sm">
-                <p class="text-indigo-400 font-bold mb-2">02. Instant Invoicing</p>
-                <p class="text-gray-500">Automated PDF receipts and booking confirmation via Email/WhatsApp.</p>
-            </div>
-            <div class="glass p-6 text-sm">
-                <p class="text-indigo-400 font-bold mb-2">03. Property Sync</p>
-                <p class="text-gray-500">Sync availability across all major rental channels (Airbnb, HCM etc.)</p>
             </div>
         </div>
     </section>
 
+    <footer class="py-20 text-center border-t border-white/5">
+        <a href="mailto:info@hcmpm.com" class="text-2xl font-bold hover:text-indigo-400 transition">Let's build your portal →</a>
+    </footer>
+
     <script>
-        function calculateTotal() {
-            const cin = new Date(document.getElementById('checkin').value);
-            const cout = new Date(document.getElementById('checkout').value);
+        function runDemo() {
+            const d1 = new Date(document.getElementById('cin').value);
+            const d2 = new Date(document.getElementById('cout').value);
+            if(!d1 || !d2 || d2 <= d1) { alert("Please select valid dates"); return; }
             
-            if(!document.getElementById('checkin').value || !document.getElementById('checkout').value) {
-                alert("Please select dates first!");
-                return;
-            }
-
-            const diffTime = Math.abs(cout - cin);
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+            const diff = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
+            document.getElementById('nights').innerText = diff;
+            document.getElementById('price').innerText = "$" + (diff * 250);
             
-            if(diffDays <= 0) {
-                alert("Check-out must be after Check-in!");
-                return;
-            }
-
-            document.getElementById('days-count').innerText = diffDays;
-            document.getElementById('total-price').innerText = "$" + (diffDays * 250);
-
-            document.getElementById('step-1').classList.remove('active');
-            document.getElementById('step-2').classList.add('active');
+            document.getElementById('demo-box').classList.add('hidden');
+            document.getElementById('result-box').classList.remove('hidden');
         }
-
         function resetDemo() {
-            document.getElementById('step-2').classList.remove('active');
-            document.getElementById('step-1').classList.add('active');
+            document.getElementById('demo-box').classList.remove('hidden');
+            document.getElementById('result-box').classList.add('hidden');
         }
     </script>
-
 </body>
 </html>
