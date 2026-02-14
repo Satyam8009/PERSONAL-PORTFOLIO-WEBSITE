@@ -3,85 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam | Real Estate Tech Solutions</title>
+    <title>Satyam | Property Tech & Automation Expert</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #030303; color: #ffffff; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: #050505; color: #ffffff; font-family: 'Plus Jakarta Sans', sans-serif; }
         .hero-gradient { background: linear-gradient(135deg, #fff 0%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glass { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 24px; }
-        .input-field { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 12px; border-radius: 12px; outline: none; transition: 0.3s; }
-        .input-field:focus { border-color: #6366f1; background: rgba(255,255,255,0.1); }
+        .glass { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border-radius: 32px; }
+        .input-field { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 14px; border-radius: 16px; width: 100%; outline: none; }
     </style>
 </head>
 <body>
 
-    <nav class="p-8 flex justify-between items-center border-b border-white/5 max-w-7xl mx-auto">
-        <div class="text-2xl font-black italic hero-gradient">SATYAM.DEV</div>
-        <div class="flex gap-6 items-center">
-            <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest bg-indigo-500/10 px-3 py-1 rounded-full">Available for USA Projects</span>
+    <nav class="p-8 flex justify-between items-center max-w-7xl mx-auto">
+        <div class="text-2xl font-black italic hero-gradient tracking-tighter">SATYAM.DEV</div>
+        <div class="hidden md:block text-[10px] font-bold text-indigo-400 uppercase tracking-[0.3em] bg-indigo-500/10 px-4 py-2 rounded-full border border-indigo-500/20">
+            Property Management Solutions
         </div>
     </nav>
 
-    <header class="max-w-7xl mx-auto px-6 py-24">
-        <h1 class="text-6xl md:text-8xl font-extrabold mb-8 tracking-tighter leading-none">Modernizing <br> <span class="hero-gradient">Property Management.</span></h1>
-        <p class="text-gray-400 text-xl max-w-2xl mb-12 font-light">
-            I help real estate firms build custom booking engines, tenant portals, and automated reservation systems that outperform legacy platforms.
-        </p>
+    <header class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <div>
+                <h1 class="text-6xl md:text-8xl font-extrabold mb-8 tracking-tighter leading-[0.9]">Transforming <br> <span class="hero-gradient">Real Estate</span> <br> Operations.</h1>
+                <p class="text-gray-400 text-xl max-w-lg mb-10 font-light leading-relaxed">
+                    I build custom reservation systems and property portals for firms looking to automate bookings and increase direct revenue.
+                </p>
+                <div class="flex gap-4">
+                    <a href="mailto:info@hcmpm.com" class="bg-white text-black px-10 py-5 rounded-2xl font-bold hover:bg-indigo-500 hover:text-white transition-all">Start Project</a>
+                </div>
+            </div>
+
+            <div class="glass p-8 md:p-10 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-20 text-[60px]">🏠</div>
+                <h3 class="text-xl font-bold mb-2">Live Tech Demo</h3>
+                <p class="text-gray-500 text-xs mb-8 uppercase tracking-widest font-bold">Ayodhya Heritage Engine</p>
+                
+                <div id="demo-box" class="space-y-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-400 uppercase">Check-In</label>
+                            <input type="date" id="cin" class="input-field mt-2">
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-400 uppercase">Check-Out</label>
+                            <input type="date" id="cout" class="input-field mt-2">
+                        </div>
+                    </div>
+                    <div class="p-4 bg-white/5 rounded-2xl flex justify-between items-center">
+                        <span class="text-gray-400 text-sm italic">Premium Rate</span>
+                        <span class="font-bold text-indigo-400">$250/night</span>
+                    </div>
+                    <button onclick="runDemo()" class="w-full bg-indigo-600 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-indigo-500 transition">Test Booking Logic</button>
+                </div>
+
+                <div id="result-box" class="hidden py-10 text-center animate-pulse">
+                    <h4 class="text-3xl font-black text-green-500 mb-2">AVAILABLE</h4>
+                    <p class="text-gray-400">System calculated <span id="nights" class="text-white font-bold"></span> nights.</p>
+                    <p class="text-4xl font-black mt-4 hero-gradient" id="price"></p>
+                    <button onclick="location.reload()" class="mt-8 text-xs text-gray-600 underline">RESET DEMO</button>
+                </div>
+            </div>
+
+        </div>
     </header>
 
-    <section class="max-w-7xl mx-auto px-6 pb-32">
-        <div class="glass p-8 md:p-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                
-                <div>
-                    <h2 class="text-3xl font-bold mb-6 italic">Featured Case Study: <br> Ayodhya Heritage Stay Portal</h2>
-                    <p class="text-gray-400 mb-8 leading-relaxed">
-                        A high-performance reservation engine designed for high-value properties. It features a <b>Dynamic Pricing API</b> and a <b>Real-time Availability Tracker</b>.
-                    </p>
-                    <ul class="space-y-4 text-sm text-gray-300 mb-10">
-                        <li class="flex items-center gap-3"><span class="text-indigo-500">✔</span> Instant Booking Logic</li>
-                        <li class="flex items-center gap-3"><span class="text-indigo-500">✔</span> Automated Invoice Generation</li>
-                        <li class="flex items-center gap-3"><span class="text-indigo-500">✔</span> Mobile-First Responsive UI</li>
-                    </ul>
-                </div>
-
-                <div class="bg-black/40 p-8 rounded-[32px] border border-white/10 shadow-2xl">
-                    <h4 class="text-sm font-bold uppercase tracking-widest text-indigo-400 mb-6">Interactive Prototype</h4>
-                    <div id="demo-box" class="space-y-6">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="flex flex-col">
-                                <label class="text-[10px] font-bold uppercase text-gray-500 mb-2">Check-In</label>
-                                <input type="date" id="cin" class="input-field">
-                            </div>
-                            <div class="flex flex-col">
-                                <label class="text-[10px] font-bold uppercase text-gray-500 mb-2">Check-Out</label>
-                                <input type="date" id="cout" class="input-field">
-                            </div>
-                        </div>
-                        <div class="py-4 border-y border-white/10">
-                            <div class="flex justify-between items-center">
-                                <span class="text-gray-400 text-sm">Property Rate</span>
-                                <span class="font-bold text-indigo-400">$250 / Night</span>
-                            </div>
-                        </div>
-                        <button onclick="runDemo()" class="w-full bg-indigo-600 hover:bg-indigo-500 py-4 rounded-xl font-bold transition">Check Availability</button>
-                    </div>
-
-                    <div id="result-box" class="hidden text-center py-6">
-                        <div class="w-16 h-16 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">✓</div>
-                        <h4 class="text-xl font-bold mb-1">Dates Available</h4>
-                        <p class="text-gray-400 text-sm mb-6">Total for <span id="nights" class="text-white"></span> nights: <span id="price" class="text-white font-bold"></span></p>
-                        <button onclick="resetDemo()" class="text-xs text-gray-500 underline uppercase tracking-widest">Back to dates</button>
-                    </div>
-                </div>
-
+    <section class="max-w-7xl mx-auto px-6 py-20 border-t border-white/5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="space-y-4">
+                <h4 class="font-bold text-indigo-400 uppercase text-xs tracking-widest">01. Automation</h4>
+                <p class="text-gray-400 text-sm">Automated invoicing and payment workflows for tenants.</p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="font-bold text-indigo-400 uppercase text-xs tracking-widest">02. Integration</h4>
+                <p class="text-gray-400 text-sm">Seamlessly sync listings across internal portals and 3rd party sites.</p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="font-bold text-indigo-400 uppercase text-xs tracking-widest">03. Performance</h4>
+                <p class="text-gray-400 text-sm">Optimized for SEO and 99.9% uptime for business critical systems.</p>
             </div>
         </div>
     </section>
 
-    <footer class="py-20 text-center border-t border-white/5">
-        <a href="mailto:info@hcmpm.com" class="text-2xl font-bold hover:text-indigo-400 transition">Let's build your portal →</a>
+    <footer class="py-20 text-center opacity-20 text-[10px] font-bold tracking-[1em]">
+        SATYAM.DEV // 2026 PROPERTY TECH
     </footer>
 
     <script>
@@ -89,17 +95,11 @@
             const d1 = new Date(document.getElementById('cin').value);
             const d2 = new Date(document.getElementById('cout').value);
             if(!d1 || !d2 || d2 <= d1) { alert("Please select valid dates"); return; }
-            
             const diff = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
             document.getElementById('nights').innerText = diff;
             document.getElementById('price').innerText = "$" + (diff * 250);
-            
             document.getElementById('demo-box').classList.add('hidden');
             document.getElementById('result-box').classList.remove('hidden');
-        }
-        function resetDemo() {
-            document.getElementById('demo-box').classList.remove('hidden');
-            document.getElementById('result-box').classList.add('hidden');
         }
     </script>
 </body>
